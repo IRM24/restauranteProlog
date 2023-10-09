@@ -179,10 +179,7 @@ obtener_postres(TiempoComida, Postres) :-
     ).
 
 
-obtener_postres_con_lacteo(TiempoComida,Postres) :-
-    write('¿Deseas el postre con frutas (si/no)? '),
-    read(EleccionFrutas),
-
+obtener_postres_con_lacteo(TiempoComida, EleccionFrutas, Postres) :-
     % Construir la consulta SQL basada en los parámetros
     atomic_list_concat(['SELECT nombre FROM postre WHERE', TiempoComida, '= ''Si'' AND lacteo = ''Si'''], ' ', Query),
     write(EleccionFrutas),
@@ -199,10 +196,7 @@ obtener_postres_con_lacteo(TiempoComida,Postres) :-
     % Ejecutar la consulta SQL y obtener los resultados
     findall(Nombre, (odbc_query(restaurante_db, FullQuery, row(Nombre))), Postres).
 
-obtener_postres_sin_lacteo(TiempoComida,Postres) :-
-    write('¿Deseas el postre con frutas (si/no)? '),
-    read(EleccionFrutas),
-
+obtener_postres_sin_lacteo(TiempoComida, EleccionFrutas, Postres) :-
     % Construir la consulta SQL basada en los parámetros
     atomic_list_concat(['SELECT nombre FROM postre WHERE', TiempoComida, '= ''Si'' AND lacteo = ''No'''], ' ', Query),
     write(EleccionFrutas),

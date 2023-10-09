@@ -36,11 +36,15 @@ CREATE TABLE acompannamiento (
 CREATE TABLE postre (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
+    lacteo VARCHAR(100) NOT NULL,
+    frutas VARCHAR(100) NOT NULL,
     desayuno VARCHAR(100) NOT NULL,
     almuerzo VARCHAR(100) NOT NULL,
     cena VARCHAR(100) NOT NULL,
     calorias INT NOT NULL
 );
+
+-- drop table postre;
 
 -- Inserts Bebidas -------------------------------------------------------------------------------------
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias)
@@ -50,13 +54,16 @@ INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almu
 VALUES ('Coca-cola', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 150);
 
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias)
+VALUES ('Sprite', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 130);
+
+INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias)
 VALUES ('Te Negro', 'No', 'Si', 'Caliente', 'Si', 'Si', 'Si', 8);
 
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias)
 VALUES ('Café', 'No', 'No', 'Caliente', 'Si', 'No', 'No', 10);
 
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias)
-VALUES ('Jugo', 'No', 'Si', 'Fria', 'Si', 'Si', 'Si', 100);
+VALUES ('Chocolate', 'No', 'No', 'Caliente', 'Si', 'No', 'No', 180);
 
 -- Inserts Proteinas ---------------------------------------------------------------------------------
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias)
@@ -74,8 +81,8 @@ VALUES ('Costilla de cerdo', 'Carnes Rojas', 'No', 'No', 'Si', 300);
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias)
 VALUES ('Salmón', 'Mariscos', 'No', 'No', 'Si', 220);
 
-INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias)
-VALUES ('Salchicha', 'Cerdo', 'Si', 'No', 'No', 220);
+-- INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias)
+-- VALUES ('Salchicha', 'Cerdo', 'Si', 'No', 'No', 220);
 
 -- Insert Acompannamientos --------------------------------------------------------
 INSERT INTO acompannamiento (nombre, desayuno, almuerzo, cena, calorias)
@@ -96,23 +103,27 @@ VALUES
     ('Brócoli al vapor', 'No', 'Si', 'Si', 50),
     ('Puré de papas', 'No', 'Si', 'Si', 180);
     
+
 -- Inserts de postres -------------------------------------------------
-INSERT INTO postre (nombre, desayuno, almuerzo, cena, calorias)
+-- seguro que estos son postres?
+INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias)
 VALUES
-    ('Yogurt con frutas', 'Si', 'No', 'Si', 150),
-    ('Cereal con leche', 'Si', 'No', 'Si', 200),
-    ('Tostadas con mermelada', 'Si', 'No', 'No', 180);
+   ('Yogurt con frutas', 'Si', 'Si','Si', 'No', 'No', 150);
+   -- ('Cereal con leche', 'Si', 'No', 'Si', 200),
+   -- ('Tostadas con mermelada', 'Si', 'No', 'No', 180);
 
-INSERT INTO postre (nombre, desayuno, almuerzo, cena, calorias)
+INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias)
 VALUES
-    ('Flan de caramelo', 'No', 'Si', 'Si', 250),
-    ('Tarta de manzana', 'Si', 'Si', 'No', 300),
-    ('Gelatina de frutas', 'Si', 'Si', 'No', 120);
+    ('Flan de caramelo', 'Si', 'No', 'No', 'Si', 'Si', 250),
+    ('Tarta de manzana', 'No', 'Si', 'No', 'Si', 'Si', 300),
+    ('Gelatina de frutas', 'No', 'Si', 'Si', 'Si', 'No', 120);
 
-INSERT INTO postre (nombre, desayuno, almuerzo, cena, calorias)
+INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias)
 VALUES
-    ('Helado de vainilla', 'No', 'Si', 'Si', 180),
-    ('Pastel de chocolate', 'No', 'Si', 'Si', 350),
-    ('Natillas', 'No', 'No', 'Si', 200);
-    
-    
+    ('Helado de vainilla', 'Si', 'No', 'No', 'Si', 'Si', 220),
+    ('Pastel de chocolate', 'Si', 'No','No',  'Si', 'Si', 350),
+    ('Cheesecake', 'Si', 'No','No', 'Si', 'Si', 310);
+
+
+
+
