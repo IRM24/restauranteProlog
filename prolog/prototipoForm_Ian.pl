@@ -125,25 +125,118 @@ obtener_proteina_carnesRojas(TiempoComida, Registros) :-
 
 % Predicado para obtener acompannamientos segun el tiempo de comida y
 % un numero aleatorio entre 1 y 3
-obtener_acompannamientos(TiempoComida, NumAcompannamientos, Acompannamientos) :-
+% obtener_acompannamientos(TiempoComida, NumAcompannamientos, Acompannamientos) :-
     % Obtiene la lista de acompaÃ±amientos para el tiempo de comida dado
-    atomic_list_concat(['SELECT nombre FROM acompannamiento WHERE', TiempoComida, '= ''Si'''], ' ', Query),
-    % Ejecuta la consulta SQL y obtiene los nombres de los acompaÃ±amientos
-    findall(Nombre, (odbc_query(restaurante_db, Query, row(Nombre))), TodosAcompannamientos),
+%    atomic_list_concat(['SELECT nombre FROM acompannamiento WHERE',
+%    TiempoComida, '= ''Si'''], ' ', Query), Ejecuta la consulta SQL y
+%    obtiene los nombres de los acompaÃ±amientos
+    %findall(Nombre, (odbc_query(restaurante_db, Query, row(Nombre))), TodosAcompannamientos),
     % Obtiene una seleccion aleatoria de acompaÃ±amientos segÃºn NumAcompannamientos
-    length(TodosAcompannamientos, TotalAcompannamientos),
-    random_permutation(TodosAcompannamientos, AcompannamientosAleatorios),
-    take(NumAcompannamientos, AcompannamientosAleatorios, Acompannamientos).
+    %length(TodosAcompannamientos, TotalAcompannamientos),
+    %random_permutation(TodosAcompannamientos, AcompannamientosAleatorios),
+    %take(NumAcompannamientos, AcompannamientosAleatorios, Acompannamientos).
 
 % Predicado para tomar los primeros N elementos de una lista
-take(0, _, []).
-take(N, [X | Xs], [X | Ys]) :-
-    N > 0,
-    N1 is N - 1,
-    take(N1, Xs, Ys).
-take(_, _, []).
+%take(0, _, []).
+%take(N, [X | Xs], [X | Ys]) :-
+%    N > 0,
+%    N1 is N - 1,
+%    take(N1, Xs, Ys).
+%take(_, _, []).
 
 %ejemplo de uso: obtener_acompannamientos('desayuno', 2, Acompannamientos).
+
+% Predicado para obtener acompannamientos segun el tiempo de comida y
+% temperatura
+obtener_acompannamientos(TiempoComida, Acompannamientos) :-
+    % Comprobar si la temperatura es "fria" o "caliente"
+    write('¿Qué temperatura prefieres para los acompannamientos, frios o calientes (frios/calientes)? '),
+    read(Temperatura),
+
+    (Temperatura == 'fria' ->
+        % Si es fria, preguntar por el tipo (carbonatadas o naturales)
+        obtener_acompannamientos_frios(TiempoComida, Tipo),
+        Acompannamientos = Tipo
+    ;
+        % Si es caliente, preguntar si se desea carbonatadas, naturales o todas
+        obtener_acompannamientos_calientes(TiempoComida, Tipo),
+        Acompannamientos = Tipo
+    ).
+
+
+% Predicado para obtener acompañamientos calientes
+obtener_acompannamientos_calientes(TiempoComida, Acompannamientos) :-
+    write('¿Deseas acompañamientos con vegetales (si/no)? '),
+    read(EleccionVegetales),
+
+    write('¿Deseas acompañamientos con carbohidratos (si/no)? '),
+    read(EleccionCarbohidratos),
+
+    % Construir la consulta SQL basada en los parámetros
+    atomic_list_concat(['SELECT nombre FROM acompannamiento WHERE', TiempoComida, '= ''Si'' AND temperatura = ''Caliente'''], ' ', Query),
+
+    % Agregar las condiciones de EleccionVegetales y EleccionCarbohidratos si son "Si"
+    (EleccionVegetales = 'si' ->
+        atomic_list_concat([' AND vegetales = ''Si'''], '', VegetalesCondition)
+    ;
+
+    EleccionVegetales = 'no' ->
+        atomic_list_concat([' AND vegetales = ''No'''], '', VegetalesCondition)
+    ;
+        VegetalesCondition = ''
+    ),
+
+    (EleccionCarbohidratos = 'si' ->
+        atomic_list_concat([' AND carbohidratos = ''Si'''], '', CarbohidratosCondition)
+    ;
+    EleccionVegetales = 'no' ->
+       atomic_list_concat([' AND carbohidratos = ''No'''], '', CarbohidratosCondition)
+    ;
+        CarbohidratosCondition = ''
+    ),
+
+
+    % Ejecutar la consulta SQL y obtener los resultados
+    atomic_list_concat([Query, VegetalesCondition, CarbohidratosCondition], ' ', FinalQuery),
+    findall(Nombre, (odbc_query(restaurante_db, FinalQuery, row(Nombre))), Acompannamientos).
+
+
+% Predicado para obtener acompañamientos frios
+obtener_acompannamientos_frios(TiempoComida, Acompannamientos) :-
+    write('¿Deseas acompañamientos con vegetales (si/no)? '),
+    read(EleccionVegetales),
+
+    write('¿Deseas acompañamientos con carbohidratos (si/no)? '),
+    read(EleccionCarbohidratos),
+
+    % Construir la consulta SQL basada en los parámetros
+    atomic_list_concat(['SELECT nombre FROM acompannamiento WHERE', TiempoComida, '= ''Si'' AND temperatura = ''Frio'''], ' ', Query),
+
+    % Agregar las condiciones de EleccionVegetales y EleccionCarbohidratos si son "Si"
+    (EleccionVegetales = 'si' ->
+        atomic_list_concat([' AND vegetales = ''Si'''], '', VegetalesCondition)
+    ;
+
+    EleccionVegetales = 'no' ->
+        atomic_list_concat([' AND vegetales = ''No'''], '', VegetalesCondition)
+    ;
+        VegetalesCondition = ''
+    ),
+
+    (EleccionCarbohidratos = 'si' ->
+        atomic_list_concat([' AND carbohidratos = ''Si'''], '', CarbohidratosCondition)
+    ;
+    EleccionVegetales = 'no' ->
+       atomic_list_concat([' AND carbohidratos = ''No'''], '', CarbohidratosCondition)
+    ;
+        CarbohidratosCondition = ''
+    ),
+
+
+    % Ejecutar la consulta SQL y obtener los resultados
+    atomic_list_concat([Query, VegetalesCondition, CarbohidratosCondition], ' ', FinalQuery),
+    findall(Nombre, (odbc_query(restaurante_db, FinalQuery, row(Nombre))), Acompannamientos).
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%Postres%%%%%%%%%%%%%%%%%%

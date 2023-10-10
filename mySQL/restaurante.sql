@@ -27,6 +27,9 @@ CREATE TABLE proteina (
 CREATE TABLE acompannamiento (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
+    temperatura VARCHAR(100) NOT NULL,
+    carbohidratos VARCHAR(100) NOT NULL,
+    vegetales VARCHAR(100) NOT NULL,
     desayuno VARCHAR(100) NOT NULL,
     almuerzo VARCHAR(100) NOT NULL,
     cena VARCHAR(100) NOT NULL,
@@ -85,7 +88,12 @@ VALUES ('Salmón', 'Mariscos', 'No', 'No', 'Si', 220);
 -- VALUES ('Salchicha', 'Cerdo', 'Si', 'No', 'No', 220);
 
 -- Insert Acompannamientos --------------------------------------------------------
-INSERT INTO acompannamiento (nombre, desayuno, almuerzo, cena, calorias)
+
+temperatura VARCHAR(100) NOT NULL,
+    carbohidratos VARCHAR(100) NOT NULL,
+    vegetales VARCHAR(100) NOT NULL,
+    
+INSERT INTO acompannamiento (nombre, temperatura, desayuno, almuerzo, cena, calorias)
 VALUES
     ('Pan tostado', 'Si', 'Si', 'No', 80),
     ('Yogurt', 'Si', 'No', 'Si', 120),
