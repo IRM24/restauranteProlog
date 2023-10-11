@@ -148,6 +148,9 @@ obtener_proteina_carnesRojas(TiempoComida, Registros) :-
 
 % Predicado para obtener acompannamientos segun el tiempo de comida y
 % temperatura
+%
+% Predicado para obtener acompannamientos segun el tiempo de comida y
+% temperatura
 obtener_acompannamientos(TiempoComida, Acompannamientos) :-
     % Comprobar si la temperatura es "fria" o "caliente"
     write('¿Qué temperatura prefieres para los acompannamientos, frios o calientes (fria/caliente)? '),
@@ -162,33 +165,33 @@ obtener_acompannamientos(TiempoComida, Acompannamientos) :-
         obtener_acompannamientos_calientes(TiempoComida, Tipo),
         Acompannamientos = Tipo
     ),
-     write('¿Cuántos acompañamientos deseas (1/2/3)? '),
+     % Preguntar cuántos acompañamientos desea el usuario (1 a 3)
+    obtener_cantidad_acompannamientos(Cantidad),
+
+    % Generar todas las combinaciones posibles con la cantidad seleccionada
+    generar_combinaciones(Acompannamientos, Cantidad, Combinaciones).
+
+% Predicado para generar todas las combinaciones posibles de una lista
+generar_combinaciones(_, 0, [[]]).
+generar_combinaciones(L, N, [Comb | Combs]) :-
+    N > 0,
+    N1 is N - 1,
+    select(X, L, L1),
+    Comb = [X | Comb1],
+    generar_combinaciones(L1, N1, Combs),
+    Comb = [_ | Comb1].
+
+% Predicado para preguntar la cantidad de acompañamientos deseada (1 a 3)
+obtener_cantidad_acompannamientos(Cantidad) :-
+    write('¿Cuántos acompañamientos deseas (1-3)? '),
     read(Cantidad),
-    obtener_acompannamientos_seleccionados(Cantidad, Acompannamientos).
-
-% Predicado para obtener acompañamientos seleccionados
-obtener_acompannamientos_seleccionados(1, [Acompannamiento]) :-
-    obtener_acompannamiento_aleatorio(Acompannamiento).
-
-obtener_acompannamientos_seleccionados(2, [Acompannamiento1, Acompannamiento2]) :-
-    obtener_acompannamiento_aleatorio(Acompannamiento1),
-    obtener_acompannamiento_aleatorio(Acompannamiento2),
-    Acompannamiento1 \= Acompannamiento2.
-
-obtener_acompannamientos_seleccionados(3, [Acompannamiento1, Acompannamiento2, Acompannamiento3]) :-
-    obtener_acompannamiento_aleatorio(Acompannamiento1),
-    obtener_acompannamiento_aleatorio(Acompannamiento2),
-    obtener_acompannamiento_aleatorio(Acompannamiento3),
-    Acompannamiento1 \= Acompannamiento2,
-    Acompannamiento1 \= Acompannamiento3,
-    Acompannamiento2 \= Acompannamiento3.
-
-% Predicado para obtener un acompañamiento aleatorio
-obtener_acompannamiento_aleatorio(Acompannamiento) :-
-    odbc_query(restaurante_db,
-        'SELECT nombre FROM acompannamiento ORDER BY RAND() LIMIT 1',
-        row(Acompannamiento)).
-
+    % Verificar que la cantidad esté en el rango permitido
+    (Cantidad >= 1, Cantidad =< 3 ->
+        true
+    ;
+        write('Por favor, ingresa una cantidad válida entre 1 y 3.\n'),
+        obtener_cantidad_acompannamientos(Cantidad)
+    ).
 
 
 % Predicado para obtener acompañamientos calientes
@@ -263,7 +266,6 @@ obtener_acompannamientos_frios(TiempoComida, Acompannamientos) :-
     % Ejecutar la consulta SQL y obtener los resultados
     atomic_list_concat([Query, VegetalesCondition, CarbohidratosCondition], ' ', FinalQuery),
     findall(Nombre, (odbc_query(restaurante_db, FinalQuery, row(Nombre))), Acompannamientos).
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%Postres%%%%%%%%%%%%%%%%%%
 
@@ -348,25 +350,30 @@ obtener_menu :-
     nl,
     obtener_bebidas(TiempoComida, Bebidas),
     obtener_proteina(TiempoComida, Proteinas),
-    %%obtener_acompannamientos(TiempoComida, 2, Acompannamientos),
+    obtener_acompannamientos(TiempoComida, Acompannamientos),
     obtener_postres(TiempoComida, Postres),
     % Mostrar resultados
     write('*** Menú para '), write(TiempoComida), write(' ***'), nl,
     write('Bebidas: '), write(Bebidas), nl,
     write('Proteínas: '), write(Proteinas), nl,
-    %%write('Acompañamientos: '), write(Acompannamientos), nl,
+    write('Acompañamientos: '), write(Acompannamientos), nl,
     write('Postres: '), write(Postres), nl.
 
 % Genera todas las combinaciones posibles de los resultados de las funciones
 obtener_combinaciones(TiempoComida, Combinaciones) :-
     obtener_bebidas(TiempoComida, Bebidas),
     obtener_proteina(TiempoComida, Proteinas),
-    %%obtener_acompannamientos(TiempoComida, 2, Acompannamientos),
+    obtener_acompannamientos(TiempoComida, Acompannamientos),
     obtener_postres(TiempoComida, Postres),
+    % Combinar los acompañamientos en una sola lista
+    flatten(Acompannamientos, AcompannamientosFlatten),
 
     % Crear el menú combinando elementos de cada categoría
-    findall([Bebida, Proteina, Postre], (
+    findall([Bebida, Proteina, AcompannamientoFlatten, Postre], (
         member(Bebida, Bebidas),
         member(Proteina, Proteinas),
+        %member(Acompannamiento, Acompannamientos),
         member(Postre, Postres)
     ), Combinaciones).
+
+%%%%%%%%%%%%%%%menus predefinidos%%%%%%%%%
