@@ -1,6 +1,6 @@
 %:- use_module(library(odbc)).
 
-% Predicado para establecer una conexiï¿½n a la base de datos
+% Predicado para establecer una conexion a la base de datos
 %:- dynamic restaurante_db/1.
 conectar_base_de_datos :-
     odbc_connect('mysqlconexion', Connection,
@@ -393,13 +393,37 @@ obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu) :-
 %obtener_menu_por_id(1,2,9,4,Menu).
 
 % Predicado para obtener un número aleatorio entre 1 y 3
-obtener_numero_aleatorio(Numero) :-
+obtener_numero_aleatorio_Opcion1(Numero) :-
     random(1, 4, Numero).
 
 % Predicado para obtener un menú aleatorio
-obtener_menu_aleatorio(Menu) :-
-    obtener_numero_aleatorio(IDBebida),
-    obtener_numero_aleatorio(IDProteina),
-    obtener_numero_aleatorio(IDAcompannamiento),
-    obtener_numero_aleatorio(IDPostre),
+obtener_menu_aleatorio_Opcion1(Menu) :-
+    obtener_numero_aleatorio_Opcion1(IDBebida),
+    obtener_numero_aleatorio_Opcion1(IDProteina),
+    obtener_numero_aleatorio_Opcion1(IDAcompannamiento),
+    obtener_numero_aleatorio_Opcion1(IDPostre),
     obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
+
+obtener_numero_aleatorio_Opcion2(Numero) :-
+    random(4, 7, Numero).
+
+% Predicado para obtener un menú aleatorio
+obtener_menu_aleatorio_Opcion2(Menu) :-
+    obtener_numero_aleatorio_Opcion2(IDBebida),
+    obtener_numero_aleatorio_Opcion2(IDProteina),
+    obtener_numero_aleatorio_Opcion2(IDAcompannamiento),
+    obtener_numero_aleatorio_Opcion2(IDPostre),
+    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
+
+obtener_numero_aleatorio_Opcion3(Numero) :-
+    random(7, 9, Numero).
+
+% Predicado para obtener un menú aleatorio
+obtener_menu_aleatorio_Opcion3(Menu) :-
+    obtener_numero_aleatorio_Opcion3(IDBebida),
+    obtener_numero_aleatorio_Opcion3(IDProteina),
+    obtener_numero_aleatorio_Opcion3(IDAcompannamiento),
+    obtener_numero_aleatorio_Opcion3(IDPostre),
+    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
+
+
