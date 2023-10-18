@@ -123,7 +123,6 @@ VALUES
     ('Ensalada Verde','Frio', 'No', 'Si', 'No', 'Si', 'Si', 80),
     ('Ensalada Cesar','Frio', 'No', 'Si', 'No', 'Si', 'Si', 130);
 
--- select * from postre;
 -- delete from acompannamiento;
 -- Inserts de postres -------------------------------------------------
 INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias)
