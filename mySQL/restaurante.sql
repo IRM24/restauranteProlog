@@ -151,3 +151,38 @@ delete from proteina;
 delete from acompannamiento;
 delete from postre;
 
+
+SELECT calorias FROM bebida WHERE nombre = 'coca-cola';
+SELECT calorias FROM proteina WHERE nombre = 'salchicha';
+
+DELIMITER //
+
+CREATE PROCEDURE BuscarProductoPorNombre(IN nombreProducto VARCHAR(100))
+BEGIN
+    SELECT nombre, calorias
+    FROM bebida
+    WHERE nombre = nombreProducto
+    UNION ALL
+    SELECT nombre, calorias
+    FROM proteina
+    WHERE nombre = nombreProducto
+    UNION ALL
+    SELECT nombre, calorias
+    FROM acompannamiento
+    WHERE nombre = nombreProducto
+    UNION ALL
+    SELECT nombre, calorias
+    FROM postre
+    WHERE nombre = nombreProducto;
+END //
+
+DELIMITER ;
+
+
+
+
+-- drop table bebida;
+-- drop table proteina;
+-- drop table acompannamiento;
+-- drop table postre;
+
