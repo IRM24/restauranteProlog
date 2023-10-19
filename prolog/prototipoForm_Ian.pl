@@ -355,18 +355,22 @@ obtener_combinaciones(TiempoComida, Combinaciones) :-
     obtener_proteina(TiempoComida, Proteinas),
     obtener_acompannamientos(TiempoComida, Acompannamientos),
     obtener_postres(TiempoComida, Postres),
+
     % Combinar los acompañamientos en una sola lista
-    flatten(Acompannamientos, AcompannamientosFlatten),
+    flatten(Acompannamientos, AcompannamientoFlatten),
 
     % Crear el menú combinando elementos de cada categoría
     findall([Bebida, Proteina, AcompannamientoFlatten, Postre], (
         member(Bebida, Bebidas),
         member(Proteina, Proteinas),
-        %member(Acompannamiento, Acompannamientos),
+        %member(AcompannamientosFlatten, AcompannamientosFlatten),
         member(Postre, Postres)
     ), Combinaciones).
 
 %%%%%%%%%%%%%%%menus predefinidos%%%%%%%%%
+
+% Predicado para obtener un menú aleatorio
+
 obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu) :-
     % Consulta para la bebida
     atomic_list_concat(['SELECT nombre FROM bebida WHERE id = ', IDBebida], ' ', QueryBebida),
