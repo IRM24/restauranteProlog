@@ -4,9 +4,9 @@
 % Predicado para establecer una conexion a la base de datos
 %:- dynamic restaurante_db/1.
 conectar_base_de_datos :-
-    odbc_connect('restaurante', Connection,
+    odbc_connect('conexioncami', Connection,
         [ user('root'),
-          password('My.SQL.24041507'),
+          password('Coquito21+'),
           alias(restaurante_db),
           open(once)
         ]).

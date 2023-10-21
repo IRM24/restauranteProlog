@@ -23,24 +23,36 @@ public class ProyectoLenguajesRestaurante {
         
         Query query = new Query("consult('"+ rutaProlog +"')");
         
+       
         if(query.hasSolution()){
             System.out.println("Archivo cargado con exito");
             
-            try(Scanner scanner = new Scanner(System.in)){
-                System.out.println("Tiempo de comida: ");
-                String tiempoComida = scanner.nextLine();
-                
-                Set<String> comidas = new HashSet<>();
-                
-                Query consultaPollo = new Query("obtener_proteina_pollo('cena',P)");
-                consultaPollo.hasSolution();
-                while(consultaPollo.hasSolution()){
-                    java.util.Map<String, Term> solution = consultaPollo.nextSolution();
-                    Term polloTerm = solution.get("P");
-                }
+            Query conexionProlog = new Query("conectar_base_de_datos.");
+            if (conexionProlog.hasSolution()){
+                System.out.println("Conexion exitosa a la base de datos ");
 
+                try(Scanner scanner = new Scanner(System.in)){
+                    System.out.println("Tiempo de comida: ");
+                    String tiempoComida = scanner.nextLine();
+
+                    Set<String> comidas = new HashSet<>();
+
+                    Term[] terminos = {new Atom(tiempoComida), new Variable("P")};
+                    Query consultaPollo = new Query("obtener_proteina_pollo", terminos);
+                    consultaPollo.hasSolution();
+                    if (consultaPollo.hasSolution()) {
+                        System.out.println("Soluciones encontradas:");
+                        while (consultaPollo.hasMoreSolutions()) {
+                            Map<String, Term> solution = consultaPollo.nextSolution();
+                            Term polloTerm = solution.get("P");
+                            comidas.add(polloTerm.toString());
+                        }
+                        System.out.println("Las comidas de pollo son: " + comidas);
+                    } else {
+                        System.out.println("No se encontraron soluciones.");
+                    }
             }
-    
+        }    
     }
 }
 }    

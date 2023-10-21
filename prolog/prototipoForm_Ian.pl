@@ -1,12 +1,12 @@
-:- use_module(library(strings)).
-:- use_module(library(odbc)).
+%:- use_module(library(strings)).
+%:- use_module(library(odbc)).
 
 % Predicado para establecer una conexion a la base de datos
 %:- dynamic restaurante_db/1.
 conectar_base_de_datos :-
-    odbc_connect('conexion2', Connection,
+    odbc_connect('conexioncami', Connection,
         [ user('root'),
-          password('Coquito21+'),
+          password('Coquito21'),
           alias(restaurante_db),
           open(once)
         ]).
