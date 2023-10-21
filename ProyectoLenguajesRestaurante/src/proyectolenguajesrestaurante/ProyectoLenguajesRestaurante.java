@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package proyectolenguajesrestaurante;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import org.jpl7.*;
+import proyectolenguajesrestaurante.CRUD.*;
+
+
+
 /**
  *
  * @author camiu
@@ -18,6 +18,35 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        // Pruebas para los CRUD 
+        
+        //BebidasCRUD bebidasCRUD = new BebidasCRUD();
+        //bebidasCRUD.crearBebida("Jugo Manzana", "No", "Si", "Fria", "Si", "Si", "No", 130, 1600);
+        //bebidasCRUD.leerBebidas();    
+        //bebidasCRUD.eliminarBebida(10);
+        //bebidasCRUD.actualizarBebida(1, 1500);
+
+        //ProteinasCRUD proteinasCRUD = new ProteinasCRUD();
+        //proteinasCRUD.crearProteina("Cordero", "Carnes Rojas", "No", "Si", "Si", 250, 3600);
+        //proteinasCRUD.leerProteinas();
+        //proteinasCRUD.eliminarProteina(10);
+        //proteinasCRUD.actualizarProteina(1, 1600);
+        //proteinasCRUD.leerProteinas();
+        
+        //AcompannamientosCRUD aCRUD = new AcompannamientosCRUD();
+        //aCRUD.crearAcompannamiento("Sopa Cebolla", "Caliente", "Si", "Si", "No", "Si", "Si", 190, 2500);
+        //aCRUD.leerAcompannamientos();
+        //aCRUD.eliminarAcompannamiento(11);
+        //aCRUD.actualizarAcompannamiento(1, 800);
+        //aCRUD.leerAcompannamientos();
+                
+        //PostresCRUD postresCRUD = new PostresCRUD();
+        //postresCRUD.crearPostre("Queque vainilla", "Si", "No", "Si", "Si", "Si", 250,2000 );
+        //postresCRUD.leerPostres();
+        //postresCRUD.actualizarPostre(3, 2650);
+        //postresCRUD.eliminarPostre(11);
+        //postresCRUD.leerPostres();
         
         String rutaProlog= "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
         
