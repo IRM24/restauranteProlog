@@ -19,7 +19,7 @@ desconectar_base_de_datos :- odbc_disconnect(restaurante_db).
 % Predicado para obtener bebidas segun el tiempo de comida y temperatura
 obtener_bebidas(TiempoComida, Bebidas) :-
     % Comprobar si la temperatura es "fria" o "caliente"
-    write('¿Que temperatura prefieres para las bebidas, fria o caliente (fria/caliente)? '),
+    write('ï¿½Que temperatura prefieres para las bebidas, fria o caliente (fria/caliente)? '),
     read(Temperatura),
 
     (Temperatura == 'fria' ->
@@ -34,7 +34,7 @@ obtener_bebidas(TiempoComida, Bebidas) :-
 
 % Predicado para elegir entre bebidas frÃ­as carbonatadas o naturales
 elegir_tipo_bebida_fria(TiempoComida, Tipo) :-
-    write('¿Deseas bebidas frias carbonatadas o naturales (carbonatadas/naturales)? '),
+    write('ï¿½Deseas bebidas frias carbonatadas o naturales (carbonatadas/naturales)? '),
     read(TipoEleccion),
     (TipoEleccion == 'carbonatadas' ->
         obtener_bebidas_frias(TiempoComida, 'carbonatadas', Tipo)
@@ -44,13 +44,13 @@ elegir_tipo_bebida_fria(TiempoComida, Tipo) :-
 
 % Predicado para obtener bebidas frias carbonatadas o naturales
 obtener_bebidas_frias(TiempoComida, Tipo, Bebidas) :-
-    % Construir la consulta SQL basada en los para¡metros
+    % Construir la consulta SQL basada en los paraï¿½metros
     atomic_list_concat(['SELECT nombre FROM bebida WHERE', TiempoComida, '= ''Si'' AND temperatura = ''Fria'' AND', Tipo, '= ''Si'''], ' ', Query),
     % Ejecutar la consulta SQL y obtener los resultados
     findall(Nombre, (odbc_query(restaurante_db, Query, row(Nombre))), Bebidas).
 
 elegir_tipo_bebida_caliente(TiempoComida, Tipo) :-
-    write('¿Deseas bebidas calientes carbonatadas o naturales (carbonatadas/naturales)? '),
+    write('ï¿½Deseas bebidas calientes carbonatadas o naturales (carbonatadas/naturales)? '),
     read(TipoEleccion),
     (TipoEleccion == 'carbonatadas' ->
         obtener_bebidas_calientes(TiempoComida, 'carbonatadas', Tipo)
@@ -82,10 +82,10 @@ obtener_bebidas_calientes(TiempoComida, Tipo, Bebidas) :-
     % Ejecutar la consulta y obtener la lista de nombres
 
 
-% Predicado para obtener proteinas según el tipo ingresado por el usuario
+% Predicado para obtener proteinas segï¿½n el tipo ingresado por el usuario
 obtener_proteina(TiempoComida, Registros) :-
     % Preguntar al usuario por el tipo de proteina
-    write('¿Que tipo de proteina deseas (pollo, mariscos, carnes_rojas)? '),
+    write('ï¿½Que tipo de proteina deseas (pollo, mariscos, carnes_rojas)? '),
     read(TipoProteina),
 
     % Verificar el tipo de proteina y llamar al predicado correspondiente
@@ -97,7 +97,7 @@ obtener_proteina(TiempoComida, Registros) :-
         obtener_proteina_carnesRojas(TiempoComida, Registros)
     ; % Manejo de otro caso (por ejemplo, tipo desconocido)
         write('Tipo de proteina desconocido'),
-        Registros = [] % Otra acción en caso de tipo desconocido
+        Registros = [] % Otra acciï¿½n en caso de tipo desconocido
     ).
 
 
@@ -155,9 +155,9 @@ obtener_proteina_carnesRojas(TiempoComida, Registros) :-
 %
 % Predicado para obtener acompannamientos segun el tiempo de comida y
 % temperatura
-% Predicado para obtener la cantidad de acompañamientos
+% Predicado para obtener la cantidad de acompaï¿½amientos
 obtener_cantidad_acompannamientos(Cantidad) :-
-    write('¿Cuantos acompañamientos deseas (1-3)? '),
+    write('ï¿½Cuantos acompaï¿½amientos deseas (1-3)? '),
     read(Cantidad),
     % Verificar que la cantidad este en el rango permitido
     (Cantidad >= 1, Cantidad =< 3 ->
@@ -172,7 +172,7 @@ obtener_acompannamientos(TiempoComida, Acompannamientos) :-
     obtener_cantidad_acompannamientos(CantidadAcompannamientos),
 
     % Comprobar si la temperatura es "fria" o "caliente"
-    write('¿Que temperatura prefieres para los acompannamientos, fria o caliente (fria/caliente)? '),
+    write('ï¿½Que temperatura prefieres para los acompannamientos, fria o caliente (fria/caliente)? '),
     read(Temperatura),
 
     (Temperatura == 'fria' ->
@@ -185,12 +185,12 @@ obtener_acompannamientos(TiempoComida, Acompannamientos) :-
         Acompannamientos = Tipo
     ).
 
-% Predicado para obtener acompañamientos calientes
+% Predicado para obtener acompaï¿½amientos calientes
 obtener_acompannamientos_calientes(TiempoComida, CantidadAcompannamientos, Acompannamientos) :-
-    write('¿Deseas acompañamientos con vegetales (si/no)? '),
+    write('ï¿½Deseas acompaï¿½amientos con vegetales (si/no)? '),
     read(EleccionVegetales),
 
-    write('¿Deseas acompañamientos con carbohidratos (si/no)? '),
+    write('ï¿½Deseas acompaï¿½amientos con carbohidratos (si/no)? '),
     read(EleccionCarbohidratos),
 
     % Construir la consulta SQL basada en los parametros
@@ -215,7 +215,7 @@ obtener_acompannamientos_calientes(TiempoComida, CantidadAcompannamientos, Acomp
         CarbohidratosCondition = ''
     ),
 
-    % Incluir la restricción de cantidad de acompañamientos
+    % Incluir la restricciï¿½n de cantidad de acompaï¿½amientos
     atomic_list_concat([Query, VegetalesCondition, CarbohidratosCondition], ' ', BaseQuery),
     format(atom(FinalQuery), 'LIMIT ~d', [CantidadAcompannamientos]),
     atomic_list_concat([BaseQuery, FinalQuery], ' ', FullQuery),
@@ -223,12 +223,12 @@ obtener_acompannamientos_calientes(TiempoComida, CantidadAcompannamientos, Acomp
     % Ejecutar la consulta SQL y obtener los resultados
     findall(Nombre, (odbc_query(restaurante_db, FullQuery, row(Nombre))), Acompannamientos).
 
-% Predicado para obtener acompañamientos frios
+% Predicado para obtener acompaï¿½amientos frios
 obtener_acompannamientos_frios(TiempoComida, CantidadAcompannamientos, Acompannamientos) :-
-    write('¿Deseas acompañamientos con vegetales (si/no)? '),
+    write('ï¿½Deseas acompaï¿½amientos con vegetales (si/no)? '),
     read(EleccionVegetales),
 
-    write('¿Deseas acompañamientos con carbohidratos (si/no)? '),
+    write('ï¿½Deseas acompaï¿½amientos con carbohidratos (si/no)? '),
     read(EleccionCarbohidratos),
 
     % Construir la consulta SQL basada en los parametros
@@ -253,7 +253,7 @@ obtener_acompannamientos_frios(TiempoComida, CantidadAcompannamientos, Acompanna
         CarbohidratosCondition = ''
     ),
 
-    % Incluir la restricción de cantidad de acompañamientos
+    % Incluir la restricciï¿½n de cantidad de acompaï¿½amientos
     atomic_list_concat([Query, VegetalesCondition, CarbohidratosCondition], ' ', BaseQuery),
     format(atom(FinalQuery), 'LIMIT ~d', [CantidadAcompannamientos]),
     atomic_list_concat([BaseQuery, FinalQuery], ' ', FullQuery),
@@ -283,10 +283,10 @@ obtener_acompannamientos_frios(TiempoComida, CantidadAcompannamientos, Acompanna
 
 obtener_postres(TiempoComida, Postres) :-
     % Preguntar si se desea un postre con lacteos (si/no)
-    write('¿Deseas un postre con lacteos (si/no)? '),
+    write('ï¿½Deseas un postre con lacteos (si/no)? '),
     read(EleccionLacteos),
 
-    % Llamar a la función correspondiente según la elección
+    % Llamar a la funciï¿½n correspondiente segï¿½n la elecciï¿½n
     (EleccionLacteos == 'si' ->
         obtener_postres_con_lacteo(TiempoComida, Postres)
     ;
@@ -295,13 +295,13 @@ obtener_postres(TiempoComida, Postres) :-
 
 
 obtener_postres_con_lacteo(TiempoComida,Postres) :-
-    write('¿Deseas el postre con frutas (si/no)? '),
+    write('ï¿½Deseas el postre con frutas (si/no)? '),
     read(EleccionFrutas),
 
     % Construir la consulta SQL basada en los parametros
     atomic_list_concat(['SELECT nombre FROM postre WHERE', TiempoComida, '= ''Si'' AND lacteo = ''Si'''], ' ', Query),
     write(EleccionFrutas),
-    % Agregar la condición de EleccionFrutas si es "Si" o "No"
+    % Agregar la condiciï¿½n de EleccionFrutas si es "Si" o "No"
     (EleccionFrutas = 'si' ->
         atomic_list_concat([' AND frutas = ''Si'''], '', FrutasCondition)
     ;
@@ -315,13 +315,13 @@ obtener_postres_con_lacteo(TiempoComida,Postres) :-
     findall(Nombre, (odbc_query(restaurante_db, FullQuery, row(Nombre))), Postres).
 
 obtener_postres_sin_lacteo(TiempoComida,Postres) :-
-    write('¿Deseas el postre con frutas (si/no)? '),
+    write('ï¿½Deseas el postre con frutas (si/no)? '),
     read(EleccionFrutas),
 
     % Construir la consulta SQL basada en los parametros
     atomic_list_concat(['SELECT nombre FROM postre WHERE', TiempoComida, '= ''Si'' AND lacteo = ''No'''], ' ', Query),
     write(EleccionFrutas),
-    % Agregar la condición de EleccionFrutas si es "Si" o "No"
+    % Agregar la condiciï¿½n de EleccionFrutas si es "Si" o "No"
     (EleccionFrutas = 'si' ->
         atomic_list_concat([' AND frutas = ''Si'''], '', FrutasCondition)
     ;
@@ -337,7 +337,7 @@ obtener_postres_sin_lacteo(TiempoComida,Postres) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Definición del formulario hacer_menu
+% Definiciï¿½n del formulario hacer_menu
 obtener_menu :-
     write('Por favor, seleccione el tiempo de comida (desayuno, almuerzo o cena): '),
     read(TiempoComida),
@@ -347,10 +347,10 @@ obtener_menu :-
     obtener_acompannamientos(TiempoComida, Acompannamientos),
     obtener_postres(TiempoComida, Postres),
     % Mostrar resultados
-    write('*** Menú para '), write(TiempoComida), write(' ***'), nl,
+    write('*** Menï¿½ para '), write(TiempoComida), write(' ***'), nl,
     write('Bebidas: '), write(Bebidas), nl,
     write('Proteinas: '), write(Proteinas), nl,
-    write('Acompañamientos: '), write(Acompannamientos), nl,
+    write('Acompaï¿½amientos: '), write(Acompannamientos), nl,
     write('Postres: '), write(Postres), nl.
 
 % Genera todas las combinaciones posibles de los resultados de las funciones
@@ -359,10 +359,10 @@ obtener_menu :-
 %    obtener_proteina(TiempoComida, Proteinas),
 %    obtener_acompannamientos(TiempoComida, Acompannamientos),
 %    obtener_postres(TiempoComida, Postres),
-    % Combinar los acompañamientos en una sola lista
+    % Combinar los acompaï¿½amientos en una sola lista
 %    flatten(Acompannamientos, AcompannamientosFlatten),
 
-    % Crear el menú combinando elementos de cada categoria
+    % Crear el menï¿½ combinando elementos de cada categoria
 %    findall([Bebida, Proteina, AcompannamientosFlatten, Postre], (
 %        member(Bebida, Bebidas),
 %        member(Proteina, Proteinas),
@@ -373,11 +373,39 @@ obtener_menu :-
 
 % Predicado para preguntar al usuario si desea un postre
 elegir_postre(PostreElegido) :-
-    write('¿Deseas un postre (si/no)? '),
+    write('ï¿½Deseas un postre (si/no)? '),
     read(PostreElegido).
 
 
-% Predicado para obtener combinaciones de menú con o sin postre
+% Predicado para obtener combinaciones de menÃº con o sin postre
+%obtener_combinaciones(TiempoComida, Combinaciones) :-
+%    elegir_postre(PostreElegido), % Preguntar si se desea postre
+%    obtener_bebidas(TiempoComida, Bebidas),
+%    obtener_proteina(TiempoComida, Proteinas),
+%    obtener_acompannamientos(TiempoComida, Acompannamientos),
+%    (PostreElegido == 'si' ->
+%        obtener_postres(TiempoComida, Postres),
+%        % Combinar los acompaÃ±amientos en una sola lista
+%        flatten(Acompannamientos, AcompannamientosFlatten),
+%        % Crear el menÃº combinando elementos de cada categoria
+%        findall([Bebida, Proteina, AcompannamientosFlatten, Postre], (
+%            member(Bebida, Bebidas),
+%            member(Proteina, Proteinas),
+%            member(Acompannamiento, Acompannamientos),
+%            member(Postre, Postres)
+%        ), Combinaciones)
+%    ;
+%        % Combinar los acompaÃ±amientos en una sola lista
+%        flatten(Acompannamientos, AcompannamientosFlatten),
+%        % Crear el menÃº combinando elementos de cada categoria sin postre
+%        findall([Bebida, Proteina, AcompannamientosFlatten], (
+%            member(Bebida, Bebidas),
+%            member(Proteina, Proteinas),
+%            member(Acompannamiento, Acompannamientos)
+%        ), Combinaciones)
+%    ).
+
+% Predicado para obtener combinaciones sin duplicados
 obtener_combinaciones(TiempoComida, Combinaciones) :-
     elegir_postre(PostreElegido), % Preguntar si se desea postre
     obtener_bebidas(TiempoComida, Bebidas),
@@ -385,20 +413,20 @@ obtener_combinaciones(TiempoComida, Combinaciones) :-
     obtener_acompannamientos(TiempoComida, Acompannamientos),
     (PostreElegido == 'si' ->
         obtener_postres(TiempoComida, Postres),
-        % Combinar los acompañamientos en una sola lista
+        % Combinar los acompaï¿½amientos en una sola lista
         flatten(Acompannamientos, AcompannamientosFlatten),
-        % Crear el menú combinando elementos de cada categoria
-        findall([Bebida, Proteina, AcompannamientosFlatten, Postre], (
+        % Usar un conjunto para evitar duplicados
+        setof([Bebida, Proteina, AcompannamientosFlatten, Postre], (
             member(Bebida, Bebidas),
             member(Proteina, Proteinas),
             member(Acompannamiento, Acompannamientos),
             member(Postre, Postres)
         ), Combinaciones)
     ;
-        % Combinar los acompañamientos en una sola lista
+        % Combinar los acompaï¿½amientos en una sola lista
         flatten(Acompannamientos, AcompannamientosFlatten),
-        % Crear el menú combinando elementos de cada categoria sin postre
-        findall([Bebida, Proteina, AcompannamientosFlatten], (
+        % Usar un conjunto para evitar duplicados
+        setof([Bebida, Proteina, AcompannamientosFlatten], (
             member(Bebida, Bebidas),
             member(Proteina, Proteinas),
             member(Acompannamiento, Acompannamientos)
@@ -408,67 +436,6 @@ obtener_combinaciones(TiempoComida, Combinaciones) :-
 
 % Ejemplo de uso
 % obtener_combinaciones('almuerzo', Combinaciones).
-
-
-%%%%%%%%%%%%%%%menus predefinidos%%%%%%%%%
-obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu) :-
-    % Consulta para la bebida
-    atomic_list_concat(['SELECT nombre FROM bebida WHERE id = ', IDBebida], ' ', QueryBebida),
-    % Ejecutar la consulta SQL y obtener el resultado
-    odbc_query(restaurante_db, QueryBebida, row(Bebida)),
-
-    % Consulta para la proteina
-    atomic_list_concat(['SELECT nombre FROM proteina WHERE id = ', IDProteina], ' ', QueryProteina),
-    % Ejecutar la consulta SQL y obtener el resultado
-    odbc_query(restaurante_db, QueryProteina, row(Proteina)),
-
-    % Consulta para el acompañamiento
-    atomic_list_concat(['SELECT nombre FROM acompannamiento WHERE id = ', IDAcompannamiento], ' ', QueryAcompannamiento),
-    % Ejecutar la consulta SQL y obtener el resultado
-    odbc_query(restaurante_db, QueryAcompannamiento, row(Acompannamiento)),
-
-    % Consulta para el postre
-    atomic_list_concat(['SELECT nombre FROM postre WHERE id = ', IDPostre], ' ', QueryPostre),
-    % Ejecutar la consulta SQL y obtener el resultado
-    odbc_query(restaurante_db, QueryPostre, row(Postre)),
-
-    % Devolver el menú completo
-    Menu = [Bebida, Proteina, Acompannamiento, Postre].
-%obtener_menu_por_id(1,2,9,4,Menu).
-
-% Predicado para obtener un número aleatorio entre 1 y 3
-obtener_numero_aleatorio_Opcion1(Numero) :-
-    random(1, 4, Numero).
-
-% Predicado para obtener un menú aleatorio
-obtener_menu_aleatorio_Opcion1(Menu) :-
-    obtener_numero_aleatorio_Opcion1(IDBebida),
-    obtener_numero_aleatorio_Opcion1(IDProteina),
-    obtener_numero_aleatorio_Opcion1(IDAcompannamiento),
-    obtener_numero_aleatorio_Opcion1(IDPostre),
-    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
-
-obtener_numero_aleatorio_Opcion2(Numero) :-
-    random(4, 7, Numero).
-
-% Predicado para obtener un menú aleatorio
-obtener_menu_aleatorio_Opcion2(Menu) :-
-    obtener_numero_aleatorio_Opcion2(IDBebida),
-    obtener_numero_aleatorio_Opcion2(IDProteina),
-    obtener_numero_aleatorio_Opcion2(IDAcompannamiento),
-    obtener_numero_aleatorio_Opcion2(IDPostre),
-    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
-
-obtener_numero_aleatorio_Opcion3(Numero) :-
-    random(7, 9, Numero).
-
-% Predicado para obtener un menú aleatorio
-obtener_menu_aleatorio_Opcion3(Menu) :-
-    obtener_numero_aleatorio_Opcion3(IDBebida),
-    obtener_numero_aleatorio_Opcion3(IDProteina),
-    obtener_numero_aleatorio_Opcion3(IDAcompannamiento),
-    obtener_numero_aleatorio_Opcion3(IDPostre),
-    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% AVANCE IAN
@@ -507,43 +474,32 @@ obtener_calorias(Alimento, Calorias) :-
         obtener_calorias_postre(Alimento, Calorias), !
     ).
 
-% Predicado para calcular el total de calorias de un menú
+% Predicado para calcular el total de calorias de un menÃº
 calcular_total_calorias([], 0). % Caso base: la lista esta vacia, el total es 0
 calcular_total_calorias([Alimento|RestoMenu], TotalCalorias) :-
     obtener_calorias(Alimento, CaloriasAlimento),
     calcular_total_calorias(RestoMenu, TotalCaloriasResto),
     TotalCalorias is CaloriasAlimento + TotalCaloriasResto.
 
-menu(['Jugo de Naranja', 'Pechuga de pollo', ['Ensalada Verde', 'Ensalada Cesar'], 'Flan de caramelo']). %esto era una prueba
-
-% Calcular el total de calorias del menú prueba
-%calcular_total_menu(TotalCalorias) :-
-    %menu(Menu),
-    %flatten(Menu, Alimentos), % Aplanar la lista anidada
-    %calcular_total_calorias(Alimentos, TotalCalorias).
-
-% Ejemplo de uso para calcular el total de calorias del menú
-%?- calcular_total_menu(Total).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Flujo de programa para generar menús
+% Flujo de programa para generar menÃºs
 generar_menus(TiempoComida) :-
     obtener_combinaciones(TiempoComida, Combinaciones),
     calcular_y_mostrar_calorias_de_menus(Combinaciones).
 
-% Predicado para calcular y mostrar las calorias de los menús
-calcular_y_mostrar_calorias_de_menus([]). % Caso base: no hay mas menús
+% Predicado para calcular y mostrar las calorias de los menÃºs
+calcular_y_mostrar_calorias_de_menus([]). % Caso base: no hay mas menÃºs
 calcular_y_mostrar_calorias_de_menus([Menu|RestoMenus]) :-
-    calcular_total_menu(Menu, TotalCalorias), % Calcula las calorias del menú actual
-    writeln('Menú: '), writeln(Menu),
+    calcular_total_menu(Menu, TotalCalorias), % Calcula las calorias del menÃº actual
+    writeln('MenÃº: '), writeln(Menu),
     writeln('Total de calorias: '), writeln(TotalCalorias),
     calcular_y_mostrar_calorias_de_menus(RestoMenus).
 
-% Predicado para calcular el total de calorias de un menú
+% Predicado para calcular el total de calorias de un menÃº
 calcular_total_menu(Menu, TotalCalorias) :-
     flatten(Menu, Alimentos), % Aplanar la lista anidada
     calcular_total_calorias(Alimentos, TotalCalorias).
@@ -554,20 +510,36 @@ calcular_total_menu(Menu, TotalCalorias) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Predicado para seleccionar N menÃºs al azar de una lista
 
-% Flujo de programa para generar menús con un limite de calorias
-generar_menus_con_limite(TiempoComida) :-
+
+
+% Flujo de programa para generar menÃºs con un limite de calorias
+%generar_menus_con_limite(TiempoComida) :-
     % Preguntar por el limite de calorias
-    write('¿Cual es el limite de calorias deseado? '), read(LimiteCalorias),
+%    write('Â¿Cual es el limite de calorias deseado? '), read(LimiteCalorias),
+%    obtener_combinaciones(TiempoComida, Combinaciones),
+%    mostrar_menus_con_limite(Combinaciones, LimiteCalorias).
+% Flujo de programa para generar menÃºs con un lÃ­mite de calorÃ­as
+generar_menus_con_limite(TiempoComida) :-
+    % Preguntar por el lÃ­mite de calorÃ­as
+    write('Â¿CuÃ¡l es el lÃ­mite de calorÃ­as deseado? '), read(LimiteCalorias),
     obtener_combinaciones(TiempoComida, Combinaciones),
-    mostrar_menus_con_limite(Combinaciones, LimiteCalorias).
+    
+    % Preguntar por el nÃºmero de menÃºs a seleccionar
+    write('Â¿CuÃ¡ntos menÃºs deseas seleccionar? '), read(N),
+    
+    seleccionar_menus_al_azar(Combinaciones, N, MenusSeleccionados),
+    
+    mostrar_menus_con_limite(MenusSeleccionados, LimiteCalorias).
 
-% Predicado para mostrar los menús con un limite de calorias
-mostrar_menus_con_limite([], _). % Caso base: no hay mas menús
+
+% Predicado para mostrar los menÃºs con un limite de calorias
+mostrar_menus_con_limite([], _). % Caso base: no hay mas menÃºs
 mostrar_menus_con_limite([Menu|RestoMenus], LimiteCalorias) :-
-    calcular_total_menu(Menu, TotalCalorias), % Calcula las calorias del menú actual
-    (TotalCalorias =< LimiteCalorias -> % Comprobar si el menú esta dentro del limite
-        writeln('Menú: '), writeln(Menu),
+    calcular_total_menu(Menu, TotalCalorias), % Calcula las calorias del menÃº actual
+    (TotalCalorias =< LimiteCalorias -> % Comprobar si el menÃº esta dentro del limite
+        writeln('MenÃº: '), writeln(Menu),
         writeln('Total de calorias: '), writeln(TotalCalorias)
     ; true
     ),
@@ -575,6 +547,85 @@ mostrar_menus_con_limite([Menu|RestoMenus], LimiteCalorias) :-
 
 %generar_menus_con_limite('cena')
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Predicado para mostrar una lista de menÃºs
+mostrar_menus([]). % Caso base: no hay mÃ¡s menÃºs
+mostrar_menus([Menu|RestoMenus]) :-
+    writeln('MenÃº: '), writeln(Menu),
+    mostrar_menus(RestoMenus).
+
+
+% Predicado para seleccionar N menÃºs al azar de una lista
+seleccionar_menus_al_azar(Combinaciones, N, MenusSeleccionados) :-
+    length(Combinaciones, L),
+    L >= N, % Asegurarse de que hay suficientes menÃºs
+    random_permutation(Combinaciones, CombinacionesAleatorias),
+    length(MenusSeleccionados, N),
+    append(MenusSeleccionados, _, CombinacionesAleatorias).
+
+%%%%%%%%%%%%%%%menus predefinidos%%%%%%%%%
+obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu) :-
+    % Consulta para la bebida
+    atomic_list_concat(['SELECT nombre FROM bebida WHERE id = ', IDBebida], ' ', QueryBebida),
+    % Ejecutar la consulta SQL y obtener el resultado
+    odbc_query(restaurante_db, QueryBebida, row(Bebida)),
+
+    % Consulta para la proteina
+    atomic_list_concat(['SELECT nombre FROM proteina WHERE id = ', IDProteina], ' ', QueryProteina),
+    % Ejecutar la consulta SQL y obtener el resultado
+    odbc_query(restaurante_db, QueryProteina, row(Proteina)),
+
+    % Consulta para el acompaï¿½amiento
+    atomic_list_concat(['SELECT nombre FROM acompannamiento WHERE id = ', IDAcompannamiento], ' ', QueryAcompannamiento),
+    % Ejecutar la consulta SQL y obtener el resultado
+    odbc_query(restaurante_db, QueryAcompannamiento, row(Acompannamiento)),
+
+    % Consulta para el postre
+    atomic_list_concat(['SELECT nombre FROM postre WHERE id = ', IDPostre], ' ', QueryPostre),
+    % Ejecutar la consulta SQL y obtener el resultado
+    odbc_query(restaurante_db, QueryPostre, row(Postre)),
+
+    % Devolver el menï¿½ completo
+    Menu = [Bebida, Proteina, Acompannamiento, Postre].
+%obtener_menu_por_id(1,2,9,4,Menu).
+
+% Predicado para obtener un nï¿½mero aleatorio entre 1 y 3
+obtener_numero_aleatorio_Opcion1(Numero) :-
+    random(1, 4, Numero).
+
+% Predicado para obtener un menï¿½ aleatorio
+obtener_menu_aleatorio_Opcion1(Menu) :-
+    obtener_numero_aleatorio_Opcion1(IDBebida),
+    obtener_numero_aleatorio_Opcion1(IDProteina),
+    obtener_numero_aleatorio_Opcion1(IDAcompannamiento),
+    obtener_numero_aleatorio_Opcion1(IDPostre),
+    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
+
+obtener_numero_aleatorio_Opcion2(Numero) :-
+    random(4, 7, Numero).
+
+% Predicado para obtener un menï¿½ aleatorio
+obtener_menu_aleatorio_Opcion2(Menu) :-
+    obtener_numero_aleatorio_Opcion2(IDBebida),
+    obtener_numero_aleatorio_Opcion2(IDProteina),
+    obtener_numero_aleatorio_Opcion2(IDAcompannamiento),
+    obtener_numero_aleatorio_Opcion2(IDPostre),
+    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
+
+obtener_numero_aleatorio_Opcion3(Numero) :-
+    random(7, 9, Numero).
+
+% Predicado para obtener un menï¿½ aleatorio
+obtener_menu_aleatorio_Opcion3(Menu) :-
+    obtener_numero_aleatorio_Opcion3(IDBebida),
+    obtener_numero_aleatorio_Opcion3(IDProteina),
+    obtener_numero_aleatorio_Opcion3(IDAcompannamiento),
+    obtener_numero_aleatorio_Opcion3(IDPostre),
+    obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
 
 
 
