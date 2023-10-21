@@ -377,7 +377,6 @@ elegir_postre(PostreElegido) :-
     read(PostreElegido).
 
 
-<<<<<<< HEAD
 % Predicado para obtener combinaciones de menú con o sin postre
 %obtener_combinaciones(TiempoComida, Combinaciones) :-
 %    elegir_postre(PostreElegido), % Preguntar si se desea postre
@@ -407,9 +406,6 @@ elegir_postre(PostreElegido) :-
 %    ).
 
 % Predicado para obtener combinaciones sin duplicados
-=======
-% Predicado para obtener combinaciones de men� con o sin postre
->>>>>>> 728d05ac1255efca7828e1bbc476de0e08f4b9e5
 obtener_combinaciones(TiempoComida, Combinaciones) :-
     elegir_postre(PostreElegido), % Preguntar si se desea postre
     obtener_bebidas(TiempoComida, Bebidas),
@@ -419,13 +415,8 @@ obtener_combinaciones(TiempoComida, Combinaciones) :-
         obtener_postres(TiempoComida, Postres),
         % Combinar los acompa�amientos en una sola lista
         flatten(Acompannamientos, AcompannamientosFlatten),
-<<<<<<< HEAD
         % Usar un conjunto para evitar duplicados
         setof([Bebida, Proteina, AcompannamientosFlatten, Postre], (
-=======
-        % Crear el men� combinando elementos de cada categoria
-        findall([Bebida, Proteina, AcompannamientosFlatten, Postre], (
->>>>>>> 728d05ac1255efca7828e1bbc476de0e08f4b9e5
             member(Bebida, Bebidas),
             member(Proteina, Proteinas),
             member(Acompannamiento, Acompannamientos),
@@ -434,13 +425,8 @@ obtener_combinaciones(TiempoComida, Combinaciones) :-
     ;
         % Combinar los acompa�amientos en una sola lista
         flatten(Acompannamientos, AcompannamientosFlatten),
-<<<<<<< HEAD
         % Usar un conjunto para evitar duplicados
         setof([Bebida, Proteina, AcompannamientosFlatten], (
-=======
-        % Crear el men� combinando elementos de cada categoria sin postre
-        findall([Bebida, Proteina, AcompannamientosFlatten], (
->>>>>>> 728d05ac1255efca7828e1bbc476de0e08f4b9e5
             member(Bebida, Bebidas),
             member(Proteina, Proteinas),
             member(Acompannamiento, Acompannamientos)
@@ -548,10 +534,6 @@ generar_menus_con_limite(TiempoComida) :-
     mostrar_menus_con_limite(MenusSeleccionados, LimiteCalorias).
 
 
-
-
-
-
 % Predicado para mostrar los menús con un limite de calorias
 mostrar_menus_con_limite([], _). % Caso base: no hay mas menús
 mostrar_menus_con_limite([Menu|RestoMenus], LimiteCalorias) :-
@@ -645,115 +627,6 @@ obtener_menu_aleatorio_Opcion3(Menu) :-
     obtener_numero_aleatorio_Opcion3(IDPostre),
     obtener_menu_por_id(IDBebida, IDProteina, IDAcompannamiento, IDPostre, Menu).
 
-<<<<<<< HEAD
-=======
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% AVANCE IAN
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Predicado para obtener las calorias de un alimento en la tabla de bebida
-obtener_calorias_bebida(Alimento, Calorias) :-
-    atomic_list_concat(['SELECT calorias FROM bebida WHERE nombre = ''', Alimento, ''''], '', Query),
-    odbc_query(restaurante_db, Query, row(Calorias)).
-
-% Predicado para obtener las calorias de un alimento en la tabla de proteina
-obtener_calorias_proteina(Alimento, Calorias) :-
-    atomic_list_concat(['SELECT calorias FROM proteina WHERE nombre = ''', Alimento, ''''], '', Query),
-    odbc_query(restaurante_db, Query, row(Calorias)).
-
-% Predicado para obtener las calorias de un alimento en la tabla de acompannamiento
-obtener_calorias_acompannamiento(Alimento, Calorias) :-
-    atomic_list_concat(['SELECT calorias FROM acompannamiento WHERE nombre = ''', Alimento, ''''], '', Query),
-    odbc_query(restaurante_db, Query, row(Calorias)).
-
-% Predicado para obtener las calorias de un alimento en la tabla de postre
-obtener_calorias_postre(Alimento, Calorias) :-
-    atomic_list_concat(['SELECT calorias FROM postre WHERE nombre = ''', Alimento, ''''], '', Query),
-    odbc_query(restaurante_db, Query, row(Calorias)).
-
-% Predicado final para obtener las calorias de un alimento
-obtener_calorias(Alimento, Calorias) :-
-    (
-        obtener_calorias_bebida(Alimento, Calorias), !
-        ;
-        obtener_calorias_proteina(Alimento, Calorias), !
-        ;
-        obtener_calorias_acompannamiento(Alimento, Calorias), !
-        ;
-        obtener_calorias_postre(Alimento, Calorias), !
-    ).
-
-% Predicado para calcular el total de calorias de un men�
-calcular_total_calorias([], 0). % Caso base: la lista esta vacia, el total es 0
-calcular_total_calorias([Alimento|RestoMenu], TotalCalorias) :-
-    obtener_calorias(Alimento, CaloriasAlimento),
-    calcular_total_calorias(RestoMenu, TotalCaloriasResto),
-    TotalCalorias is CaloriasAlimento + TotalCaloriasResto.
-
-menu(['Jugo de Naranja', 'Pechuga de pollo', ['Ensalada Verde', 'Ensalada Cesar'], 'Flan de caramelo']). %esto era una prueba
-
-% Calcular el total de calorias del men� prueba
-%calcular_total_menu(TotalCalorias) :-
-    %menu(Menu),
-    %flatten(Menu, Alimentos), % Aplanar la lista anidada
-    %calcular_total_calorias(Alimentos, TotalCalorias).
-
-% Ejemplo de uso para calcular el total de calorias del men�
-%?- calcular_total_menu(Total).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Flujo de programa para generar men�s
-generar_menus(TiempoComida) :-
-    obtener_combinaciones(TiempoComida, Combinaciones),
-    calcular_y_mostrar_calorias_de_menus(Combinaciones).
-
-% Predicado para calcular y mostrar las calorias de los men�s
-calcular_y_mostrar_calorias_de_menus([]). % Caso base: no hay mas men�s
-calcular_y_mostrar_calorias_de_menus([Menu|RestoMenus]) :-
-    calcular_total_menu(Menu, TotalCalorias), % Calcula las calorias del men� actual
-    writeln('Men�: '), writeln(Menu),
-    writeln('Total de calorias: '), writeln(TotalCalorias),
-    calcular_y_mostrar_calorias_de_menus(RestoMenus).
-
-% Predicado para calcular el total de calorias de un men�
-calcular_total_menu(Menu, TotalCalorias) :-
-    flatten(Menu, Alimentos), % Aplanar la lista anidada
-    calcular_total_calorias(Alimentos, TotalCalorias).
-
-%generar_menus('cena')
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Flujo de programa para generar men�s con un limite de calorias
-generar_menus_con_limite(TiempoComida) :-
-    % Preguntar por el limite de calorias
-    write('�Cual es el limite de calorias deseado? '), read(LimiteCalorias),
-    obtener_combinaciones(TiempoComida, Combinaciones),
-    mostrar_menus_con_limite(Combinaciones, LimiteCalorias).
-
-% Predicado para mostrar los men�s con un limite de calorias
-mostrar_menus_con_limite([], _). % Caso base: no hay mas men�s
-mostrar_menus_con_limite([Menu|RestoMenus], LimiteCalorias) :-
-    calcular_total_menu(Menu, TotalCalorias), % Calcula las calorias del men� actual
-    (TotalCalorias =< LimiteCalorias -> % Comprobar si el men� esta dentro del limite
-        writeln('Men�: '), writeln(Menu),
-        writeln('Total de calorias: '), writeln(TotalCalorias)
-    ; true
-    ),
-    mostrar_menus_con_limite(RestoMenus, LimiteCalorias).
-
-%generar_menus_con_limite('cena')
-
-
->>>>>>> 728d05ac1255efca7828e1bbc476de0e08f4b9e5
 
 
 
