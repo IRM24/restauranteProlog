@@ -19,8 +19,10 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
-        ordenesRestaurante.gestionarOrdenes();
+        //OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
+        //ordenesRestaurante.gestionarOrdenes();
+        
+        
 
         // Pruebas para los CRUD 
         

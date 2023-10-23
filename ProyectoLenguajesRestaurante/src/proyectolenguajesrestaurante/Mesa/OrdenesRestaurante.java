@@ -9,7 +9,7 @@ public class OrdenesRestaurante {
         List<Mesa> mesas = new ArrayList<>();
         // Crear 6 mesas de ejemplo
         for (int i = 1; i <= 6; i++) {
-            mesas.add(new Mesa(i, 0)); // Se inicializa sin ninguna persona
+            mesas.add(new Mesa(i, 0, "")); // Se inicializa sin ninguna persona ni representante
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -32,21 +32,35 @@ public class OrdenesRestaurante {
         System.out.print("Ingrese la cantidad de personas en la mesa: ");
         int cantidadPersonas = scanner.nextInt();
 
+        System.out.print("Ingrese el nombre del representante: ");
+        scanner.nextLine(); // Limpiar el buffer
+        String nombreRepresentante = scanner.nextLine();
+
         System.out.print("¿Desea pagar en una sola cuenta? (Sí/No): ");
-        boolean pagarJuntos = scanner.next().equalsIgnoreCase("Sí");
+        boolean pagarJuntos = scanner.next().equalsIgnoreCase("Si");
 
         if (pagarJuntos) {
             System.out.println("La orden se pagará en conjunto.");
         } else {
             System.out.println("Se llevará un registro individual de la orden y el pago.");
         }
+        
+        mesas.get(numeroMesa - 1).setCantidadPersonas(cantidadPersonas);
+        mesas.get(numeroMesa - 1).setNombreRepresentante(nombreRepresentante);
 
+        System.out.println("Información de la mesa:");
+        mesas.get(numeroMesa - 1).mostrarInfoMesa();
+        
+        //System.out.println("Información de la mesa:");
+        //mesas.get(0).mostrarInfoMesa();
+        
         scanner.close();
 
         // Simular el proceso de generar la factura y desocupar la mesa
+        // aquí hay que hacer lo de los menús
         // (una vez que se haya completado el proceso de pago)
-        mesas.get(numeroMesa - 1).desocuparMesa();
-        System.out.println("La mesa " + numeroMesa + " ha sido desocupada.");
+        // mesas.get(numeroMesa - 1).desocuparMesa();
+        // System.out.println("La mesa " + numeroMesa + " ha sido desocupada.");
     }
 
 }
