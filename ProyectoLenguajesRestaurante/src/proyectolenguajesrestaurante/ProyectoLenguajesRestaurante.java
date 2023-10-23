@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 import org.jpl7.*;
 import proyectolenguajesrestaurante.CRUD.*;
+import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
 
 
 
@@ -18,7 +19,9 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
+        ordenesRestaurante.gestionarOrdenes();
+
         // Pruebas para los CRUD 
         
         //BebidasCRUD bebidasCRUD = new BebidasCRUD();
