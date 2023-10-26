@@ -9,7 +9,8 @@ public class MenuSaludable {
 
     public static void main(String[] args) {
         // Ruta al archivo Prolog
-        String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
+        //String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
+        String rutaProlog= "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
 
         // Consulta para cargar el archivo Prolog
         Query query = new Query("consult('" + rutaProlog + "')");

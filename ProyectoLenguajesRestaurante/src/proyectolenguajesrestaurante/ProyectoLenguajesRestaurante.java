@@ -9,6 +9,9 @@ import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
 
 
 
+
+
+
 /**
  *
  * @author camiu
@@ -53,7 +56,9 @@ public class ProyectoLenguajesRestaurante {
         //postresCRUD.eliminarPostre(11);
         //postresCRUD.leerPostres();
         
-        String rutaProlog= "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
+        //String rutaProlog= "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
+        
+        String rutaProlog= "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
         
         Query query = new Query("consult('"+ rutaProlog +"')");
         
