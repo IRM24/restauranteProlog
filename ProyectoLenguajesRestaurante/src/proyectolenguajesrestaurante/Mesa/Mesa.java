@@ -5,11 +5,13 @@ public class Mesa {
     private int cantidadPersonas;
     private boolean ocupada;
     private String nombreRepresentante;
+    private boolean unaSolaCuenta;
 
-    public Mesa(int numeroMesa, int cantidadPersonas, String nombreRepresentante) {
+    public Mesa(int numeroMesa, int cantidadPersonas, String nombreRepresentante, boolean unaSolaCuenta) {
         this.numeroMesa = numeroMesa;
         this.cantidadPersonas = cantidadPersonas;
         this.nombreRepresentante = nombreRepresentante;
+        this.unaSolaCuenta = unaSolaCuenta;
         this.ocupada = false;
     }
 
@@ -25,6 +27,10 @@ public class Mesa {
         return nombreRepresentante;
     }
 
+    public boolean getUnaSolaCuenta() {
+        return unaSolaCuenta;
+    }
+
     public boolean estaOcupada() {
         return ocupada;
     }
@@ -36,12 +42,13 @@ public class Mesa {
     public void desocuparMesa() {
         this.ocupada = false;
     }
-    
+
     public void mostrarInfoMesa() {
         System.out.println("Información de la mesa:");
         System.out.println("Número de mesa: " + numeroMesa);
         System.out.println("Cantidad de personas: " + cantidadPersonas);
         System.out.println("Nombre del representante: " + nombreRepresentante);
+        System.out.println("¿Pagar en una sola cuenta? " + (unaSolaCuenta ? "Sí" : "No"));
         System.out.println("¿Mesa ocupada? " + (ocupada ? "Sí" : "No"));
     }
 
@@ -51,5 +58,9 @@ public class Mesa {
 
     public void setNombreRepresentante(String nombreRepresentante) {
         this.nombreRepresentante = nombreRepresentante;
-}
+    }
+
+    public void setUnaSolaCuenta(boolean unaSolaCuenta) {
+        this.unaSolaCuenta = unaSolaCuenta;
+    }
 }

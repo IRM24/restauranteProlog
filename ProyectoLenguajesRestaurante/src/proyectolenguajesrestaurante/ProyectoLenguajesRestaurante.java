@@ -1,10 +1,13 @@
 package proyectolenguajesrestaurante;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import org.jpl7.*;
 import proyectolenguajesrestaurante.CRUD.*;
+import proyectolenguajesrestaurante.Menus.Combo;
+import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
 import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
 
 
@@ -25,8 +28,15 @@ public class ProyectoLenguajesRestaurante {
         //OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
         //ordenesRestaurante.gestionarOrdenes();
         
+        FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
+        funcionalidadesCombo.leerCombos();
+        funcionalidadesCombo.imprimirCombos();
+        List<Combo> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();
         
-
+        System.out.println("Combos con bajas calorías:");
+        for (Combo combo : combosBajasCalorias) {
+            System.out.println(combo);
+        }
         // Pruebas para los CRUD 
         
         //BebidasCRUD bebidasCRUD = new BebidasCRUD();
