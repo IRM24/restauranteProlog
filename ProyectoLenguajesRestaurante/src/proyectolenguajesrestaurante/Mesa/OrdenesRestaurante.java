@@ -9,7 +9,7 @@ public class OrdenesRestaurante {
         List<Mesa> mesas = new ArrayList<>();
         // Crear 6 mesas de ejemplo
         for (int i = 1; i <= 6; i++) {
-            mesas.add(new Mesa(i, 0, "")); // Se inicializa sin ninguna persona ni representante
+            mesas.add(new Mesa(i, 0, "", false)); // Se inicializa sin ninguna persona ni representante
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -36,13 +36,15 @@ public class OrdenesRestaurante {
         scanner.nextLine(); // Limpiar el buffer
         String nombreRepresentante = scanner.nextLine();
 
-        System.out.print("¿Desea pagar en una sola cuenta? (Sí/No): ");
+        System.out.print("¿Desea pagar en una sola cuenta? (Si/No): ");
         boolean pagarJuntos = scanner.next().equalsIgnoreCase("Si");
 
         if (pagarJuntos) {
             System.out.println("La orden se pagará en conjunto.");
+            mesas.get(numeroMesa - 1).setUnaSolaCuenta(true);
         } else {
             System.out.println("Se llevará un registro individual de la orden y el pago.");
+            mesas.get(numeroMesa - 1).setUnaSolaCuenta(false);
         }
         
         mesas.get(numeroMesa - 1).setCantidadPersonas(cantidadPersonas);
@@ -50,9 +52,6 @@ public class OrdenesRestaurante {
 
         System.out.println("Información de la mesa:");
         mesas.get(numeroMesa - 1).mostrarInfoMesa();
-        
-        //System.out.println("Información de la mesa:");
-        //mesas.get(0).mostrarInfoMesa();
         
         scanner.close();
 
@@ -62,5 +61,4 @@ public class OrdenesRestaurante {
         // mesas.get(numeroMesa - 1).desocuparMesa();
         // System.out.println("La mesa " + numeroMesa + " ha sido desocupada.");
     }
-
 }
