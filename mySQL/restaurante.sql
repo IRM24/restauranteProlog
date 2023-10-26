@@ -125,6 +125,9 @@ INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Pechuga de pollo', 'Pollo', 'No', 'Si', 'Si', 180, 2300);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Albondigas', 'Pollo', 'No', 'Si', 'Si', 180, 2300);
+
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Costilla de cerdo', 'Carnes Rojas', 'No', 'Si', 'Si', 300, 3000);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
@@ -193,14 +196,12 @@ VALUES ('Combo 1','Costilla de cerdo', 'Ensalada Cesar', 'Hummus', NULL, 'Coca-c
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
 VALUES ('Combo 2','Salchichas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo de Naranja','Tostadas Francesas', 570, 8000);
 
+INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
+VALUES ('Combo 3','Albondigas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo de Naranja','Tostadas Francesas', 570, 8000);
+
 select * from plato;
-delete from plato;
-drop table bebida;
-drop table proteina;
-drop table acompannamiento;
-drop table postre;
-drop table plato;
-drop table combo;
+select * from combo;
+
 
 DELIMITER //
 
@@ -394,3 +395,89 @@ BEGIN
 END//
 
 DELIMITER ;
+
+-- CRUD postre ------------
+
+-- CREATE
+DELIMITER //
+
+CREATE PROCEDURE crear_postre(
+    IN p_nombre VARCHAR(100),
+    IN p_lacteo VARCHAR(100),
+    IN p_frutas VARCHAR(100),
+    IN p_desayuno VARCHAR(100),
+    IN p_almuerzo VARCHAR(100),
+    IN p_cena VARCHAR(100),
+    IN p_calorias INT,
+    IN p_precio INT
+)
+BEGIN
+    INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio)
+    VALUES (p_nombre, p_lacteo, p_frutas, p_desayuno, p_almuerzo, p_cena, p_calorias, p_precio);
+END//
+
+DELIMITER ;
+
+-- READ
+DELIMITER //
+
+CREATE PROCEDURE leer_postre()
+BEGIN
+    SELECT * FROM postre;
+END//
+
+DELIMITER ;
+
+-- UPDATE 
+DELIMITER //
+
+CREATE PROCEDURE actualizar_postre(
+    IN p_id INT,
+    IN p_precio INT
+)
+BEGIN
+    UPDATE postre
+    SET precio = p_precio
+    WHERE id = p_id;
+END//
+
+DELIMITER ;
+
+-- DELETE
+
+DELIMITER //
+
+CREATE PROCEDURE eliminar_postre(
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM postre
+    WHERE id = p_id;
+END//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE leer_combos()
+BEGIN
+    SELECT * FROM combo;
+END;
+
+//
+DELIMITER ;
+
+call leer_combos();
+
+delete from proteina where id = 10;
+
+select * from postre;
+select * from proteina;
+select * from acompannamiento;
+select * from bebida;
+
+-- drop procedure leer_combos;
+-- drop table acompannamiento;
+-- drop table bebida;
+-- drop table postre;
+-- drop table proteina;

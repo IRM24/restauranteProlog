@@ -33,10 +33,15 @@ public class ProyectoLenguajesRestaurante {
         funcionalidadesCombo.imprimirCombos();
         List<Combo> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();
         
-        System.out.println("Combos con bajas calorías:");
-        for (Combo combo : combosBajasCalorias) {
-            System.out.println(combo);
-        }
+        //boolean valid = funcionalidadesCombo.verifyCombo(2);
+        //System.out.println(valid);
+        
+        
+        
+        //System.out.println("Combos con bajas calorías:");
+        //for (Combo combo : combosBajasCalorias) {
+        //    System.out.println(combo);
+        //}
         // Pruebas para los CRUD 
         
         //BebidasCRUD bebidasCRUD = new BebidasCRUD();

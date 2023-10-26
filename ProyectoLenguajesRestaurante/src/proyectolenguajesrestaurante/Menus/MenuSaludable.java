@@ -11,6 +11,7 @@ public class MenuSaludable {
         // Ruta al archivo Prolog
         //String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
         String rutaProlog= "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
+        
 
         // Consulta para cargar el archivo Prolog
         Query query = new Query("consult('" + rutaProlog + "')");
@@ -32,16 +33,8 @@ public class MenuSaludable {
 
                 // Verificar si se encontraron soluciones
                 if (consultaGenerarMenus.hasSolution()) {
-                    System.out.println("Soluciones encontradas:");
-                    while (consultaGenerarMenus.hasMoreSolutions()) {
-                        java.util.Map<String, Term> solution = consultaGenerarMenus.nextSolution();
-                        // Recuperar las soluciones y manejarlas según sea necesario
-                        if (solution != null) {
-                            Term menu = solution.get("Menu"); // Suponiendo que el nombre de la variable en Prolog sea "Menu"
-                            System.out.println("Menú: " + menu.toString());
-                            // Aquí puedes realizar cualquier operación adicional con el menú recuperado
-                        }
-                    }
+                    System.out.println("Soluciones encontradas");
+                    
                 } else {
                     System.out.println("No se encontraron soluciones para la consulta.");
                 }

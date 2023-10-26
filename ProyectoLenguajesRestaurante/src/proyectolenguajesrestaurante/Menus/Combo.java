@@ -64,4 +64,31 @@ public class Combo {
         return this.calorias;
     }
     
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getProteina() {
+        return proteina;
+    }
+
+    public String getAcompannamiento1() {
+        return acompannamiento1;
+    }
+
+    public String getAcompannamiento2() {
+        return acompannamiento2;
+    }
+
+    public String getAcompannamiento3() {
+        return acompannamiento3;
+    }
+
+    public String getBebida() {
+        return bebida;
+    }
+
+    public String getPostre() {
+        return postre;
+    }
 }
