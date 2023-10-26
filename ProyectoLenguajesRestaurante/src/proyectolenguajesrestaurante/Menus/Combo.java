@@ -91,4 +91,8 @@ public class Combo {
     public String getPostre() {
         return postre;
     }
+    
+    public int getPrecio() {
+        return precio;
+    }
 }

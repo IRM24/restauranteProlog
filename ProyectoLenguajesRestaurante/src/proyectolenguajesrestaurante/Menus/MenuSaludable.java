@@ -3,14 +3,14 @@ package proyectolenguajesrestaurante.Menus;
 import org.jpl7.Atom;
 import org.jpl7.Query;
 import org.jpl7.Term;
-import org.jpl7.Variable;
+//import org.jpl7.Variable;
 
 public class MenuSaludable {
 
     public static void main(String[] args) {
         // Ruta al archivo Prolog
         //String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
-        String rutaProlog= "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
+        String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
         
 
         // Consulta para cargar el archivo Prolog

@@ -4,9 +4,13 @@ import java.sql.*;
 
 public class ConexionMySQL {
 
+    //private static final String URL = "jdbc:mysql://localhost:3306/restaurante";
+    //private static final String USUARIO = "root";
+    //private static final String CONTRASENA = "My.SQL.24041507";
+    
     private static final String URL = "jdbc:mysql://localhost:3306/restaurante";
     private static final String USUARIO = "root";
-    private static final String CONTRASENA = "My.SQL.24041507";
+    private static final String CONTRASENA = "Coquito21";
 
     public static Connection getConexion() {
         Connection con = null;

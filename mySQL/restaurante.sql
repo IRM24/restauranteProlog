@@ -122,10 +122,10 @@ INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Camarones', 'Mariscos', 'No', 'Si', 'Si', 150, 3100);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
-VALUES ('Pechuga de pollo', 'Pollo', 'No', 'Si', 'Si', 180, 2300);
+VALUES ('Pechuga de Pollo', 'Pollo', 'No', 'Si', 'Si', 180, 2300);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
-VALUES ('Albondigas', 'Pollo', 'No', 'Si', 'Si', 180, 2300);
+VALUES ('Albondigas', 'Carnes Rojas', 'No', 'Si', 'Si', 180, 2300);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Costilla de cerdo', 'Carnes Rojas', 'No', 'Si', 'Si', 300, 3000);
@@ -180,24 +180,27 @@ VALUES
 -- insert platos ------------
 
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
-VALUES ('Plato Fuerte 1','Salmón Ahumado', 'Ensalada Verde', 'Arroz blanco', NULL,480, 6500);
+VALUES ('Plato Fuerte 1','Salmón Ahumado', 'Ensalada Verde', 'Arroz blanco', 'Pasta Pesto',510, 7500);
 
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
-VALUES ('Plato Fuerte 2','Filete de res', 'Pure de papa', 'Ensalada Cesar','Tofu Salteado',550, 7000);
+VALUES ('Plato Fuerte 2','Filete de res', 'Pure de papa', 'Ensalada Cesar','Tofu Salteado',600, 6000);
 
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
-VALUES ('Plato Fuerte 3','Tocineta', 'Pan tostado', 'Frutas Frescas',NULL, 420, 5000);
+VALUES ('Plato Fuerte 3','Tocineta', 'Pan tostado', 'Frutas Frescas','Pancakes', 480, 4500);
+
+INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
+VALUES ('Plato Fuerte 4','Pollo Frito', 'Pure de papa', 'Arroz blanco','Ensalada Verde', 620, 5800);
 
 -- insert combos ------------
 
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
-VALUES ('Combo 1','Costilla de cerdo', 'Ensalada Cesar', 'Hummus', NULL, 'Coca-cola','Flan de Caramelo', 800, 8500);
+VALUES ('Combo 1','Costilla de cerdo', 'Ensalada Cesar', 'Hummus', 'Tofu Salteado', 'Coca-cola','Flan de Caramelo', 800, 8500);
 
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
-VALUES ('Combo 2','Salchichas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo de Naranja','Tostadas Francesas', 570, 8000);
+VALUES ('Combo 2','Salchichas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo de Naranja','Tostadas Francesas', 570, 7500);
 
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
-VALUES ('Combo 3','Albondigas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo de Naranja','Tostadas Francesas', 570, 8000);
+VALUES ('Combo 3','Albondigas', 'Pure de papa','Ensalada Verde', 'Arroz blanco','Limonada con Hierbabuena','Cheesecake', 860, 7000);
 
 select * from plato;
 select * from combo;
@@ -457,6 +460,8 @@ END//
 
 DELIMITER ;
 
+-- Funciones Combo -----------------
+
 DELIMITER //
 
 CREATE PROCEDURE leer_combos()
@@ -467,14 +472,28 @@ END;
 //
 DELIMITER ;
 
+-- Funciones Plato ----------------------
+
+DELIMITER //
+
+CREATE PROCEDURE leer_platos()
+BEGIN
+    SELECT * FROM plato;
+END;
+
+//
+DELIMITER ;
+
+
 call leer_combos();
 
-delete from proteina where id = 10;
+delete from combo;
 
 select * from postre;
 select * from proteina;
 select * from acompannamiento;
 select * from bebida;
+select * from combo;
 
 -- drop procedure leer_combos;
 -- drop table acompannamiento;

@@ -45,23 +45,45 @@ public List<Combo> leerCombos() {
 }
 
 
-        public void imprimirCombos() {
-            for (Combo combo : listaCombos) {
-                System.out.println(combo);
-            }
+    public void imprimirCombos() {
+        for (Combo combo : listaCombos) {
+            System.out.println(combo);
         }
+    }
 
         
-        public List<Combo> filtrarCombosBajasCalorias() {
-        List<Combo> combosBajasCalorias = new ArrayList<>();
-        for (Combo combo : listaCombos) {
-            if (combo.getCalorias() < 800) {
-                combosBajasCalorias.add(combo);
-            }
+    public List<Combo> filtrarCombosBajasCalorias() {
+    List<Combo> combosBajasCalorias = new ArrayList<>();
+    for (Combo combo : listaCombos) {
+        if (combo.getCalorias() < 800) {
+            combosBajasCalorias.add(combo);
         }
-        return combosBajasCalorias;
     }
-        
+    return combosBajasCalorias;
+    }
+    
+    public List<Combo> filtrarCombosPrecioBajo() {
+    List<Combo> combosPrecioBajo = new ArrayList<>();
+    for (Combo combo : listaCombos) {
+        if (combo.getPrecio() < 8500) {
+            combosPrecioBajo.add(combo);
+        }
+    }
+    return combosPrecioBajo;
+    }
+
+    public List<Combo> filtrarCombosConEnsalada() {
+    List<Combo> combosFiltrados = new ArrayList<>();
+    for (Combo combo : listaCombos) {
+        if (combo.getAcompannamiento1().contains("Ensalada") ||
+            combo.getAcompannamiento2().contains("Ensalada") ||
+            combo.getAcompannamiento3().contains("Ensalada")) {
+            combosFiltrados.add(combo);
+        }
+    }
+    return combosFiltrados;
+    }
+
     public boolean foodItemExists(String itemName, String tableName) {
         try (Connection con = ConexionMySQL.getConexion()) {
             String query = "SELECT COUNT(*) AS count FROM " + tableName + " WHERE nombre = ?";

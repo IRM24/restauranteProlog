@@ -1,24 +1,13 @@
 package proyectolenguajesrestaurante;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-import org.jpl7.*;
-import proyectolenguajesrestaurante.CRUD.*;
+//import proyectolenguajesrestaurante.CRUD.*;
 import proyectolenguajesrestaurante.Menus.Combo;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
-import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
+import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
+import proyectolenguajesrestaurante.Menus.Plato;
+//import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
 
 
-
-
-
-
-/**
- *
- * @author camiu
- */
 public class ProyectoLenguajesRestaurante {
 
     /**
@@ -27,21 +16,40 @@ public class ProyectoLenguajesRestaurante {
     public static void main(String[] args) {
         //OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
         //ordenesRestaurante.gestionarOrdenes();
+      
+//        FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
+//        funcionalidadesCombo.leerCombos();
+//        funcionalidadesCombo.imprimirCombos();
+//        List<Combo> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();
+//        List<Combo> combosBajoPrecio = funcionalidadesCombo.filtrarCombosPrecioBajo();     
+//        List<Combo> combosEnsalada = funcionalidadesCombo.filtrarCombosConEnsalada();
+
         
-        FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
-        funcionalidadesCombo.leerCombos();
-        funcionalidadesCombo.imprimirCombos();
-        List<Combo> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();
+        //boolean valid = funcionalidadesCombo.verifyCombo(2);
+        //System.out.println(valid);
+       
+        //System.out.println("Combos Ensalada:");
+        //for (Combo combo : combosEnsalada) {
+        //    System.out.println(combo);
+        //}
+        
+        
+//        FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
+//        funcionalidadesPlato.leerPlatos();
+//        funcionalidadesPlato.imprimirPlatos();
+//        List<Plato> platosBajasCalorias = funcionalidadesPlato.filtrarPlatosBajasCalorias();
+//        List<Plato> platosPrecioBajo = funcionalidadesPlato.filtrarPlatosPrecioBajo();
+//        List<Plato> platosPollo = funcionalidadesPlato.filtrarPlatosConPollo();
+
         
         //boolean valid = funcionalidadesCombo.verifyCombo(2);
         //System.out.println(valid);
         
-        
-        
-        //System.out.println("Combos con bajas calorías:");
-        //for (Combo combo : combosBajasCalorias) {
-        //    System.out.println(combo);
+        //System.out.println("Platos Calorias:");
+        //for (Plato plato : platosBajasCalorias) {
+        //    System.out.println(plato);
         //}
+        
         // Pruebas para los CRUD 
         
         //BebidasCRUD bebidasCRUD = new BebidasCRUD();
@@ -71,42 +79,5 @@ public class ProyectoLenguajesRestaurante {
         //postresCRUD.eliminarPostre(11);
         //postresCRUD.leerPostres();
         
-        //String rutaProlog= "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
-        
-        String rutaProlog= "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
-        
-        Query query = new Query("consult('"+ rutaProlog +"')");
-        
-       
-        if(query.hasSolution()){
-            System.out.println("Archivo cargado con exito");
-            
-            Query conexionProlog = new Query("conectar_base_de_datos.");
-            if (conexionProlog.hasSolution()){
-                System.out.println("Conexion exitosa a la base de datos ");
-
-                try(Scanner scanner = new Scanner(System.in)){
-                    System.out.println("Tiempo de comida: ");
-                    String tiempoComida = scanner.nextLine();
-
-                    Set<String> comidas = new HashSet<>();
-
-                    Term[] terminos = {new Atom(tiempoComida), new Variable("P")};
-                    Query consultaPollo = new Query("obtener_proteina_pollo", terminos);
-                    consultaPollo.hasSolution();
-                    if (consultaPollo.hasSolution()) {
-                        System.out.println("Soluciones encontradas:");
-                        while (consultaPollo.hasMoreSolutions()) {
-                            Map<String, Term> solution = consultaPollo.nextSolution();
-                            Term polloTerm = solution.get("P");
-                            comidas.add(polloTerm.toString());
-                        }
-                        System.out.println("Las comidas de pollo son: " + comidas);
-                    } else {
-                        System.out.println("No se encontraron soluciones.");
-                    }
-            }
-        }    
     }
-}
 }    
