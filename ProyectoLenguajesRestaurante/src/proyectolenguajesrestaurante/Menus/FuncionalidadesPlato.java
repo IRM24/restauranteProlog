@@ -9,13 +9,13 @@ import proyectolenguajesrestaurante.CRUD.ConexionMySQL;
 
 
 public class FuncionalidadesPlato {
-    private final List<Plato> listaPlatos;
+    private final List<Comida> listaPlatos;
     
     public FuncionalidadesPlato() {
         listaPlatos = new ArrayList<>();
     }
     
-    public List<Plato> leerPlatos() {
+    public List<Comida> leerPlatos() {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement leerPlatos = con.prepareCall("{CALL leer_platos()}");
             ResultSet rs = leerPlatos.executeQuery();
@@ -29,11 +29,12 @@ public class FuncionalidadesPlato {
                 int calorias = rs.getInt("calorias");
                 int precio = rs.getInt("precio");
 
-                Plato plato = new Plato(id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio);
+                Comida miComida = FactoryComida.crearComida("plato", id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio, null, null);
+
                 // Verificar el plato antes de agregarlo a la lista
-                if (verifyPlato(plato.getId())) {
-                    listaPlatos.add(plato);
-                }
+                //if (verifyPlato(miComida.getId())) {
+                    listaPlatos.add(miComida);
+                //}
             }
         } catch (Exception e) {
             // Manejar la excepción apropiadamente
@@ -42,14 +43,14 @@ public class FuncionalidadesPlato {
     }
     
     public void imprimirPlatos() {
-        for (Plato plato : listaPlatos) {
+        for (Comida plato : listaPlatos) {
             System.out.println(plato);
         }
     }
     
-    public List<Plato> filtrarPlatosBajasCalorias() {
-    List<Plato> platosBajasCalorias = new ArrayList<>();
-        for (Plato plato : listaPlatos) {
+    public List<Comida> filtrarPlatosBajasCalorias() {
+    List<Comida> platosBajasCalorias = new ArrayList<>();
+        for (Comida plato : listaPlatos) {
             if (plato.getCalorias() < 600) {
                 platosBajasCalorias.add(plato);
             }
@@ -57,9 +58,9 @@ public class FuncionalidadesPlato {
         return platosBajasCalorias;
     }
     
-    public List<Plato> filtrarPlatosPrecioBajo() {
-        List<Plato> platosPrecioBajo = new ArrayList<>();
-        for (Plato plato : listaPlatos) {
+    public List<Comida> filtrarPlatosPrecioBajo() {
+        List<Comida> platosPrecioBajo = new ArrayList<>();
+        for (Comida plato : listaPlatos) {
             if (plato.getPrecio() < 7000) {
                 platosPrecioBajo.add(plato);
             }
@@ -67,9 +68,9 @@ public class FuncionalidadesPlato {
         return platosPrecioBajo;
     }
 
-    public List<Plato> filtrarPlatosConPollo() {
-        List<Plato> platosFiltrados = new ArrayList<>();
-        for (Plato plato : listaPlatos) {
+    public List<Comida> filtrarPlatosConPollo() {
+        List<Comida> platosFiltrados = new ArrayList<>();
+        for (Comida plato : listaPlatos) {
             if (plato.getProteina().contains("Pollo")) {
                 platosFiltrados.add(plato);
             }
@@ -96,7 +97,7 @@ public class FuncionalidadesPlato {
                 int calorias = rs.getInt("calorias");
                 int precio = rs.getInt("precio");
 
-                plato = new Plato(id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio);
+                Comida miComida = FactoryComida.crearComida("plato", id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio, null, null);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +107,7 @@ public class FuncionalidadesPlato {
     }
 
     public boolean verifyPlato(int platoId) {
-        Plato plato = findPlatoById(platoId);
+        Comida plato = findPlatoById(platoId);
 
         if (plato == null) {
             // El plato no se encontró en la base de datos.

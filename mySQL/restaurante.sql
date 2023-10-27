@@ -136,6 +136,16 @@ VALUES ('Salmón Ahumado', 'Mariscos', 'No', 'No', 'Si', 220, 3600);
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Pollo Frito', 'Pollo', 'No', 'Si', 'Si', 310, 2300);
 
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Pierna de Cordero', 'Carnes Rojas', 'No', 'Si', 'Si', 290, 3400);
+
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Langosta', 'Mariscos', 'No', 'Si', 'Si', 270, 3500);
+
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Chorizo', 'Carnes Rojas', 'Si', 'Si', 'No', 300, 200);
+
+Delete from proteina;
 SELECT * FROM proteina;
 
 -- Insert Acompannamientos --------------------------------------------------------
@@ -143,18 +153,30 @@ SELECT * FROM proteina;
 INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
 VALUES
     ('Pan tostado', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 85, 750),
+    ('Huevos', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 95, 800),
+    ('Waffles', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 100, 1800),
+    ('Avena', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 90, 900),
     ('Frutas Frescas', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 50, 1250),
+    ('Queso', 'Frio', 'No', 'No', 'Si', 'No', 'No', 80, 950),
+    ('Croissants', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 180, 1000),
     ('Pancakes', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 100, 1800);
 
 INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
 VALUES
     ('Arroz blanco','Caliente', 'Si', 'No', 'No', 'Si', 'Si', 190, 1200),
+    ('Arroz integral','Caliente', 'Si', 'No', 'No', 'Si', 'Si', 160, 1200),
+    ('Papas Fritas','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 230, 1400),
+    ('Hongos Salteados','Caliente', 'NO', 'Si', 'No', 'Si', 'Si', 110, 1500),
     ('Pasta Pesto','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 220, 2000),
+    ('Pasta Pomodoro','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 230, 1800),
 	('Pure de papa','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 160, 1500),
     ('Tofu Salteado','Caliente', 'No', 'No', 'No', 'Si', 'Si', 140, 2500),
+    ('Berenjenas a la parrilla','Caliente', 'No', 'Si', 'No', 'Si', 'Si', 130, 1750),
     ('Hummus','Frio', 'Si', 'No', 'No', 'Si', 'Si', 175, 2500),
     ('Ensalada Verde','Frio', 'No', 'Si', 'No', 'Si', 'Si', 80, 2100),
-    ('Ensalada Cesar','Frio', 'No', 'Si', 'No', 'Si', 'Si', 130, 2600);
+    ('Ensalada de Pasta','Frio', 'Si', 'No', 'No', 'Si', 'Si', 150, 2300),
+    ('Ensalada Cesar','Frio', 'No', 'Si', 'No', 'Si', 'Si', 130, 2600),
+    ('Ensalada de Garbanzos','Frio', 'Si', 'Si', 'No', 'Si', 'Si', 110, 2500);
 
 -- select * from postre;
 -- delete from acompannamiento;
@@ -163,6 +185,9 @@ INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, 
 VALUES
    ('Yogurt con frutas', 'Si', 'Si','Si', 'No', 'No', 150, 1500),
    ('Tostadas Francesas', 'No', 'Si','Si', 'Si', 'No', 190, 2100),
+   ('Muffins', 'Si', 'Si','Si', 'Si', 'No', 200, 1500),
+   ('Tartaleta de Frambuesa', 'Si', 'Si','Si', 'Si', 'Si', 210, 1700),
+   ('Galletas', 'Si', 'No','Si', 'No', 'No', 170, 800),
    ('Crepa con fresas', 'No', 'Si','Si', 'Si', 'Si', 250, 2500);
 
 INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio)
@@ -175,10 +200,13 @@ INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, 
 VALUES
     ('Helado de vainilla', 'Si', 'No', 'No', 'Si', 'Si', 220, 1100),
     ('Pastel de chocolate', 'Si', 'No','No',  'Si', 'Si', 350, 2500),
+    ('Pie de Limon', 'Si', 'Si','No',  'Si', 'Si', 270, 2200),
+    ('Tiramisú', 'Si', 'No','No',  'Si', 'Si', 250, 2300),
+    ('Mousse de chocolate', 'Si', 'No','No',  'Si', 'Si', 320, 2200),
     ('Gelato', 'No', 'No','No',  'Si', 'Si', 110, 2200),
     ('Cheesecake', 'Si', 'No','No', 'Si', 'Si', 310, 2500);
+    
 -- insert platos ------------
-
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
 VALUES ('Plato Fuerte 1','Salmón Ahumado', 'Ensalada Verde', 'Arroz blanco', 'Pasta Pesto',510, 7500);
 

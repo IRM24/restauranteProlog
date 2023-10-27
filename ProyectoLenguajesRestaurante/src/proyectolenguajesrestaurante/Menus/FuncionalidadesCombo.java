@@ -8,14 +8,14 @@ import java.util.List;
 import proyectolenguajesrestaurante.CRUD.ConexionMySQL;
 
 public class FuncionalidadesCombo {
-    private final List<Combo> listaCombos;
+    private final List<Comida> listaCombos;
     
     public FuncionalidadesCombo() {
         listaCombos = new ArrayList<>();
     }
 
 
-public List<Combo> leerCombos() {
+public List<Comida> leerCombos() {
     try (Connection con = ConexionMySQL.getConexion()) {
         CallableStatement leerCombos = con.prepareCall("{CALL leer_combos()}");
         ResultSet rs = leerCombos.executeQuery();
@@ -31,11 +31,11 @@ public List<Combo> leerCombos() {
             int calorias = rs.getInt("calorias");
             int precio = rs.getInt("precio");
 
-            Combo combo = new Combo(id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio);
+            Comida miComida = FactoryComida.crearComida("combo",id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio, bebida, postre);
 
             // Verificar el combo antes de agregarlo a la lista
-            if (verifyCombo(combo.getId())) {
-                listaCombos.add(combo);
+            if (verifyCombo(miComida.getId())) {
+                listaCombos.add(miComida);
             }
         }
     } catch (Exception e) {
@@ -46,15 +46,15 @@ public List<Combo> leerCombos() {
 
 
     public void imprimirCombos() {
-        for (Combo combo : listaCombos) {
+        for (Comida combo : listaCombos) {
             System.out.println(combo);
         }
     }
 
         
-    public List<Combo> filtrarCombosBajasCalorias() {
-    List<Combo> combosBajasCalorias = new ArrayList<>();
-    for (Combo combo : listaCombos) {
+    public List<Comida> filtrarCombosBajasCalorias() {
+    List<Comida> combosBajasCalorias = new ArrayList<>();
+    for (Comida combo : listaCombos) {
         if (combo.getCalorias() < 800) {
             combosBajasCalorias.add(combo);
         }
@@ -62,9 +62,9 @@ public List<Combo> leerCombos() {
     return combosBajasCalorias;
     }
     
-    public List<Combo> filtrarCombosPrecioBajo() {
-    List<Combo> combosPrecioBajo = new ArrayList<>();
-    for (Combo combo : listaCombos) {
+    public List<Comida> filtrarCombosPrecioBajo() {
+    List<Comida> combosPrecioBajo = new ArrayList<>();
+    for (Comida combo : listaCombos) {
         if (combo.getPrecio() < 8500) {
             combosPrecioBajo.add(combo);
         }
@@ -72,9 +72,9 @@ public List<Combo> leerCombos() {
     return combosPrecioBajo;
     }
 
-    public List<Combo> filtrarCombosConEnsalada() {
-    List<Combo> combosFiltrados = new ArrayList<>();
-    for (Combo combo : listaCombos) {
+    public List<Comida> filtrarCombosConEnsalada() {
+    List<Comida> combosFiltrados = new ArrayList<>();
+    for (Comida combo : listaCombos) {
         if (combo.getAcompannamiento1().contains("Ensalada") ||
             combo.getAcompannamiento2().contains("Ensalada") ||
             combo.getAcompannamiento3().contains("Ensalada")) {
@@ -99,8 +99,8 @@ public List<Combo> leerCombos() {
         }
     }
     
-    public Combo findComboById(int comboId) {
-    Combo combo = null;
+    public Comida findComboById(int comboId) {
+    Comida combo = null;
     
     try (Connection con = ConexionMySQL.getConexion()) {
         String query = "SELECT * FROM combo WHERE id = ?";
@@ -120,7 +120,7 @@ public List<Combo> leerCombos() {
             int calorias = rs.getInt("calorias");
             int precio = rs.getInt("precio");
 
-            combo = new Combo(id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio);
+            combo = FactoryComida.crearComida("combo",id, nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio, bebida, postre);
         }
     } catch (Exception e) {
         e.printStackTrace();
@@ -130,7 +130,7 @@ public List<Combo> leerCombos() {
 }
     
     public boolean verifyCombo(int comboId) {
-    Combo combo = findComboById(comboId);
+    Comida combo = findComboById(comboId);
 
     if (combo == null) {
         // El combo no se encontró en la base de datos.
@@ -149,16 +149,24 @@ public List<Combo> leerCombos() {
         return false;
     }
 
-    // Verificar la existencia de bebida
-    if (!foodItemExists(combo.getBebida(), "bebida")) {
-        return false;
-    }
+    // Comprueba si combo es una instancia de la clase Combo
+     // Verificar la existencia de bebida
+    
+    if (combo instanceof Combo) {
+     Combo comboEspecifico = (Combo) combo; // Conversión explícita a la subclase Combo
+        if (!foodItemExists(comboEspecifico.getBebida(), "bebida")) {
+            return false;
+        }
+    } 
 
     // Verificar la existencia de postre
-    if (!foodItemExists(combo.getPostre(), "postre")) {
+
+     if (combo instanceof Combo) {
+     Combo comboEspecifico = (Combo) combo; // Conversión explícita a la subclase Combo
+        if (!foodItemExists(comboEspecifico.getPostre(), "postre")) {
         return false;
     }
-
+    } 
     // Si todos los alimentos existen y el combo se encontró en la base de datos, es válido.
     return true;
 }

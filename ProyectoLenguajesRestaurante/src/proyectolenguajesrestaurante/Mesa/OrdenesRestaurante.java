@@ -3,6 +3,7 @@ package proyectolenguajesrestaurante.Mesa;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import proyectolenguajesrestaurante.Menus.MenuPrincipal;
 
 public class OrdenesRestaurante {
     public void gestionarOrdenes() {
@@ -53,7 +54,12 @@ public class OrdenesRestaurante {
         System.out.println("Información de la mesa:");
         mesas.get(numeroMesa - 1).mostrarInfoMesa();
         
-        scanner.close();
+//        MenuPrincipal menuPrincipal = new MenuPrincipal();
+//
+//                    
+//        for (int i = 0; i < mesas.get(numeroMesa - 1).getCantidadPersonas(); i++) {
+//            menuPrincipal.iniciar();
+//        }
 
         // Simular el proceso de generar la factura y desocupar la mesa
         // aquí hay que hacer lo de los menús

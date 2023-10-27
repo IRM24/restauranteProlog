@@ -2,10 +2,12 @@ package proyectolenguajesrestaurante;
 import java.util.List;
 //import proyectolenguajesrestaurante.CRUD.*;
 import proyectolenguajesrestaurante.Menus.Combo;
+import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
+import proyectolenguajesrestaurante.Menus.MenuPrincipal;
 import proyectolenguajesrestaurante.Menus.Plato;
-//import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
+import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
 
 
 public class ProyectoLenguajesRestaurante {
@@ -14,41 +16,45 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
-        //ordenesRestaurante.gestionarOrdenes();
-      
+////        OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
+////        ordenesRestaurante.gestionarOrdenes();
+////        
+//        MenuPrincipal menuPrincipal = new MenuPrincipal();
+//        menuPrincipal.iniciar();
+//      
+        
 //        FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
 //        funcionalidadesCombo.leerCombos();
 //        funcionalidadesCombo.imprimirCombos();
-//        List<Combo> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();
-//        List<Combo> combosBajoPrecio = funcionalidadesCombo.filtrarCombosPrecioBajo();     
-//        List<Combo> combosEnsalada = funcionalidadesCombo.filtrarCombosConEnsalada();
+//        List<Comida> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();
+//        List<Comida> combosBajoPrecio = funcionalidadesCombo.filtrarCombosPrecioBajo();     
+//        List<Comida> combosEnsalada = funcionalidadesCombo.filtrarCombosConEnsalada();
+//
+//        
+//        //boolean valid = funcionalidadesCombo.verifyCombo(2);
+//        //System.out.println(valid);
+//       
+//        System.out.println("Combos Ensalada:");
+//        for (Comida combo : combosEnsalada) {
+//            System.out.println(combo);
+//        }
+        
+        
+        FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
+        funcionalidadesPlato.leerPlatos();
+        funcionalidadesPlato.imprimirPlatos();
+        List<Comida> platosBajasCalorias = funcionalidadesPlato.filtrarPlatosBajasCalorias();
+        List<Comida> platosPrecioBajo = funcionalidadesPlato.filtrarPlatosPrecioBajo();
+        List<Comida> platosPollo = funcionalidadesPlato.filtrarPlatosConPollo();
 
         
         //boolean valid = funcionalidadesCombo.verifyCombo(2);
         //System.out.println(valid);
-       
-        //System.out.println("Combos Ensalada:");
-        //for (Combo combo : combosEnsalada) {
-        //    System.out.println(combo);
-        //}
         
-        
-//        FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
-//        funcionalidadesPlato.leerPlatos();
-//        funcionalidadesPlato.imprimirPlatos();
-//        List<Plato> platosBajasCalorias = funcionalidadesPlato.filtrarPlatosBajasCalorias();
-//        List<Plato> platosPrecioBajo = funcionalidadesPlato.filtrarPlatosPrecioBajo();
-//        List<Plato> platosPollo = funcionalidadesPlato.filtrarPlatosConPollo();
-
-        
-        //boolean valid = funcionalidadesCombo.verifyCombo(2);
-        //System.out.println(valid);
-        
-        //System.out.println("Platos Calorias:");
-        //for (Plato plato : platosBajasCalorias) {
-        //    System.out.println(plato);
-        //}
+        System.out.println("Platos Calorias:");
+        for (Comida plato : platosBajasCalorias) {
+            System.out.println(plato);
+        }
         
         // Pruebas para los CRUD 
         
