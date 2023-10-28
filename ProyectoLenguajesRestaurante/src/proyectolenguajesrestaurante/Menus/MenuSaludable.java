@@ -3,15 +3,12 @@ package proyectolenguajesrestaurante.Menus;
 import org.jpl7.Atom;
 import org.jpl7.Query;
 import org.jpl7.Term;
-import org.jpl7.Variable;
 
 public class MenuSaludable {
 
-    public static void main(String[] args) {
+    public void generarMenuSaludable() {
         // Ruta al archivo Prolog
-        //String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
-        String rutaProlog= "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
-        
+        String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian";
 
         // Consulta para cargar el archivo Prolog
         Query query = new Query("consult('" + rutaProlog + "')");
@@ -34,7 +31,7 @@ public class MenuSaludable {
                 // Verificar si se encontraron soluciones
                 if (consultaGenerarMenus.hasSolution()) {
                     System.out.println("Soluciones encontradas");
-                    
+
                 } else {
                     System.out.println("No se encontraron soluciones para la consulta.");
                 }
