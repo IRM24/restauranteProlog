@@ -1,8 +1,24 @@
 package proyectolenguajesrestaurante.CRUD;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTextArea;
 
 public class AcompannamientosCRUD {
+    private List<Acompannamiento> listaAcompannamiento = new ArrayList<>();
+
+    public void imprimirListaAcompannamientos() {
+    for (Acompannamiento acompannamiento : listaAcompannamiento) {
+        System.out.println(acompannamiento.getNombre() + ", " + acompannamiento.getCalorias());
+    }
+    }
+    
+    public void imprimirListaAcompannamientos(JTextArea jTextArea) {
+    for (Acompannamiento acompannamiento : listaAcompannamiento) {
+        jTextArea.append(acompannamiento.getNombre() + ", " + acompannamiento.getCalorias() + "\n");
+    }
+    }
 
     public void crearAcompannamiento(String nombre, String temperatura, String carbohidratos, String vegetales, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
@@ -17,11 +33,14 @@ public class AcompannamientosCRUD {
             crearAcompannamiento.setInt(8, calorias);
             crearAcompannamiento.setInt(9, precio);
             crearAcompannamiento.execute();
+            
+            Acompannamiento nuevaAcompannamiento = new Acompannamiento(nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio);
+            listaAcompannamiento.add(nuevaAcompannamiento);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public void leerAcompannamientos() {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement leerAcompannamiento = con.prepareCall("{CALL leer_acompannamiento()}");
@@ -38,35 +57,63 @@ public class AcompannamientosCRUD {
                 int calorias = rs.getInt("calorias");
                 int precio = rs.getInt("precio");
 
-                // Imprimir los valores de las columnas
-                System.out.println("ID: " + id + ", Nombre: " + nombre + ", Temperatura: " + temperatura +
-                        ", Carbohidratos: " + carbohidratos + ", Vegetales: " + vegetales +
-                        ", Desayuno: " + desayuno + ", Almuerzo: " + almuerzo + ", Cena: " + cena +
-                        ", Calorías: " + calorias + ", Precio: " + precio);
+                // Verificar si ya existe un acompañamiento con el mismo nombre en la lista
+                boolean existeAcompannamiento = false;
+                for (Acompannamiento acompannamiento : listaAcompannamiento) {
+                    if (acompannamiento.getNombre().equals(nombre)) {
+                        existeAcompannamiento = true;
+                        break;
+                    }
+                }
+
+                // Crear un nuevo objeto Acompannamiento si no existe en la lista
+                if (!existeAcompannamiento) {
+                    Acompannamiento nuevoAcompannamiento = new Acompannamiento(nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio);
+                    listaAcompannamiento.add(nuevoAcompannamiento);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void actualizarAcompannamiento(int id, int precio) {
+
+    public void actualizarAcompannamiento(String nombre, int nuevoPrecio) {
         try (Connection con = ConexionMySQL.getConexion()) {
-            CallableStatement actualizarAcompannamiento = con.prepareCall("{CALL actualizar_acompannamiento(?, ?)}");
-            actualizarAcompannamiento.setInt(1, id);
-            actualizarAcompannamiento.setInt(2, precio);
-            actualizarAcompannamiento.execute();
+            CallableStatement actualizarPrecioAcompannamiento = con.prepareCall("{CALL actualizar_acompannamiento_nombree(?, ?)}");
+
+            actualizarPrecioAcompannamiento.setString(1, nombre);
+            actualizarPrecioAcompannamiento.setInt(2, nuevoPrecio);
+            actualizarPrecioAcompannamiento.execute();
+
+            for (Acompannamiento acompannamiento : listaAcompannamiento) {
+                if (acompannamiento.getNombre().equals(nombre)) {
+                    acompannamiento.setPrecio(nuevoPrecio);
+                    break; // Si se ha encontrado y actualizado el acompañamiento, se sale del bucle
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void eliminarAcompannamiento(int id) {
+
+    public void eliminarAcompannamiento(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
-            CallableStatement eliminarAcompannamiento = con.prepareCall("{CALL eliminar_acompannamiento(?)}");
-            eliminarAcompannamiento.setInt(1, id);
+            CallableStatement eliminarAcompannamiento = con.prepareCall("{CALL eliminar_acompannamiento_nombree(?)}");
+            eliminarAcompannamiento.setString(1, nombre);
             eliminarAcompannamiento.execute();
+
+            // Eliminar el acompañamiento de la lista
+            for (int i = 0; i < listaAcompannamiento.size(); i++) {
+                if (listaAcompannamiento.get(i).getNombre().equals(nombre)) {
+                    listaAcompannamiento.remove(i);
+                    break; // Si se ha encontrado y eliminado el acompañamiento, se sale del bucle
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

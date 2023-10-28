@@ -105,6 +105,7 @@ VALUES ('Dr.Pepper', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 170, 1800);
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Agua', 'No', 'Si', 'Fria', 'Si', 'Si', 'Si', 0, 0);
 
+select  * from bebida;
 -- Inserts Proteinas ---------------------------------------------------------------------------------
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Salchichas', 'Carnes Rojas', 'Si', 'No', 'No', 210, 1750);
@@ -287,25 +288,25 @@ DELIMITER ;
 
 -- UPDATE
 DELIMITER //
-CREATE PROCEDURE actualizar_precio_bebida(
-    IN bebida_id INT,
+CREATE PROCEDURE actualizar_precio_bebida_nombre(
+    IN bebida_nombre VARCHAR(50),
     IN nuevo_precio INT
 )
 BEGIN
-    UPDATE bebida SET precio = nuevo_precio WHERE id = bebida_id;
+    UPDATE bebida SET precio = nuevo_precio WHERE nombre = bebida_nombre;
 END //
 DELIMITER ;
 
 -- DELETE
 DELIMITER //
-CREATE PROCEDURE eliminar_bebida(
-    IN bebida_id INT
+CREATE PROCEDURE eliminar_bebida_nombre(
+    IN bebida_nombre VARCHAR(50)
 )
 BEGIN
-    DELETE FROM bebida WHERE id = bebida_id;
+    DELETE FROM bebida WHERE nombre = bebida_nombre;
 END //
 DELIMITER ;
-
+select * from bebida;
 -- CRUD Proteinas -------
 -- CREATE
 DELIMITER //
@@ -339,14 +340,14 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE actualizar_proteina(
-    IN p_id INT,
+CREATE PROCEDURE actualizar_proteina_nombre(
+    IN p_nombre VARCHAR(50),
     IN p_precio INT
 )
 BEGIN
     UPDATE proteina
     SET precio = p_precio
-    WHERE id = p_id;
+    WHERE nombre = p_nombre;
 END//
 
 DELIMITER ;
@@ -355,12 +356,12 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE eliminar_proteina(
-    IN p_id INT
+CREATE PROCEDURE eliminar_proteina_nombre(
+    IN p_nombre VARCHAR(50)
 )
 BEGIN
     DELETE FROM proteina
-    WHERE id = p_id;
+    WHERE nombre = p_nombre;
 END//
 
 DELIMITER ;
@@ -401,14 +402,14 @@ DELIMITER ;
 -- UPDATE 
 DELIMITER //
 
-CREATE PROCEDURE actualizar_acompannamiento(
-    IN p_id INT,
+CREATE PROCEDURE actualizar_acompannamiento_nombree(
+    IN p_nombre VARCHAR(50),
     IN p_precio INT
 )
 BEGIN
     UPDATE acompannamiento
     SET precio = p_precio
-    WHERE id = p_id;
+    WHERE nombre = p_nombre;
 END//
 
 DELIMITER ;
@@ -417,15 +418,17 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE eliminar_acompannamiento(
-    IN p_id INT
+CREATE PROCEDURE eliminar_acompannamiento_nombree(
+    IN p_nombre VARCHAR(50)
 )
 BEGIN
     DELETE FROM acompannamiento
-    WHERE id = p_id;
+    WHERE nombre = p_nombre;
 END//
 
 DELIMITER ;
+
+select * from acompannamiento;
 
 -- CRUD postre ------------
 
@@ -462,14 +465,14 @@ DELIMITER ;
 -- UPDATE 
 DELIMITER //
 
-CREATE PROCEDURE actualizar_postre(
-    IN p_id INT,
+CREATE PROCEDURE actualizar_postre_nombre(
+    IN p_nombre VARCHAR(50),
     IN p_precio INT
 )
 BEGIN
     UPDATE postre
     SET precio = p_precio
-    WHERE id = p_id;
+    WHERE nombre = p_nombre;
 END//
 
 DELIMITER ;
@@ -478,16 +481,17 @@ DELIMITER ;
 
 DELIMITER //
 
-CREATE PROCEDURE eliminar_postre(
-    IN p_id INT
+CREATE PROCEDURE eliminar_postre_nombre(
+    IN p_nombre VARCHAR(50)
 )
 BEGIN
     DELETE FROM postre
-    WHERE id = p_id;
+    WHERE nombre = p_nombre;
 END//
 
 DELIMITER ;
 
+SELECT * FROM postre;
 -- Funciones Combo -----------------
 
 DELIMITER //

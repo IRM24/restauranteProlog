@@ -1,8 +1,25 @@
 package proyectolenguajesrestaurante.CRUD;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTextArea;
 
 public class ProteinasCRUD {
+    
+    private List<Proteina> listaProteina = new ArrayList<>();
+
+    public void imprimirListaProteinas() {
+    for (Proteina proteina : listaProteina) {
+        System.out.println(proteina.getNombre() + ", " + proteina.getCalorias());
+    }
+    }
+    
+    public void imprimirListaProteinas(JTextArea jTextArea) {
+    for (Proteina proteina : listaProteina) {
+        jTextArea.append(proteina.getNombre() + ", " + proteina.getCalorias() + "\n");
+    }
+    }
 
     public void crearProteina(String nombre, String tipo, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
@@ -15,6 +32,10 @@ public class ProteinasCRUD {
             crearProteina.setInt(6, calorias);
             crearProteina.setInt(7, precio);
             crearProteina.execute();
+            
+            Proteina nuevaProteina = new Proteina(nombre, tipo, desayuno, almuerzo, cena, calorias, precio);
+            listaProteina.add(nuevaProteina);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,34 +55,62 @@ public class ProteinasCRUD {
                 int calorias = rs.getInt("calorias");
                 int precio = rs.getInt("precio");
 
-                // Imprimir los valores de las columnas
-                System.out.println("ID: " + id + ", Nombre: " + nombre + ", Tipo: " + tipo +
-                        ", Desayuno: " + desayuno + ", Almuerzo: " + almuerzo + ", Cena: " + cena +
-                        ", Calorías: " + calorias + ", Precio: " + precio);
+                // Verificar si ya existe una proteína con el mismo nombre en la lista
+                boolean existeProteina = false;
+                for (Proteina proteina : listaProteina) {
+                    if (proteina.getNombre().equals(nombre)) {
+                        existeProteina = true;
+                        break;
+                    }
+                }
+
+                // Crear un nuevo objeto Proteina si no existe en la lista
+                if (!existeProteina) {
+                    Proteina nuevaProteina = new Proteina(nombre, tipo, desayuno, almuerzo, cena, calorias, precio);
+                    listaProteina.add(nuevaProteina);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void actualizarProteina(String nombre, int nuevoPrecio) {
+        try (Connection con = ConexionMySQL.getConexion()) {
+            CallableStatement actualizarPrecioProteina = con.prepareCall("{CALL actualizar_proteina_nombre(?, ?)}");
+
+            actualizarPrecioProteina.setString(1, nombre);
+            actualizarPrecioProteina.setInt(2, nuevoPrecio);
+            actualizarPrecioProteina.execute();
+
+            for (Proteina proteina : listaProteina) {
+                if (proteina.getNombre().equals(nombre)) {
+                    proteina.setPrecio(nuevoPrecio);
+                    break; // Si se ha encontrado y actualizado la proteína, se sale del bucle
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void actualizarProteina(int id, int precio) {
+
+    public void eliminarProteina(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
-            CallableStatement actualizarProteina = con.prepareCall("{CALL actualizar_proteina(?, ?)}");
-            actualizarProteina.setInt(1, id);
-            actualizarProteina.setInt(2, precio);
-            actualizarProteina.execute();
+            CallableStatement eliminarProteina = con.prepareCall("{CALL eliminar_proteina_nombre(?)}");
+            eliminarProteina.setString(1, nombre);
+            eliminarProteina.execute();
+
+            // Eliminar la proteína de la lista
+            for (int i = 0; i < listaProteina.size(); i++) {
+                if (listaProteina.get(i).getNombre().equals(nombre)) {
+                    listaProteina.remove(i);
+                    break; // Si se ha encontrado y eliminado la proteína, se sale del bucle
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void eliminarProteina(int id) {
-        try (Connection con = ConexionMySQL.getConexion()) {
-            CallableStatement eliminarProteina = con.prepareCall("{CALL eliminar_proteina(?)}");
-            eliminarProteina.setInt(1, id);
-            eliminarProteina.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

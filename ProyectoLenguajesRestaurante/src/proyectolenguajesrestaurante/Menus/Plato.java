@@ -7,8 +7,8 @@ public class Plato extends Comida{
     }
     
     public Plato() {
-    super(0, "", "", "", "", "", 0, 0); // Valores predeterminados para los campos
-}
+        super(0, "", "", "", "", "", 0, 0); // Valores predeterminados para los campos
+    }
 
     // Método toString para mostrar la información del plato
  @Override

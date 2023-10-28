@@ -1,8 +1,24 @@
 package proyectolenguajesrestaurante.CRUD;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTextArea;
 
 public class PostresCRUD {
+    private List<Postre> listaPostres = new ArrayList<>();
+
+    public void imprimirListaPostres() {
+    for (Postre postre : listaPostres) {
+        System.out.println(postre.getNombre() + ", " + postre.getCalorias());
+    }
+    }
+    
+    public void imprimirListaPostres(JTextArea jTextArea) {
+    for (Postre postre : listaPostres) {
+        jTextArea.append(postre.getNombre() + ", " + postre.getCalorias() + "\n");
+    }
+    }
 
     public void crearPostre(String nombre, String lacteo, String frutas, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
@@ -16,6 +32,10 @@ public class PostresCRUD {
             crearPostre.setInt(7, calorias);
             crearPostre.setInt(8, precio);
             crearPostre.execute();
+            
+            Postre nuevoPostre = new Postre(nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio);
+            listaPostres.add(nuevoPostre);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,34 +56,62 @@ public class PostresCRUD {
                 int calorias = rs.getInt("calorias");
                 int precio = rs.getInt("precio");
 
-                // Imprimir los valores de las columnas
-                System.out.println("ID: " + id + ", Nombre: " + nombre + ", Lácteo: " + lacteo +
-                        ", Frutas: " + frutas + ", Desayuno: " + desayuno + ", Almuerzo: " + almuerzo +
-                        ", Cena: " + cena + ", Calorías: " + calorias + ", Precio: " + precio);
+                // Verificar si ya existe un postre con el mismo nombre en la lista
+                boolean existePostre = false;
+                for (Postre postre : listaPostres) {
+                    if (postre.getNombre().equals(nombre)) {
+                        existePostre = true;
+                        break;
+                    }
+                }
+
+                // Crear un nuevo objeto Postre si no existe en la lista
+                if (!existePostre) {
+                    Postre nuevoPostre = new Postre(nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio);
+                    listaPostres.add(nuevoPostre);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void actualizarPostre(int id, int precio) {
+
+    public void actualizarPostre(String nombre, int nuevoPrecio) {
         try (Connection con = ConexionMySQL.getConexion()) {
-            CallableStatement actualizarPostre = con.prepareCall("{CALL actualizar_postre(?, ?)}");
-            actualizarPostre.setInt(1, id);
-            actualizarPostre.setInt(2, precio);
+            CallableStatement actualizarPostre = con.prepareCall("{CALL actualizar_postre_nombre(?, ?)}");
+            actualizarPostre.setString(1, nombre);
+            actualizarPostre.setInt(2, nuevoPrecio);
             actualizarPostre.execute();
+
+            for (Postre postre : listaPostres) {
+                if (postre.getNombre().equals(nombre)) {
+                    postre.setPrecio(nuevoPrecio);
+                    break; // Si se ha encontrado y actualizado el postre, se sale del bucle
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void eliminarPostre(int id) {
+
+    public void eliminarPostre(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
-            CallableStatement eliminarPostre = con.prepareCall("{CALL eliminar_postre(?)}");
-            eliminarPostre.setInt(1, id);
+            CallableStatement eliminarPostre = con.prepareCall("{CALL eliminar_postre_nombre(?)}");
+            eliminarPostre.setString(1, nombre);
             eliminarPostre.execute();
+
+            // Eliminar el postre de la lista
+            for (int i = 0; i < listaPostres.size(); i++) {
+                if (listaPostres.get(i).getNombre().equals(nombre)) {
+                    listaPostres.remove(i);
+                    break; // Si se ha encontrado y eliminado el postre, se sale del bucle
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
