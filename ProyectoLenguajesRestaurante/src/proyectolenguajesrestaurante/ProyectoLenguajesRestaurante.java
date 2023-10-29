@@ -19,8 +19,8 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    //MenuSaludable menu = new MenuSaludable();
-    //menu.generarMenuSaludable();
+    MenuSaludable menu = new MenuSaludable();
+    menu.generarMenuSaludable();
     
 ////        OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
 ////        ordenesRestaurante.gestionarOrdenes();
