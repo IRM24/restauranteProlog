@@ -1,23 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package UI;
 
 import javax.swing.JOptionPane;
-import proyectolenguajesrestaurante.CRUD.Postre;
-import proyectolenguajesrestaurante.CRUD.PostresCRUD;
+import proyectolenguajesrestaurante.CRUD.Bebida;
+import proyectolenguajesrestaurante.CRUD.BebidasCRUD;
 
 /**
  *
  * @author camiu
  */
-public class FrmPostreCRUD extends javax.swing.JFrame {
+public class FrmBebidaCRUD extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmBebidCRUD
      */
-    public FrmPostreCRUD() {
+    public FrmBebidaCRUD() {
         initComponents();
     }
     
-    PostresCRUD postresCRUD = new PostresCRUD();        
+    BebidasCRUD bebidasCRUD = new BebidasCRUD();        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +40,7 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
@@ -50,6 +55,7 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -65,25 +71,20 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Postres CRUD");
+        jLabel1.setText("Bebida CRUD");
 
-        jRadioButton1.setText("Crear Postre");
+        jRadioButton1.setText("Crear Bebida");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Ver Postres");
+        jRadioButton2.setText("Ver Bebidas");
 
-        jRadioButton3.setText("Actualizar Postre");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
-            }
-        });
+        jRadioButton3.setText("Actualizar Bebida");
 
-        jRadioButton4.setText("Eliminar Postre");
+        jRadioButton4.setText("Eliminar Bebida");
 
         jTextField1.setName("Nombre"); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +102,12 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
             }
         });
 
@@ -167,9 +174,11 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre");
 
-        jLabel3.setText("Lacteo Si/No");
+        jLabel3.setText("Carbonatada Si/No");
 
-        jLabel4.setText("Frutas Si/No");
+        jLabel4.setText("Natural Si/No");
+
+        jLabel5.setText("Fria/Caliente");
 
         jLabel6.setText("Desayuno (Si o No)");
 
@@ -221,6 +230,7 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
+                            .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
@@ -231,7 +241,8 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
                             .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                             .addComponent(jTextField7)
                             .addComponent(jTextField6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextField5)
+                            .addComponent(jTextField4)
                             .addComponent(jTextField3)
                             .addComponent(jTextField2)
                             .addComponent(jTextField9)
@@ -283,11 +294,11 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jRadioButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
@@ -302,7 +313,11 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -327,12 +342,11 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
                             .addComponent(jRadioButton3)
                             .addComponent(jRadioButton4))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)
+                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
@@ -359,6 +373,10 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -381,8 +399,9 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre = jTextField1.getText();
-        String lacteo = jTextField2.getText();
-        String frutas = jTextField3.getText();
+        String carbontada = jTextField2.getText();
+        String natural = jTextField3.getText();
+        String temperatura = jTextField4.getText();
         String desayuno = jTextField5.getText();
         String almuerzo = jTextField6.getText();
         String cena = jTextField7.getText();
@@ -391,8 +410,8 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         String textoCalorias = jTextField8.getText();
         int calorias = Integer.parseInt(textoCalorias);
     
-        postresCRUD.crearPostre(nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio);
-        JOptionPane.showMessageDialog(this, "Postre creado: " + nombre);
+        bebidasCRUD.crearBebida(nombre, carbontada, natural, temperatura, desayuno, almuerzo, cena, calorias, precio);
+        JOptionPane.showMessageDialog(this, "Bebida creada: " + nombre);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
@@ -409,8 +428,8 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
 
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        postresCRUD.leerPostres();
-        postresCRUD.imprimirListaPostres(jTextArea1);
+        bebidasCRUD.leerBebidas();
+        bebidasCRUD.imprimirListaBebidas(jTextArea1);
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -427,21 +446,17 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
         String textoPrecio = jTextField10.getText();
         int precio = Integer.parseInt(textoPrecio);
         
-        postresCRUD.actualizarPostre(nombre, precio);
-        JOptionPane.showMessageDialog(this, "Postre actualizado: " + nombre + "Nuevo Precio:" + precio);
+        bebidasCRUD.actualizarBebida(nombre, precio);
+        JOptionPane.showMessageDialog(this, "Bebida actualizada: " + nombre + "Nuevo Precio:" + precio);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String nombre = jTextField13.getText();
         
-        postresCRUD.eliminarPostre(nombre);
-        JOptionPane.showMessageDialog(this, "Postre eliminado: " + nombre);
+        bebidasCRUD.eliminarBebida(nombre);        
+        JOptionPane.showMessageDialog(this, "Bebida eliminada: " + nombre);
 
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -460,23 +475,21 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPostreCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBebidaCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPostreCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBebidaCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPostreCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBebidaCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPostreCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBebidaCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmPostreCRUD().setVisible(true);
+                new FrmBebidaCRUD().setVisible(true);
             }
         });
     }
@@ -494,6 +507,7 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -510,6 +524,7 @@ public class FrmPostreCRUD extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
