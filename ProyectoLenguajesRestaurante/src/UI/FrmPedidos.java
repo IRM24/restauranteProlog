@@ -18,7 +18,7 @@ public class FrmPedidos extends javax.swing.JFrame {
 
     private boolean unaSolaCuenta = false; //false significa individual
     private int cantPersonas = 0; //cantidad de personas que van a ordenar
-    private int contPersonas= 1;//lleva el conteo de cuantas personas han pedido
+    private int contPersonas= 0;//lleva el conteo de cuantas personas han pedido
     private ArrayList<Comida> miListaPedidos = new ArrayList<Comida>(); //lista que almacena los pedidos
     ButtonGroup grupoBotones = new ButtonGroup();
     ButtonGroup grupoBotones2 = new ButtonGroup();
@@ -315,43 +315,46 @@ public class FrmPedidos extends javax.swing.JFrame {
 //        } else {
 //            System.out.println("No se ha seleccionado ningún elemento.");
 //        }
-        
-                
-        Comida selectedComida = (Comida) jComboBox1.getSelectedItem();
-        if (selectedComida != null) {
-           miListaPedidos.add(selectedComida);
-           //this.contPersonas++;
-           JOptionPane.showMessageDialog(null,"Comida seleccionada: " + selectedComida.getNombre());
-           JOptionPane.showMessageDialog(null, "Número de orden "+this.contPersonas);
-           this.contPersonas += 1;
+        if(this.contPersonas < this.cantPersonas){//valida que no se haya pasado la cantidad de personas de la mesa
+            Comida selectedComida = (Comida) jComboBox1.getSelectedItem();
+            if (selectedComida != null) {
+               miListaPedidos.add(selectedComida);
+               this.contPersonas++;
+               JOptionPane.showMessageDialog(null,"Comida seleccionada: " + selectedComida.getNombre());
+               JOptionPane.showMessageDialog(null, "Número de orden "+this.contPersonas);
+            } 
+
         }
 
-        //Agregamos en una lista los pedidos
-       // miListaPedidos.add(e)
-        
-
-        //if(!this.unaSolaCuenta)
-        //   JOptionPane.showMessageDialog(null, "Pago Individual");
-        //else
-        //    JOptionPane.showMessageDialog(null, "Pago grupal");
     }//GEN-LAST:event_jBtnAceptarActionPerformed
 
     private void jBtnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFacturarActionPerformed
         // TODO add your handling code here:
         double montoTotal = 0;
+        String facturaString="";
+        //Metodo de pago
+        int metodoPago = Integer.parseInt(JOptionPane.showInputDialog(null, "Por favor, digite: 1. Pago Efectivo - 2. Otro metodo de pago", "Tipo de Pago", JOptionPane.PLAIN_MESSAGE));
+                   
         if(this.unaSolaCuenta){ //si es T es grupal
             //construir factura grupal
             Factura miFactura = new Factura();
             for (Comida miComida : this.miListaPedidos) {
-                miFactura.agregarItems(miComida);               
                 montoTotal += miComida.getPrecio();
-            }
+                
+            }//for
             
             this.jTextField1.setText(montoTotal+"");
             FacturaCRUD facturaCRUD = new FacturaCRUD();
             LocalDate fecha = LocalDate.now();
             Factura factura = new Factura(fecha, montoTotal);
-            facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());
+            facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());//guarda factura en sql
+            //muestra la factura
+            facturaString = factura.toString();
+            for (Comida miComida : this.miListaPedidos) {
+                facturaString += miComida.toString() + "\n";
+                
+            }//for
+            JOptionPane.showMessageDialog(null, facturaString, "Factura de Pedido Grupal", HEIGHT);
             
             if((this.cantPersonas+1) == this.contPersonas){
                 FrmFactura frameFactura = new FrmFactura();
@@ -359,22 +362,30 @@ public class FrmPedidos extends javax.swing.JFrame {
             }
         } 
         else{
-          
-            for (Comida miComida : this.miListaPedidos) {
+          //si es individual
+                Comida selectedComidaIndiv = (Comida) jComboBox1.getSelectedItem();
+
                 montoTotal = 0;//reinicia monto
                 FacturaCRUD facturaCRUD = new FacturaCRUD();
                 Factura miFactura = new Factura();
-                miFactura.agregarItems(miComida);               
-                montoTotal = miComida.getPrecio();
+                montoTotal = selectedComidaIndiv.getPrecio();
                 this.jTextField1.setText(montoTotal+"");
                 LocalDate fecha = LocalDate.now();
                 Factura factura = new Factura(fecha, montoTotal);
                // se aumenta el contador de personas
                 
-                facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());
+                facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());//crea factura en el SQL
+                
+                 //muestra la factura
+                facturaString = factura.toString();
+                facturaString += selectedComidaIndiv.toString();
+                
+            
+                JOptionPane.showMessageDialog(null, facturaString, "Factura de Pedido Individual" + this.contPersonas, HEIGHT);
+            
                 int pedidosPendFact = this.cantPersonas-this.contPersonas;
                           
-                }
+            
             
             if((this.cantPersonas+1) == this.contPersonas){
                 FrmFactura frameFactura = new FrmFactura();
