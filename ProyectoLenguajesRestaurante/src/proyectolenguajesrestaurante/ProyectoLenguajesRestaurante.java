@@ -22,6 +22,7 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
 //        FacturaCRUD facturaCRUD = new FacturaCRUD();
 //        LocalDate fecha = LocalDate.now();
 //        double montoTotal = 8000;
@@ -31,6 +32,10 @@ public class ProyectoLenguajesRestaurante {
         
     //MenuSaludable menu = new MenuSaludable();
     //menu.generarMenuSaludable();
+=======
+    MenuSaludable menu = new MenuSaludable();
+    menu.generarMenuSaludable();
+>>>>>>> 0eb9e7713c2360b1ba7ee3c0aa32b06674526828
     
 ////        OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
 ////        ordenesRestaurante.gestionarOrdenes();
