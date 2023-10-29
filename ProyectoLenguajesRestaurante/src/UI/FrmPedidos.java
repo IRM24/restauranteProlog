@@ -1,18 +1,25 @@
 package UI;
 
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.event.ItemEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import proyectolenguajesrestaurante.Factura.Factura;
 import proyectolenguajesrestaurante.Factura.FacturaCRUD;
 import proyectolenguajesrestaurante.Factura.FacturaGrupalBuilder;
 import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
+import proyectolenguajesrestaurante.Menus.MenusFacade;
 
 public class FrmPedidos extends javax.swing.JFrame {
 
@@ -23,20 +30,22 @@ public class FrmPedidos extends javax.swing.JFrame {
     ButtonGroup grupoBotones = new ButtonGroup();
     ButtonGroup grupoBotones2 = new ButtonGroup();
     ButtonGroup grupoBotones3 = new ButtonGroup();
+    private MenusFacade menusFacade = new MenusFacade();
+
+   // FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
+//    FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
+    List<Comida> combos = menusFacade.leerCombos();
+    List<Comida> platos = menusFacade.leerPlatos();
+
+
     
     
 
-    public boolean isUnaSolaCuenta() {
-        return unaSolaCuenta;
-    }
-
-    public void setUnaSolaCuenta(boolean unaSolaCuenta, int cantPersonas) {
-        this.unaSolaCuenta = unaSolaCuenta;
-        this.cantPersonas = cantPersonas;
-    }
     
     public FrmPedidos() {
         initComponents();
+        
+
         //grupo botones de tipo comida
         this.grupoBotones.add(this.jRadioButton1);
         this.grupoBotones.add(this.jRadioButton2);
@@ -49,14 +58,26 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.grupoBotones3.add(this.jRdbPrecioP);
         this.grupoBotones3.add(this.jRdbCBP);        
         this.grupoBotones3.add(this.jRdbPcP);
+        
+        this.jRdbPcP.setVisible(false);
+        this.jRdbCBP.setVisible(false);
+        this.jRdbPrecioP.setVisible(false);
+        
+        this.jRdbCBC.setVisible(false);
+        this.jRdbCcEC.setVisible(false);
+        this.jRdbPrecioC.setVisible(false);
 
 
     }
     
-    FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
-    FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
-    List<Comida> combos = funcionalidadesCombo.leerCombos();
-    List<Comida> platos = funcionalidadesPlato.leerPlatos();
+    public boolean isUnaSolaCuenta() {
+        return unaSolaCuenta;
+    }
+
+    public void setUnaSolaCuenta(boolean unaSolaCuenta, int cantPersonas) {
+        this.unaSolaCuenta = unaSolaCuenta;
+        this.cantPersonas = cantPersonas;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -134,6 +155,7 @@ public class FrmPedidos extends javax.swing.JFrame {
         });
 
         jBtnFacturar.setText("Facturar");
+        jBtnFacturar.setEnabled(false);
         jBtnFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnFacturarActionPerformed(evt);
@@ -315,16 +337,40 @@ public class FrmPedidos extends javax.swing.JFrame {
 //        } else {
 //            System.out.println("No se ha seleccionado ningún elemento.");
 //        }
-        if(this.contPersonas < this.cantPersonas){//valida que no se haya pasado la cantidad de personas de la mesa
-            Comida selectedComida = (Comida) jComboBox1.getSelectedItem();
-            if (selectedComida != null) {
-               miListaPedidos.add(selectedComida);
-               this.contPersonas++;
-               JOptionPane.showMessageDialog(null,"Comida seleccionada: " + selectedComida.getNombre());
-               JOptionPane.showMessageDialog(null, "Número de orden "+this.contPersonas);
-            } 
 
+   if(this.unaSolaCuenta){
+        if(this.contPersonas < this.cantPersonas){//valida que no se haya pasado la cantidad de personas de la mesa
+             Comida selectedComida = (Comida) jComboBox1.getSelectedItem();
+             if (selectedComida != null) {
+                miListaPedidos.add(selectedComida);
+                this.contPersonas++;
+                JOptionPane.showMessageDialog(null,"Comida seleccionada: " + selectedComida.getNombre());
+                JOptionPane.showMessageDialog(null, "Número de orden "+this.contPersonas);
+             } 
+             if(this.contPersonas==this.cantPersonas){
+             JOptionPane.showMessageDialog(null, "Ya todas las personas de la mesa han hecho su pedido. Selecciona la opcion de Facturar");
+                this.jBtnFacturar.setEnabled(true);
+                this.jBtnAceptar.setEnabled(false);
+             }
+    }
+   }
+    if (this.unaSolaCuenta==false){//facturas individuales
+
+        if(this.contPersonas < this.cantPersonas){//valida que no se haya pasado la cantidad de personas de la mesa
+
+             Comida selectedComida = (Comida) jComboBox1.getSelectedItem();
+             if (selectedComida != null) {
+                this.contPersonas++;
+                JOptionPane.showMessageDialog(null,"Comida seleccionada: " + selectedComida.getNombre());
+                JOptionPane.showMessageDialog(null, "Número de orden "+this.contPersonas);
+                JOptionPane.showMessageDialog(null, "Su pedido ha sido registrado. Selecciona la opcion de Facturar");
+
+                this.jBtnFacturar.setEnabled(true);
+                this.jBtnAceptar.setEnabled(false);
+             } 
+             
         }
+    }//else grupal-indiv
 
     }//GEN-LAST:event_jBtnAceptarActionPerformed
 
@@ -356,9 +402,9 @@ public class FrmPedidos extends javax.swing.JFrame {
             }//for
             JOptionPane.showMessageDialog(null, facturaString, "Factura de Pedido Grupal", HEIGHT);
             
-            if((this.cantPersonas+1) == this.contPersonas){
-                FrmFactura frameFactura = new FrmFactura();
-                frameFactura.setVisible(true);
+            if((this.cantPersonas) == this.contPersonas){ 
+                JOptionPane.showMessageDialog(null, "El proceso de Facturación ha terminado.", "Fin Proceso Facturacion", HEIGHT);
+                this.dispose();
             }
         } 
         else{
@@ -387,16 +433,25 @@ public class FrmPedidos extends javax.swing.JFrame {
                           
             
             
-            if((this.cantPersonas+1) == this.contPersonas){
-                FrmFactura frameFactura = new FrmFactura();
-                frameFactura.setVisible(true);
+            if((this.cantPersonas) > this.contPersonas){
+                this.jBtnAceptar.setEnabled(true);
+                this.jBtnFacturar.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Seleccione el pedido del siguiente comensal");
+                this.limpiarFormulario(this);
+                
             }
+            if(this.contPersonas==this.cantPersonas){
+                JOptionPane.showMessageDialog(null, "Ya todas las personas de la mesa han hecho su pedido");
+                this.dispose();
+
+             }
+            
             
         }
     }//GEN-LAST:event_jBtnFacturarActionPerformed
 
     private void jRdbCBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbCBCActionPerformed
-        List<Comida> combosBajasCalorias = funcionalidadesCombo.filtrarCombosBajasCalorias();//viene de la BD
+        List<Comida> combosBajasCalorias = this.menusFacade.filtrarCombosBajasCalorias();//viene de la BD
             DefaultComboBoxModel<Comida> model = new DefaultComboBoxModel<>();
             for (Comida combo : combosBajasCalorias) {
                 model.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
@@ -406,7 +461,7 @@ public class FrmPedidos extends javax.swing.JFrame {
 
     private void jRdbPrecioCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbPrecioCActionPerformed
         // TODO add your handling code here:
-         List<Comida> combosPrecioBajo = funcionalidadesCombo.filtrarCombosPrecioBajo();
+         List<Comida> combosPrecioBajo = this.menusFacade.filtrarCombosPrecioBajo();
             DefaultComboBoxModel<Comida> model2 = new DefaultComboBoxModel<>();
             for (Comida combo : combosPrecioBajo) {
                 model2.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
@@ -415,7 +470,7 @@ public class FrmPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRdbPrecioCActionPerformed
 
     private void jRdbCcECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbCcECActionPerformed
-        List<Comida> combosEnsalada = funcionalidadesCombo.filtrarCombosConEnsalada();
+        List<Comida> combosEnsalada = this.menusFacade.filtrarCombosConEnsalada();
             DefaultComboBoxModel<Comida> model3 = new DefaultComboBoxModel<>();
             for (Comida combo : combosEnsalada) {
                 model3.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
@@ -424,7 +479,7 @@ public class FrmPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRdbCcECActionPerformed
 
     private void jRdbPrecioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbPrecioPActionPerformed
-        List<Comida> platosPrecioBajo = funcionalidadesPlato.filtrarPlatosPrecioBajo();
+        List<Comida> platosPrecioBajo = this.menusFacade.filtrarPlatosPrecioBajo();
             DefaultComboBoxModel<Comida> model5 = new DefaultComboBoxModel<>();
             for (Comida plato : platosPrecioBajo) {
                 model5.addElement(plato); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
@@ -433,7 +488,7 @@ public class FrmPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRdbPrecioPActionPerformed
 
     private void jRdbCBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbCBPActionPerformed
-        List<Comida> platosBajasCalorias = funcionalidadesPlato.filtrarPlatosBajasCalorias();
+        List<Comida> platosBajasCalorias = this.menusFacade.filtrarPlatosBajasCalorias();
             DefaultComboBoxModel<Comida> model6 = new DefaultComboBoxModel<>();
             for (Comida plato : platosBajasCalorias) {
                 model6.addElement(plato); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
@@ -442,7 +497,7 @@ public class FrmPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRdbCBPActionPerformed
 
     private void jRdbPcPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbPcPActionPerformed
-        List<Comida> platosPollo = funcionalidadesPlato.filtrarPlatosConPollo();
+        List<Comida> platosPollo = this.menusFacade.filtrarPlatosConPollo();
             DefaultComboBoxModel<Comida> model4 = new DefaultComboBoxModel<>();
             for (Comida plato : platosPollo) {
                 model4.addElement(plato); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
@@ -454,6 +509,38 @@ public class FrmPedidos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    public void limpiarFormulario(Container container) {
+    for (Component component : container.getComponents()) {
+        if (component instanceof JTextField) {
+            JTextField field = (JTextField) component;
+            field.setText("");
+        }else if (component instanceof JComboBox) {
+            JComboBox comboBox = (JComboBox) component;
+            comboBox.setSelectedIndex(-1);
+        }else if (component instanceof JRadioButton) {
+            JRadioButton radioButton = (JRadioButton) component;
+            radioButton.setSelected(false);
+        } else if (component instanceof Container) {
+            limpiarFormulario((Container) component);
+        }
+    }
+    grupoBotones.clearSelection();
+    grupoBotones2.clearSelection();
+    grupoBotones3.clearSelection();
+    this.noMostrarBtnRdd();
+     
+
+}
+
+    private void noMostrarBtnRdd(){
+    
+       this.jRdbPcP.setVisible(false);
+        this.jRdbCBP.setVisible(false);
+        this.jRdbPrecioP.setVisible(false);
+        
+        this.jRdbCBC.setVisible(false);
+        this.jRdbCcEC.setVisible(false);
+        this.jRdbPrecioC.setVisible(false);}
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 for (Comida pedido : miListaPedidos) {
     System.out.println("Pedido: " + pedido.getNombre() + ", Precio: " + pedido.getPrecio());
