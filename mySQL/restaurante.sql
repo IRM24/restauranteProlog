@@ -76,6 +76,12 @@ CREATE TABLE combo (
     precio INT NOT NULL
 );
 
+CREATE TABLE factura (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE,
+    monto_total DOUBLE
+);
+
 
 -- Inserts Bebidas -------------------------------------------------------------------------------------
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
@@ -516,10 +522,17 @@ END;
 //
 DELIMITER ;
 
-
-call leer_combos();
-
-delete from combo;
+-- FACTURA ----------------------
+DELIMITER //
+CREATE PROCEDURE crear_factura(
+    in p_fecha DATE,
+    in p_monto_total DOUBLE
+)
+BEGIN
+    INSERT INTO factura (fecha, monto_total) VALUES (p_fecha, p_monto_total);
+END //
+DELIMITER ;
+select * from factura;
 
 select * from postre;
 select * from proteina;

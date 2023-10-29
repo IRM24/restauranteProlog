@@ -1,8 +1,11 @@
 package proyectolenguajesrestaurante;
+import java.time.LocalDate;
 import java.util.List;
 import proyectolenguajesrestaurante.CRUD.Bebida;
 import proyectolenguajesrestaurante.CRUD.BebidasCRUD;
 import proyectolenguajesrestaurante.CRUD.*;
+import proyectolenguajesrestaurante.Factura.Factura;
+import proyectolenguajesrestaurante.Factura.FacturaCRUD;
 import proyectolenguajesrestaurante.Menus.Combo;
 import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
@@ -19,6 +22,13 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        FacturaCRUD facturaCRUD = new FacturaCRUD();
+//        LocalDate fecha = LocalDate.now();
+//        double montoTotal = 8000;
+//        Factura factura = new Factura(fecha, montoTotal);
+//        facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());
+
+        
     //MenuSaludable menu = new MenuSaludable();
     //menu.generarMenuSaludable();
     

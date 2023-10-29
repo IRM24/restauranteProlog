@@ -177,6 +177,11 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
         String infoMesa = mesas.get(numeroMesa - 1).obtenerInfoMesa(); // Ajusta el método según la estructura de tu clase Mesa
         JOptionPane.showMessageDialog(this, "Información de la mesa: " + infoMesa);
         
+        FrmPedidos frmPedido = new FrmPedidos();
+        frmPedido.setUnaSolaCuenta(pagarJuntos,numeroPersonas);
+        frmPedido.setCantPersonas(numeroPersonas);
+        frmPedido.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
