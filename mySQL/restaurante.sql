@@ -1,3 +1,6 @@
+-- SQL proyecto 2 
+-- Ian Calvo Madrigal y Camila Ulate Chaves
+
 CREATE DATABASE restaurante;
 USE restaurante;
 
@@ -87,6 +90,8 @@ CREATE TABLE orden (
     fecha DATE,
     detalle VARCHAR(250)
 );
+-- Inserts de Totas las Tablas ----------------------------
+
 -- Inserts Bebidas -------------------------------------------------------------------------------------
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Jugo de Naranja', 'No', 'Si', 'Fria', 'Si', 'Si', 'Si', 110, 1800);
@@ -115,7 +120,6 @@ VALUES ('Dr.Pepper', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 170, 1800);
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Agua', 'No', 'Si', 'Fria', 'Si', 'Si', 'Si', 0, 0);
 
-select  * from bebida;
 -- Inserts Proteinas ---------------------------------------------------------------------------------
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Salchichas', 'Carnes Rojas', 'Si', 'No', 'No', 210, 1750);
@@ -160,7 +164,6 @@ Delete from proteina;
 SELECT * FROM proteina;
 
 -- Insert Acompannamientos --------------------------------------------------------
-
 INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
 VALUES
     ('Pan tostado', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 85, 750),
@@ -189,8 +192,6 @@ VALUES
     ('Ensalada Cesar','Frio', 'No', 'Si', 'No', 'Si', 'Si', 130, 2600),
     ('Ensalada de Garbanzos','Frio', 'Si', 'Si', 'No', 'Si', 'Si', 110, 2500);
 
--- select * from postre;
--- delete from acompannamiento;
 -- Inserts de postres -------------------------------------------------
 INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio)
 VALUES
@@ -217,7 +218,7 @@ VALUES
     ('Gelato', 'No', 'No','No',  'Si', 'Si', 110, 2200),
     ('Cheesecake', 'Si', 'No','No', 'Si', 'Si', 310, 2500);
     
--- insert platos ------------
+-- Insert platos ------------------------------
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
 VALUES ('Plato Fuerte 1','Salmón Ahumado', 'Ensalada Verde', 'Arroz blanco', 'Pasta Pesto',510, 7500);
 
@@ -230,7 +231,7 @@ VALUES ('Plato Fuerte 3','Tocineta', 'Pan tostado', 'Frutas Frescas','Pancakes',
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
 VALUES ('Plato Fuerte 4','Pollo Frito', 'Pure de papa', 'Arroz blanco','Ensalada Verde', 620, 5800);
 
--- insert combos ------------
+-- Insert combos -------------------
 
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
 VALUES ('Combo 1','Costilla de cerdo', 'Ensalada Cesar', 'Hummus', 'Tofu Salteado', 'Coca-cola','Flan de Caramelo', 800, 8500);
@@ -242,7 +243,7 @@ INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompan
 VALUES ('Combo 3','Albondigas', 'Pure de papa','Ensalada Verde', 'Arroz blanco','Limonada con Hierbabuena','Cheesecake', 860, 7000);
 
 
--- insert Factura --------
+-- Insert Factura -----------------------------
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-9', 25000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-15', 35000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-15', 9000.0);
@@ -319,14 +320,16 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-1', 20000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-7', 7000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-21', 6000.0);
 
--- Insert orden ----------------------
+-- Insert orden --------------------------
 INSERT INTO orden (fecha, detalle) VALUES ('2022-1-1', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-2-21', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-3-2', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-7-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-8-6', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
-
+INSERT INTO orden (fecha, detalle) VALUES ('2022-4-9', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-5-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-6-10', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
 
 INSERT INTO orden (fecha, detalle) VALUES ('2023-1-1', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-2-21', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
@@ -336,10 +339,9 @@ INSERT INTO orden (fecha, detalle) VALUES ('2023-6-22', "Nombre:'Plato Fuerte 3'
 INSERT INTO orden (fecha, detalle) VALUES ('2023-8-3', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-9-30', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-10-1', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
-
-
-delete  from orden;
-select * from orden;
+INSERT INTO orden (fecha, detalle) VALUES ('2022-3-20', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-7-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-23', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
 
 
 DELIMITER //
@@ -365,8 +367,10 @@ END //
 
 DELIMITER ;
 
--- CRUD BEBIDAS --------------
--- CREATE
+-- Procedimientos almacenados para los CRUD de elmentos -----------
+
+-- CRUD Bebidas --------------------------
+-- Creacion de una bebida
 DELIMITER //
 CREATE PROCEDURE crear_bebida(
     IN nombre VARCHAR(100),
@@ -385,7 +389,7 @@ BEGIN
 END //
 DELIMITER ;
 
--- READ
+-- Lectura Bebidas
 DELIMITER //
 CREATE PROCEDURE leer_bebida()
 BEGIN
@@ -393,7 +397,7 @@ BEGIN
 END //
 DELIMITER ;
 
--- UPDATE
+-- Actualizar Bebidas
 DELIMITER //
 CREATE PROCEDURE actualizar_precio_bebida_nombre(
     IN bebida_nombre VARCHAR(50),
@@ -404,7 +408,7 @@ BEGIN
 END //
 DELIMITER ;
 
--- DELETE
+-- Eliminar Bebidas 
 DELIMITER //
 CREATE PROCEDURE eliminar_bebida_nombre(
     IN bebida_nombre VARCHAR(50)
@@ -414,8 +418,10 @@ BEGIN
 END //
 DELIMITER ;
 select * from bebida;
--- CRUD Proteinas -------
--- CREATE
+
+-- CRUD Proteinas --------------------
+
+-- Creacion Proteinas
 DELIMITER //
 CREATE PROCEDURE crear_proteina(
     IN p_nombre VARCHAR(100),
@@ -432,8 +438,8 @@ BEGIN
 END//
 
 DELIMITER ;
--- READ
 
+-- Lectura Proteinas
 DELIMITER //
 
 CREATE PROCEDURE leer_proteina()
@@ -443,8 +449,7 @@ END//
 
 DELIMITER ;
 
--- UPDATE
-
+-- Actualizar Proteinas
 DELIMITER //
 
 CREATE PROCEDURE actualizar_proteina_nombre(
@@ -459,8 +464,7 @@ END//
 
 DELIMITER ;
 
--- DELETE
-
+-- Eliminar proteinas
 DELIMITER //
 
 CREATE PROCEDURE eliminar_proteina_nombre(
@@ -473,9 +477,9 @@ END//
 
 DELIMITER ;
 
--- CRUD acompannamientos ----------------
+-- CRUD Acompannamientos ----------------
 
--- CREATE
+-- Crear acompannamiento
 DELIMITER //
 
 CREATE PROCEDURE crear_acompannamiento(
@@ -496,7 +500,7 @@ END//
 
 DELIMITER ;
 
--- READ
+-- Leer acompannamiento
 DELIMITER //
 
 CREATE PROCEDURE leer_acompannamiento()
@@ -506,7 +510,7 @@ END//
 
 DELIMITER ;
 
--- UPDATE 
+-- actualizar acompannamiento 
 DELIMITER //
 
 CREATE PROCEDURE actualizar_acompannamiento_nombree(
@@ -521,7 +525,7 @@ END//
 
 DELIMITER ;
 
--- DELETE
+-- eliminar acompannamiento
 
 DELIMITER //
 
@@ -537,9 +541,9 @@ DELIMITER ;
 
 select * from acompannamiento;
 
--- CRUD postre ------------
+-- CRUD postre ----------------
 
--- CREATE
+-- Crear postre
 DELIMITER //
 
 CREATE PROCEDURE crear_postre(
@@ -559,7 +563,7 @@ END//
 
 DELIMITER ;
 
--- READ
+-- Leer postre
 DELIMITER //
 
 CREATE PROCEDURE leer_postre()
@@ -569,7 +573,7 @@ END//
 
 DELIMITER ;
 
--- UPDATE 
+-- Actualizar postre 
 DELIMITER //
 
 CREATE PROCEDURE actualizar_postre_nombre(
@@ -584,7 +588,7 @@ END//
 
 DELIMITER ;
 
--- DELETE
+-- Eliminar postre
 
 DELIMITER //
 
@@ -599,8 +603,10 @@ END//
 DELIMITER ;
 
 SELECT * FROM postre;
+
 -- Funciones Combo -----------------
 
+-- Leer Combo
 DELIMITER //
 
 CREATE PROCEDURE leer_combos()
@@ -613,6 +619,7 @@ DELIMITER ;
 
 -- Funciones Plato ----------------------
 
+-- Leer Plato
 DELIMITER //
 
 CREATE PROCEDURE leer_platos()
@@ -623,7 +630,9 @@ END;
 //
 DELIMITER ;
 
--- FACTURA ----------------------
+-- Funciones Factura ----------------------
+
+-- Crear Factura 
 DELIMITER //
 CREATE PROCEDURE crear_factura(
     in p_fecha DATE,
@@ -634,6 +643,7 @@ BEGIN
 END //
 DELIMITER ;
 
+-- Leer Factura 
 DELIMITER //
 
 CREATE PROCEDURE leer_facturas()
@@ -646,6 +656,7 @@ DELIMITER ;
 select * from factura;
 
 -- Orden --------------
+-- Leer Ordenes
 DELIMITER //
 
 CREATE PROCEDURE leer_ordenes()
@@ -656,6 +667,7 @@ END;
 //
 DELIMITER ;
 
+-- Crear Orden
 DELIMITER //
 CREATE PROCEDURE crear_orden(
     in p_fecha DATE,
@@ -667,17 +679,13 @@ END //
 DELIMITER ;
 
 
-
+-- Selects de las tablas
 select * from factura;
 select * from orden;
+select * from plato;
 select * from postre;
 select * from proteina;
 select * from acompannamiento;
 select * from bebida;
 select * from combo;
 
--- drop procedure leer_combos;
--- drop table acompannamiento;
--- drop table bebida;
--- drop table postre;
--- drop table proteina;

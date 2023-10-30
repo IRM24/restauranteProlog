@@ -1,10 +1,7 @@
 package proyectolenguajesrestaurante.Menus;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import org.jpl7.Atom;
 import org.jpl7.Query;
 import org.jpl7.Term;
 

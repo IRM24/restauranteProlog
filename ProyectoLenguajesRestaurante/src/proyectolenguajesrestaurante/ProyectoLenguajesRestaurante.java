@@ -16,6 +16,7 @@ import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
 import proyectolenguajesrestaurante.Menus.MenuPrincipal;
 import proyectolenguajesrestaurante.Menus.MenuSaludable;
+import proyectolenguajesrestaurante.Menus.MenusFacade;
 import proyectolenguajesrestaurante.Menus.Plato;
 import proyectolenguajesrestaurante.Mesa.OrdenesRestaurante;
 
@@ -26,17 +27,14 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
         FrmMenuInicio frmMenuInicio = new FrmMenuInicio();
         frmMenuInicio.setVisible(true);
-=======
+
         
-        MenuSaludable menu = new MenuSaludable();
-        menu.generarMenuSaludable();
+//        MenuSaludable menu = new MenuSaludable();
+//        menu.generarMenuSaludable();
         //Saluditos 
         
->>>>>>> a983954bfa6d0a354a5ca4b047fa2648cd658705
-//<<<<<<< HEAD
 ////        FacturaCRUD facturaCRUD = new FacturaCRUD();
 ////        LocalDate fecha = LocalDate.now();
 ////        double montoTotal = 8000;
@@ -77,7 +75,6 @@ public class ProyectoLenguajesRestaurante {
 //        double monto = fa.calcularSumaTotalEnRango(fechaInicio, fechaFin);
 //        System.out.println(monto);
 //         
-<<<<<<< HEAD
 //          OrdenCRUD orden = new OrdenCRUD();
 //          //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
 //          orden.leerOrdenes();
@@ -89,7 +86,7 @@ public class ProyectoLenguajesRestaurante {
 //          
 //          String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
 //          System.out.println("Plato más solicitado: " + platoMasSolicitado);
-=======
+
           /*OrdenCRUD orden = new OrdenCRUD();
           //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
           orden.leerOrdenes();
@@ -101,7 +98,6 @@ public class ProyectoLenguajesRestaurante {
           
           String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
           System.out.println("Plato más solicitado: " + platoMasSolicitado);*/
->>>>>>> a983954bfa6d0a354a5ca4b047fa2648cd658705
 
 //        //boolean valid = funcionalidadesCombo.verifyCombo(2);
 //        //System.out.println(valid);
@@ -112,7 +108,19 @@ public class ProyectoLenguajesRestaurante {
 //        }
         
         
-//        FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
+//        MenusFacade MenusFacade = new MenusFacade();
+//        MenusFacade.leerCombos();
+//        List<Comida> listaCombosBajasCalorias = MenusFacade.filtrarCombosBajasCalorias();
+//
+//        // Imprimir la lista
+//        if (!listaCombosBajasCalorias.isEmpty()) {
+//            for (Comida combo : listaCombosBajasCalorias) {
+//                System.out.println(combo);
+//            }
+//        } else {
+//            System.out.println("La lista de combos de bajas calorías está vacía.");
+//        }
+        
 //        funcionalidadesPlato.leerPlatos();
 //        funcionalidadesPlato.imprimirPlatos();
 //        List<Comida> platosBajasCalorias = funcionalidadesPlato.filtrarPlatosBajasCalorias();
