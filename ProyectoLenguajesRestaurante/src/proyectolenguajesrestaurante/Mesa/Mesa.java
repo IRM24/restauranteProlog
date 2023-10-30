@@ -26,6 +26,10 @@ public class Mesa {
         return numeroMesa;
     }
 
+    public void setNumeroMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
+    }
+
     public int getCantidadPersonas() {
         return cantidadPersonas;
     }

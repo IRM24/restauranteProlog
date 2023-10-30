@@ -20,12 +20,14 @@ import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
 import proyectolenguajesrestaurante.Menus.MenusFacade;
+import proyectolenguajesrestaurante.Mesa.Mesa;
 
 public class FrmPedidos extends javax.swing.JFrame {
 
     private boolean unaSolaCuenta = false; //false significa individual
     private int cantPersonas = 0; //cantidad de personas que van a ordenar
     private int contPersonas= 0;//lleva el conteo de cuantas personas han pedido
+    private int numMesa = 0;
     private ArrayList<Comida> miListaPedidos = new ArrayList<Comida>(); //lista que almacena los pedidos
     ButtonGroup grupoBotones = new ButtonGroup();
     ButtonGroup grupoBotones2 = new ButtonGroup();
@@ -66,6 +68,16 @@ public class FrmPedidos extends javax.swing.JFrame {
 
 
     }
+
+    public int getNumMesa() {
+        return numMesa;
+    }
+
+    public void setNumMesa(int numMesa) {
+        this.numMesa = numMesa;
+    }
+    
+    
     
     public boolean isUnaSolaCuenta() {
         return unaSolaCuenta;
@@ -441,6 +453,9 @@ public class FrmPedidos extends javax.swing.JFrame {
             
             if((this.cantPersonas) == this.contPersonas){ 
                 JOptionPane.showMessageDialog(null, "El proceso de Facturación ha terminado.", "Fin Proceso Facturacion", HEIGHT);
+//                Mesa mesas = new Mesa();
+//                mesas.setNumeroMesa(numMesa-1);
+//                mesas.estaOcupada();
                 this.dispose();
             }
         } 

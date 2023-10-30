@@ -184,7 +184,12 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
         FrmPedidos frmPedido = new FrmPedidos();
         frmPedido.setUnaSolaCuenta(pagarJuntos,numeroPersonas);
         frmPedido.setCantPersonas(numeroPersonas);
+//        frmPedido.setNumMesa(numeroMesa);
         frmPedido.setVisible(true);
+        
+        mesas.get(numeroMesa - 1).desocuparMesa();
+        //JOptionPane.showMessageDialog(this, "La mesa se ha desocupado, mesa numero: " + numeroMesa);
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
