@@ -15,6 +15,7 @@ public class Factura {
         this.montoTotal = montoTotal;
 
     }
+
     
      public Factura() {
        this.fecha = LocalDate.now();

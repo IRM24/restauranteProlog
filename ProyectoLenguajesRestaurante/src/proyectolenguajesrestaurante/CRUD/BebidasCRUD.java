@@ -20,8 +20,6 @@ public class BebidasCRUD {
     }
     }
 
-
-
     
     public void crearBebida(String nombre, String carbonatadas, String naturales, String temperatura, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {

@@ -237,8 +237,39 @@ VALUES ('Combo 2','Salchichas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
 VALUES ('Combo 3','Albondigas', 'Pure de papa','Ensalada Verde', 'Arroz blanco','Limonada con Hierbabuena','Cheesecake', 860, 7000);
 
-select * from plato;
-select * from combo;
+
+-- insert Factura --------
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-1', 12000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-15', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-28', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-2-9', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-2-12', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-2-28', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-2', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-9', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-20', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-29', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-4-2', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-4-15', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 8000.0);
+
+
+delete  from factura;
+select * from factura;
 
 
 DELIMITER //
@@ -531,6 +562,16 @@ CREATE PROCEDURE crear_factura(
 BEGIN
     INSERT INTO factura (fecha, monto_total) VALUES (p_fecha, p_monto_total);
 END //
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE leer_facturas()
+BEGIN
+    SELECT * FROM factura;
+END;
+
+//
 DELIMITER ;
 select * from factura;
 

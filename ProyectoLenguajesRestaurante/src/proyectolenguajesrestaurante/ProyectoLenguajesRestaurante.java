@@ -1,4 +1,5 @@
 package proyectolenguajesrestaurante;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import proyectolenguajesrestaurante.CRUD.Bebida;
@@ -52,6 +53,17 @@ public class ProyectoLenguajesRestaurante {
 //        List<Comida> combosEnsalada = funcionalidadesCombo.filtrarCombosConEnsalada();
 //
 //        
+//        FacturaCRUD fa = new FacturaCRUD();
+//        fa.leerFacturas();
+//        fa.imprimirListaFacturas();
+//        int anno = 2023;
+//        LocalDate localDateInicio = LocalDate.of(anno, 1, 1); // Ejemplo: 1 de enero de 2023
+//        Date fechaInicio = Date.valueOf(localDateInicio);
+//        LocalDate localDateFin= LocalDate.of(2023, 11, 1); // Ejemplo: 1 de enero de 2023
+//        Date fechaFin = Date.valueOf(localDateFin);
+//        double monto = fa.calcularSumaTotalEnRango(fechaInicio, fechaFin);
+//        System.out.println(monto);
+//         
 //        //boolean valid = funcionalidadesCombo.verifyCombo(2);
 //        //System.out.println(valid);
 //       
@@ -122,4 +134,5 @@ public class ProyectoLenguajesRestaurante {
 
         
     }
+
 }    

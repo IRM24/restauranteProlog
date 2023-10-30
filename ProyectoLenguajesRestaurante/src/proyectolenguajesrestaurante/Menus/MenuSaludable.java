@@ -21,6 +21,9 @@ int Precio;
 String Bebida;
 String Postre;
 
+
+// lista comida por cada elemento que prolog devuelva/crea lo agrega a esa lista
+// y esa lista es la que tiene que llamar desde FrmPedidos (ver comentarios que le puse)
     public void generarMenuSaludable() {
         // Ruta al archivo Prolog
         String rutaPrologIan = "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
@@ -112,7 +115,7 @@ String Postre;
                                 Caloria = Integer.parseInt(menuJava.get(6));
                             }
                                 Combo combo = (Combo) FactoryComida.crearComida("combo", Id, Nombre, Proteina, Acompannamiento1, Acompannamiento2, Acompannamiento3, Caloria, Precio, Bebida, Postre);
-                                
+                                // lista.add(combo)
                                 System.out.println("BebidaCombo: " + combo.getBebida());
                                 System.out.println("ProteinaCombo: " + combo.getProteina());
                                 System.out.println("Acompanamiento1Combo: " + combo.getAcompannamiento1());

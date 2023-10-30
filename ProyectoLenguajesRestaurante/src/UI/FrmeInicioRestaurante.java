@@ -142,6 +142,7 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
         int opcion = JOptionPane.showOptionDialog(null, "¿Desea pagar en una sola cuenta?", "Pago en una Sola Cuenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
         int numeroMesa = (int)this.jSpinner1.getValue();
 
+        
         boolean pagarJuntos = false;
         if (opcion == JOptionPane.YES_OPTION) {
              pagarJuntos = true;
