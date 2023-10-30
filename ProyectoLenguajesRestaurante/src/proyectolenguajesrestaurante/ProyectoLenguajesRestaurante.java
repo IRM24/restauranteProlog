@@ -26,8 +26,16 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
         FrmMenuInicio frmMenuInicio = new FrmMenuInicio();
         frmMenuInicio.setVisible(true);
+=======
+        
+        MenuSaludable menu = new MenuSaludable();
+        menu.generarMenuSaludable();
+        //Saluditos 
+        
+>>>>>>> a983954bfa6d0a354a5ca4b047fa2648cd658705
 //<<<<<<< HEAD
 ////        FacturaCRUD facturaCRUD = new FacturaCRUD();
 ////        LocalDate fecha = LocalDate.now();
@@ -69,6 +77,7 @@ public class ProyectoLenguajesRestaurante {
 //        double monto = fa.calcularSumaTotalEnRango(fechaInicio, fechaFin);
 //        System.out.println(monto);
 //         
+<<<<<<< HEAD
 //          OrdenCRUD orden = new OrdenCRUD();
 //          //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
 //          orden.leerOrdenes();
@@ -80,6 +89,19 @@ public class ProyectoLenguajesRestaurante {
 //          
 //          String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
 //          System.out.println("Plato más solicitado: " + platoMasSolicitado);
+=======
+          /*OrdenCRUD orden = new OrdenCRUD();
+          //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
+          orden.leerOrdenes();
+          orden.imprimirListaOrdenes();
+          LocalDate localDateInicio = LocalDate.of(2023, 1, 28); // Ejemplo: 1 de enero de 2023
+          Date fechaInicio = Date.valueOf(localDateInicio);
+          LocalDate localDateFin= LocalDate.of(2023, 10, 30);
+          Date fechaFin = Date.valueOf(localDateFin);
+          
+          String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
+          System.out.println("Plato más solicitado: " + platoMasSolicitado);*/
+>>>>>>> a983954bfa6d0a354a5ca4b047fa2648cd658705
 
 //        //boolean valid = funcionalidadesCombo.verifyCombo(2);
 //        //System.out.println(valid);
