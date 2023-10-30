@@ -13,16 +13,14 @@ public class Plato extends Comida{
     // Método toString para mostrar la información del plato
  @Override
 public String toString() {
-    return "Plato{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + '\'' +
-            ", proteina='" + getProteina() + '\'' +
-            ", acompannamiento1='" + getAcompannamiento1() + '\'' +
-            ", acompannamiento2='" + getAcompannamiento2() + '\'' +
-            ", acompannamiento3='" + getAcompannamiento3() + '\'' +
-            ", calorias=" + getCalorias() +
-            ", precio=" + getPrecio() +
-            '}';
+    return 
+            "Nombre:'" + getNombre() + '\'' +
+            ", "+getProteina() + '\'' +
+            ", "+getAcompannamiento1() + '\'' +
+            ", "+getAcompannamiento2() + '\'' +
+            ", "+getAcompannamiento3() + '\'' +
+            " Calorias:, "+getCalorias() +
+            " Precio:, "+getPrecio();
 }
 
 }

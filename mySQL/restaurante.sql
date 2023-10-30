@@ -76,7 +76,17 @@ CREATE TABLE combo (
     precio INT NOT NULL
 );
 
+CREATE TABLE factura (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE,
+    monto_total DOUBLE
+);
 
+CREATE TABLE orden (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE,
+    detalle VARCHAR(250)
+);
 -- Inserts Bebidas -------------------------------------------------------------------------------------
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Jugo de Naranja', 'No', 'Si', 'Fria', 'Si', 'Si', 'Si', 110, 1800);
@@ -231,8 +241,105 @@ VALUES ('Combo 2','Salchichas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
 VALUES ('Combo 3','Albondigas', 'Pure de papa','Ensalada Verde', 'Arroz blanco','Limonada con Hierbabuena','Cheesecake', 860, 7000);
 
-select * from plato;
-select * from combo;
+
+-- insert Factura --------
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-9', 25000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-15', 35000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-15', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-1-29', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-2-1', 15000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-2-17', 16500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-2-28', 30000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-3-2', 3500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-3-8', 12000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-3-20', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-3-29', 25000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-4-2', 20000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-4-17', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-7', 5500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-16', 18000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-22', 40000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-28', 10000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-28', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-6-1', 6000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-6-20', 18000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-7-2', 12000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-7-14', 15000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-7-17', 23000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-7-29', 34000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-8-5', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-8-14', 10000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-8-23', 25000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-9-1', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-9-10', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-9-18', 35000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-9-28', 18000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-10-1', 11000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-10-1', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-10-21', 6000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-11-3', 29000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-11-15', 15000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-11-28', 19000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-12-1', 20000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-12-7', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-12-25', 6000.0);
+
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-1', 12000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-15', 35000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-15', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-28', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-2-9', 15000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-2-12', 16500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-2-28', 30000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-2', 9500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-9', 10000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-20', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-3-29', 25000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-4-2', 20000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-4-15', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-7', 5500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-13', 12000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-21', 30000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-21', 10000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-5-28', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-6-2', 6000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-6-17', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-1', 12000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-14', 15000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-17', 23000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-28', 34000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-5', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-14', 10000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-23', 25000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-4', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-10', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-18', 15000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-28', 18000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-1', 20000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-7', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-21', 6000.0);
+
+-- Insert orden ----------------------
+INSERT INTO orden (fecha, detalle) VALUES ('2022-1-1', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-2-21', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-3-2', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-7-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-8-6', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+
+
+INSERT INTO orden (fecha, detalle) VALUES ('2023-1-1', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-2-21', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-5', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-5-8', "Nombre:'Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-6-22', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-8-3', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-30', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-1', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+
+
+delete  from orden;
+select * from orden;
 
 
 DELIMITER //
@@ -516,11 +623,53 @@ END;
 //
 DELIMITER ;
 
+-- FACTURA ----------------------
+DELIMITER //
+CREATE PROCEDURE crear_factura(
+    in p_fecha DATE,
+    in p_monto_total DOUBLE
+)
+BEGIN
+    INSERT INTO factura (fecha, monto_total) VALUES (p_fecha, p_monto_total);
+END //
+DELIMITER ;
 
-call leer_combos();
+DELIMITER //
 
-delete from combo;
+CREATE PROCEDURE leer_facturas()
+BEGIN
+    SELECT * FROM factura;
+END;
 
+//
+DELIMITER ;
+select * from factura;
+
+-- Orden --------------
+DELIMITER //
+
+CREATE PROCEDURE leer_ordenes()
+BEGIN
+    SELECT * FROM orden;
+END;
+
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE crear_orden(
+    in p_fecha DATE,
+    in p_detalle VARCHAR(250)
+)
+BEGIN
+    INSERT INTO orden (fecha, detalle) VALUES (p_fecha, p_detalle);
+END //
+DELIMITER ;
+
+
+
+select * from factura;
+select * from orden;
 select * from postre;
 select * from proteina;
 select * from acompannamiento;

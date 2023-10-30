@@ -142,16 +142,20 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
         int opcion = JOptionPane.showOptionDialog(null, "¿Desea pagar en una sola cuenta?", "Pago en una Sola Cuenta", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
         int numeroMesa = (int)this.jSpinner1.getValue();
 
-        boolean pagarJuntos;
+        
+        boolean pagarJuntos = false;
         if (opcion == JOptionPane.YES_OPTION) {
              pagarJuntos = true;
              mesas.get(numeroMesa - 1).setUnaSolaCuenta(true);
              JOptionPane.showMessageDialog(null, "La orden se pagará en conjunto.");
          } else {
+            if (opcion == JOptionPane.NO_OPTION) {
+
              pagarJuntos = false;
              mesas.get(numeroMesa - 1).setUnaSolaCuenta(false);
              JOptionPane.showMessageDialog(null, "La orden no se pagará en conjunto.");
          }
+            }
 
         //
         do {
@@ -176,6 +180,11 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
 
         String infoMesa = mesas.get(numeroMesa - 1).obtenerInfoMesa(); // Ajusta el método según la estructura de tu clase Mesa
         JOptionPane.showMessageDialog(this, "Información de la mesa: " + infoMesa);
+        
+        FrmPedidos frmPedido = new FrmPedidos();
+        frmPedido.setUnaSolaCuenta(pagarJuntos,numeroPersonas);
+        frmPedido.setCantPersonas(numeroPersonas);
+        frmPedido.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

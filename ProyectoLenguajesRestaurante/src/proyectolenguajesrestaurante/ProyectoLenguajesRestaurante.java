@@ -1,8 +1,14 @@
 package proyectolenguajesrestaurante;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import proyectolenguajesrestaurante.CRUD.Bebida;
 import proyectolenguajesrestaurante.CRUD.BebidasCRUD;
 import proyectolenguajesrestaurante.CRUD.*;
+import proyectolenguajesrestaurante.Factura.Factura;
+import proyectolenguajesrestaurante.Factura.FacturaCRUD;
+import proyectolenguajesrestaurante.Factura.OrdenCRUD;
 import proyectolenguajesrestaurante.Menus.Combo;
 import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
@@ -19,8 +25,20 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    MenuSaludable menu = new MenuSaludable();
-    menu.generarMenuSaludable();
+//<<<<<<< HEAD
+////        FacturaCRUD facturaCRUD = new FacturaCRUD();
+////        LocalDate fecha = LocalDate.now();
+////        double montoTotal = 8000;
+////        Factura factura = new Factura(fecha, montoTotal);
+////        facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());
+//
+//        
+//    //MenuSaludable menu = new MenuSaludable();
+//    //menu.generarMenuSaludable();
+//=======
+//    MenuSaludable menu = new MenuSaludable();
+//    menu.generarMenuSaludable();
+//>>>>>>> 0eb9e7713c2360b1ba7ee3c0aa32b06674526828
     
 ////        OrdenesRestaurante ordenesRestaurante = new OrdenesRestaurante();
 ////        ordenesRestaurante.gestionarOrdenes();
@@ -37,6 +55,29 @@ public class ProyectoLenguajesRestaurante {
 //        List<Comida> combosEnsalada = funcionalidadesCombo.filtrarCombosConEnsalada();
 //
 //        
+//        FacturaCRUD fa = new FacturaCRUD();
+//        fa.leerFacturas();
+//        fa.imprimirListaFacturas();
+//        int anno = 2023;
+//        LocalDate localDateInicio = LocalDate.of(anno, 1, 1); // Ejemplo: 1 de enero de 2023
+//        Date fechaInicio = Date.valueOf(localDateInicio);
+//        LocalDate localDateFin= LocalDate.of(2023, 11, 1); // Ejemplo: 1 de enero de 2023
+//        Date fechaFin = Date.valueOf(localDateFin);
+//        double monto = fa.calcularSumaTotalEnRango(fechaInicio, fechaFin);
+//        System.out.println(monto);
+//         
+          OrdenCRUD orden = new OrdenCRUD();
+          //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
+          orden.leerOrdenes();
+          orden.imprimirListaOrdenes();
+          LocalDate localDateInicio = LocalDate.of(2023, 1, 28); // Ejemplo: 1 de enero de 2023
+          Date fechaInicio = Date.valueOf(localDateInicio);
+          LocalDate localDateFin= LocalDate.of(2023, 10, 30);
+          Date fechaFin = Date.valueOf(localDateFin);
+          
+          String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
+          System.out.println("Plato más solicitado: " + platoMasSolicitado);
+
 //        //boolean valid = funcionalidadesCombo.verifyCombo(2);
 //        //System.out.println(valid);
 //       
@@ -107,4 +148,5 @@ public class ProyectoLenguajesRestaurante {
 
         
     }
+
 }    

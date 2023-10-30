@@ -43,18 +43,16 @@ public class Combo extends Comida{
  
 @Override
 public String toString() {
-    return "Combo{" +
-            "id=" + getId() +
-            ", nombre='" + getNombre() + '\'' +
-            ", proteina='" + getProteina() + '\'' +
-            ", acompannamiento1='" + getAcompannamiento1() + '\'' +
-            ", acompannamiento2='" + getAcompannamiento2() + '\'' +
-            ", acompannamiento3='" + getAcompannamiento3() + '\'' +
-            ", calorias=" + getCalorias() +
-            ", precio=" + getPrecio() +
-            ", bebida='" + bebida + '\'' +
-            ", postre='" + postre + '\'' +
-            '}';
+    return 
+            "Nombre:'" + getNombre() + '\'' +
+            ", " + getProteina() + '\'' +
+            ", " + getAcompannamiento1() + '\'' +
+            ", " + getAcompannamiento2() + '\'' +
+            ", " + getAcompannamiento3() + '\'' +
+            ", " + bebida + '\'' +
+            ", " + postre + '\'' +
+            ", Calorias:" + getCalorias() +
+            ", Precio:" + getPrecio();
 }
  
 }
