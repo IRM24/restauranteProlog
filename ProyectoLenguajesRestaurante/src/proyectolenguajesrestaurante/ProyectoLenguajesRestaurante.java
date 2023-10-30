@@ -25,6 +25,11 @@ public class ProyectoLenguajesRestaurante {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        MenuSaludable menu = new MenuSaludable();
+        menu.generarMenuSaludable();
+        //Saluditos 
+        
 //<<<<<<< HEAD
 ////        FacturaCRUD facturaCRUD = new FacturaCRUD();
 ////        LocalDate fecha = LocalDate.now();
@@ -66,7 +71,7 @@ public class ProyectoLenguajesRestaurante {
 //        double monto = fa.calcularSumaTotalEnRango(fechaInicio, fechaFin);
 //        System.out.println(monto);
 //         
-          OrdenCRUD orden = new OrdenCRUD();
+          /*OrdenCRUD orden = new OrdenCRUD();
           //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
           orden.leerOrdenes();
           orden.imprimirListaOrdenes();
@@ -76,7 +81,7 @@ public class ProyectoLenguajesRestaurante {
           Date fechaFin = Date.valueOf(localDateFin);
           
           String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
-          System.out.println("Plato más solicitado: " + platoMasSolicitado);
+          System.out.println("Plato más solicitado: " + platoMasSolicitado);*/
 
 //        //boolean valid = funcionalidadesCombo.verifyCombo(2);
 //        //System.out.println(valid);
