@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import proyectolenguajesrestaurante.Factura.Factura;
 import proyectolenguajesrestaurante.Factura.FacturaCRUD;
+import proyectolenguajesrestaurante.Factura.OrdenCRUD;
 import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
@@ -100,7 +101,6 @@ public class FrmPedidos extends javax.swing.JFrame {
         jRdbPrecioP = new javax.swing.JRadioButton();
         jRdbCBP = new javax.swing.JRadioButton();
         jRdbPcP = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -206,13 +206,6 @@ public class FrmPedidos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jRadioButton3.setText("jRadioButton3");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,18 +265,14 @@ public class FrmPedidos extends javax.swing.JFrame {
                                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(50, 50, 50)
                                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(199, 199, 199))
+                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButton3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1))))
+                                        .addComponent(jRadioButton3))))
                             .addComponent(jLabel1))
-                        .addGap(83, 83, 83)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -297,9 +286,8 @@ public class FrmPedidos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jRadioButton3))
+                .addGap(41, 41, 41)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -427,16 +415,22 @@ public class FrmPedidos extends javax.swing.JFrame {
         if(this.unaSolaCuenta){ //si es T es grupal
             //construir factura grupal
             Factura miFactura = new Factura();
+            OrdenCRUD orden = new OrdenCRUD();
+            LocalDate fecha = LocalDate.now();
+            
             for (Comida miComida : this.miListaPedidos) {
                 montoTotal += miComida.getPrecio();
+                orden.crearOrden(fecha, miComida.toString());
+
                 
             }//for
             // crea una factura en la bd
             this.jTextField1.setText(montoTotal+"");
             FacturaCRUD facturaCRUD = new FacturaCRUD();
-            LocalDate fecha = LocalDate.now();
             Factura factura = new Factura(fecha, montoTotal);
+            
             facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());//guarda factura en sql
+            orden.crearOrden(fecha, facturaString);
             //muestra la factura
             facturaString = factura.toString();
             for (Comida miComida : this.miListaPedidos) {
@@ -455,11 +449,15 @@ public class FrmPedidos extends javax.swing.JFrame {
                 Comida selectedComidaIndiv = (Comida) jComboBox1.getSelectedItem();
 
                 montoTotal = 0;//reinicia monto
+                LocalDate fecha = LocalDate.now();
                 FacturaCRUD facturaCRUD = new FacturaCRUD();
                 Factura miFactura = new Factura();
+                
+                OrdenCRUD orden = new OrdenCRUD();
+                orden.crearOrden(fecha, selectedComidaIndiv.toString());
+
                 montoTotal = selectedComidaIndiv.getPrecio();
                 this.jTextField1.setText(montoTotal+"");
-                LocalDate fecha = LocalDate.now();
                 Factura factura = new Factura(fecha, montoTotal);
                // se aumenta el contador de personas
                 
@@ -584,12 +582,6 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbCBC.setVisible(false);
         this.jRdbCcEC.setVisible(false);
         this.jRdbPrecioC.setVisible(false);}
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-for (Comida pedido : miListaPedidos) {
-    System.out.println("Pedido: " + pedido.getNombre() + ", Precio: " + pedido.getPrecio());
-}
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
 // setear que los group no se vean los de los filtros
     }//GEN-LAST:event_jRadioButton3ActionPerformed
@@ -636,7 +628,6 @@ for (Comida pedido : miListaPedidos) {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JButton jBtnAceptar;
     private javax.swing.JButton jBtnFacturar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<Comida> jComboBox1;
     private javax.swing.JLabel jLabel1;

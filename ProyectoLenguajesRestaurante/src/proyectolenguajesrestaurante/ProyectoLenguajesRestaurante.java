@@ -2,11 +2,13 @@ package proyectolenguajesrestaurante;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import proyectolenguajesrestaurante.CRUD.Bebida;
 import proyectolenguajesrestaurante.CRUD.BebidasCRUD;
 import proyectolenguajesrestaurante.CRUD.*;
 import proyectolenguajesrestaurante.Factura.Factura;
 import proyectolenguajesrestaurante.Factura.FacturaCRUD;
+import proyectolenguajesrestaurante.Factura.OrdenCRUD;
 import proyectolenguajesrestaurante.Menus.Combo;
 import proyectolenguajesrestaurante.Menus.Comida;
 import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
@@ -64,6 +66,18 @@ public class ProyectoLenguajesRestaurante {
 //        double monto = fa.calcularSumaTotalEnRango(fechaInicio, fechaFin);
 //        System.out.println(monto);
 //         
+          OrdenCRUD orden = new OrdenCRUD();
+          //orden.crearOrden(LocalDate.of(2023, 1, 1), "detalle de la orden");
+          orden.leerOrdenes();
+          orden.imprimirListaOrdenes();
+          LocalDate localDateInicio = LocalDate.of(2023, 1, 28); // Ejemplo: 1 de enero de 2023
+          Date fechaInicio = Date.valueOf(localDateInicio);
+          LocalDate localDateFin= LocalDate.of(2023, 10, 30);
+          Date fechaFin = Date.valueOf(localDateFin);
+          
+          String platoMasSolicitado = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
+          System.out.println("Plato más solicitado: " + platoMasSolicitado);
+
 //        //boolean valid = funcionalidadesCombo.verifyCombo(2);
 //        //System.out.println(valid);
 //       
