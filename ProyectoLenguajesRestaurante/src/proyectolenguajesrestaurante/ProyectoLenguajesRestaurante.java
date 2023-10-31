@@ -30,7 +30,8 @@ public class ProyectoLenguajesRestaurante {
         FrmMenuInicio frmMenuInicio = new FrmMenuInicio();
         frmMenuInicio.setVisible(true);
 
-        
+        //MenuSaludable menu = new MenuSaludable();
+        //menu.generarMenuSaludable();
 //        MenuSaludable menu = new MenuSaludable();
 //        menu.generarMenuSaludable();
         //Saluditos 

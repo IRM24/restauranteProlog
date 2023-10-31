@@ -47,6 +47,7 @@ public class FrmPedidos extends javax.swing.JFrame {
         // tiene que agregar el this.jRadioButtonMenuSaludable
         this.grupoBotones.add(this.jRadioButton1);
         this.grupoBotones.add(this.jRadioButton2);
+        this.grupoBotones.add(this.jRadioButton3);
         
         //grupo de botones de Combo
         this.grupoBotones2.add(this.jRdbCcEC);
@@ -64,6 +65,8 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbCBC.setVisible(false);
         this.jRdbCcEC.setVisible(false);
         this.jRdbPrecioC.setVisible(false);
+        
+        
 
 
     }
@@ -102,11 +105,6 @@ public class FrmPedidos extends javax.swing.JFrame {
         jRdbCBP = new javax.swing.JRadioButton();
         jRdbPcP = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -197,22 +195,13 @@ public class FrmPedidos extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton3.setText("jRadioButton3");
+        jRadioButton3.setText("Menu Saludable");
+        jRadioButton3.setToolTipText("");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton3ActionPerformed(evt);
             }
         });
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
-
-        jTextField6.setText("jTextField6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,29 +220,15 @@ public class FrmPedidos extends javax.swing.JFrame {
                             .addComponent(jRdbCcEC))
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRdbPrecioP)
-                                    .addComponent(jRdbCBP)
-                                    .addComponent(jRdbPcP))
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(50, 50, 50)
-                                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jRdbPrecioP)
+                            .addComponent(jRdbCBP)
+                            .addComponent(jRdbPcP)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRadioButton3))))
                     .addComponent(jLabel1))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -278,34 +253,24 @@ public class FrmPedidos extends javax.swing.JFrame {
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton3))
-                .addGap(41, 41, 41)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jRdbPrecioP)
+                        .addGap(3, 3, 3)
+                        .addComponent(jRdbCBP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRdbPcP))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
                         .addComponent(jRdbPrecioC)
                         .addGap(3, 3, 3)
                         .addComponent(jRdbCBC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRdbCcEC)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRdbPrecioP)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jRdbCBP)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRdbPcP))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                        .addComponent(jRdbCcEC)))
+                .addGap(87, 87, 87)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnAceptar)
@@ -330,6 +295,7 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbCBP.setVisible(false);
         this.jRdbPrecioP.setVisible(false);
         
+        
         this.jRdbCBC.setVisible(true);
         this.jRdbCcEC.setVisible(true);
         this.jRdbPrecioC.setVisible(true);
@@ -343,10 +309,11 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbCBC.setVisible(false);
         this.jRdbCcEC.setVisible(false);
         this.jRdbPrecioC.setVisible(false);
+        
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-                
+              
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jBtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAceptarActionPerformed
@@ -564,8 +531,27 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbCBC.setVisible(false);
         this.jRdbCcEC.setVisible(false);
         this.jRdbPrecioC.setVisible(false);}
+    
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-// setear que los group no se vean los de los filtros
+        
+        
+        
+        this.jRdbPcP.setVisible(false);
+        this.jRdbCBP.setVisible(false);
+        this.jRdbPrecioP.setVisible(false);
+        this.jRdbCBC.setVisible(false);
+        this.jRdbCcEC.setVisible(false);
+        this.jRdbPrecioC.setVisible(false);
+        
+        List<Comida> MenuSaludables = this.menusFacade.generarMenuSaludable();
+        DefaultComboBoxModel<Comida> model = new DefaultComboBoxModel<>();
+        
+        for (Comida combo : MenuSaludables) {
+                model.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+            }
+        jComboBox1.setModel(model);
+        
+        
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     /**
@@ -624,10 +610,5 @@ public class FrmPedidos extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRdbPcP;
     private javax.swing.JRadioButton jRdbPrecioC;
     private javax.swing.JRadioButton jRdbPrecioP;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

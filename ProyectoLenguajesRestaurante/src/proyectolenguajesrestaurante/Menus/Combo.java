@@ -51,8 +51,8 @@ public String toString() {
             ", " + getAcompannamiento3() + '\'' +
             ", " + bebida + '\'' +
             ", " + postre + '\'' +
-            ", Calorias:" + getCalorias() +
-            ", Precio:" + getPrecio();
+            ", " + getCalorias() +
+            ", " + getPrecio();
 }
  
 }

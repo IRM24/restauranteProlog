@@ -160,7 +160,7 @@ VALUES ('Langosta', 'Mariscos', 'No', 'Si', 'Si', 270, 3500);
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Chorizo', 'Carnes Rojas', 'Si', 'Si', 'No', 300, 200);
 
-Delete from proteina;
+-- Delete from proteina;
 SELECT * FROM proteina;
 
 -- Insert Acompannamientos --------------------------------------------------------
@@ -688,4 +688,6 @@ select * from proteina;
 select * from acompannamiento;
 select * from bebida;
 select * from combo;
+
+-- drop database restaurante;
 

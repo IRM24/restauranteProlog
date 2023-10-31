@@ -14,10 +14,16 @@ import java.util.List;
 public class MenusFacade {
     private FuncionalidadesCombo funcionalidadesCombo;
     private FuncionalidadesPlato funcionalidadesPlato;
+    private MenuSaludable menuSaludable;
 
     public MenusFacade() {
         this.funcionalidadesCombo = new FuncionalidadesCombo();
         this.funcionalidadesPlato = new FuncionalidadesPlato();
+        this.menuSaludable = new MenuSaludable();
+    }
+    
+    public List<Comida> generarMenuSaludable(){
+        return menuSaludable.generarMenuSaludable();
     }
 
     public List<Comida> leerCombos() {

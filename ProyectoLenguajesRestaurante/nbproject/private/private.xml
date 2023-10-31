@@ -3,26 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/CRUD/ConexionMySQL.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/CRUD/Bebida.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Menus/Plato.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Menus/FactoryComida.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/CRUD/ProteinasCRUD.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Factura/FacturaCRUD.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/CRUD/PostresCRUD.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Factura/Factura.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/UI/FrmFactura.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/CRUD/Acompannamiento.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/UI/FrmBebidaCRUD.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Menus/MenuPrincipal.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/UI/FrmCRUD.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/UI/FrmProteinaCRUD.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/UI/FrmPedidos.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Mesa/OrdenesRestaurante.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Factura/FacturaGrupalBuilder.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Factura/FacturaGrupal.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/CRUD/Proteina.java</file>
-            <file>file:/C:/Users/camiu/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Menus/MenuSaludable.java</file>
+            <file>file:/C:/Users/Ian%20Calvo/Desktop/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/Menus/MenuSaludable.java</file>
+            <file>file:/C:/Users/Ian%20Calvo/Desktop/restauranteProlog/ProyectoLenguajesRestaurante/src/proyectolenguajesrestaurante/ProyectoLenguajesRestaurante.java</file>
         </group>
     </open-files>
 </project-private>
