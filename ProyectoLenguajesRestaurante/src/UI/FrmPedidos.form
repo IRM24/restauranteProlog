@@ -39,46 +39,48 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRdbPrecioC" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRdbCBC" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRdbCcEC" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jRdbPrecioP" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRdbCBP" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRdbPcP" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jRadioButton2" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="405" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" pref="869" max="-2" attributes="0"/>
+                      <Component id="jBtnAceptar" min="-2" pref="79" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jComboBox1" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jRadioButton1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRdbPrecioC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRdbCBC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRdbCcEC" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jRdbPrecioP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRdbCBP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRdbPcP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jRadioButton2" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="379" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jBtnAceptar" max="32767" attributes="0"/>
-                          <Component id="jBtnFacturar" pref="79" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jBtnFacturar" min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -100,17 +102,17 @@
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="jRdbPrecioP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="jRdbCBP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jRdbPcP" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jRdbPrecioC" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                       <Component id="jRdbCBC" min="-2" max="-2" attributes="0"/>
@@ -118,13 +120,13 @@
                       <Component id="jRdbCcEC" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jBtnAceptar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jBtnFacturar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

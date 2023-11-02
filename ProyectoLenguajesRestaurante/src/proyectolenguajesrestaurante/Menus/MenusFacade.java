@@ -1,15 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyectolenguajesrestaurante.Menus;
 
 import java.util.List;
 
-/**
- *
- * @author camiu
- */
+// El patron de disenno Facade funciona como fachada que proporciona una interfaz unidifcada
+// para acceder a las funcionalidades relacionadas a comida. Menu Facade encapsula la complejidad
+// de las funciones para acceder a ellas por metodos mas sencillos
 
 public class MenusFacade {
     private FuncionalidadesCombo funcionalidadesCombo;

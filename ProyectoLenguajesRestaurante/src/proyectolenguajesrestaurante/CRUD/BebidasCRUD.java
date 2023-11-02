@@ -5,22 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
 
+// Clase BebidasCRUD, esta clase permite las funciones CRUD y crea una lista de Bebidas
+
 public class BebidasCRUD {
     private List<Bebida> listaBebidas = new ArrayList<>();
 
     public void imprimirListaBebidas() {
-    for (Bebida bebida : listaBebidas) {
-        System.out.println(bebida.getNombre() + ", " + bebida.getCalorias());
-    }
+        for (Bebida bebida : listaBebidas) {
+            System.out.println(bebida.getNombre() + ", " + bebida.getCalorias());
+        }
     }
     
+    // Esta funcion se utiliza desde la interfaz
     public void imprimirListaBebidas(JTextArea jTextArea) {
-    for (Bebida bebida : listaBebidas) {
-        jTextArea.append(bebida.getNombre() + ", " + bebida.getCalorias() + "\n");
-    }
+        for (Bebida bebida : listaBebidas) {
+            jTextArea.append(bebida.getNombre() + ", " + bebida.getCalorias() + "\n");
+        }
     }
 
-    
+    // Permite crear una bebida en la base de datos y en la lista de bebidas
     public void crearBebida(String nombre, String carbonatadas, String naturales, String temperatura, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement crearBebida = con.prepareCall("{CALL crear_bebida(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
@@ -43,6 +46,7 @@ public class BebidasCRUD {
         }
     }
 
+    // Obtiene todas las bebidas en la base de datos
     public void leerBebidas() {
     
         try (Connection con = ConexionMySQL.getConexion()) {
@@ -83,7 +87,7 @@ public class BebidasCRUD {
         }
     }
 
-
+    // Permite actualizar el precio de una bebida
     public void actualizarBebida(String nombre, int nuevoPrecio) {
     try (Connection con = ConexionMySQL.getConexion()) {
         CallableStatement actualizarPrecioBebida = con.prepareCall("{CALL actualizar_precio_bebida_nombre(?, ?)}");
@@ -95,7 +99,7 @@ public class BebidasCRUD {
         for (Bebida bebida : listaBebidas) {
             if (bebida.getNombre().equals(nombre)) {
                 bebida.setPrecio(nuevoPrecio);
-                break; // Si se ha encontrado y actualizado la bebida, se sale del bucle
+                break; // Si se ha encontrado y actualizado la bebida, se sale del for
             }
         }
     } catch (Exception e) {
@@ -103,7 +107,7 @@ public class BebidasCRUD {
     }
     }
 
-
+    // Permite eliminar una Bebida
     public void eliminarBebida(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement eliminarBebida = con.prepareCall("{CALL eliminar_bebida_nombre(?)}");
@@ -114,7 +118,7 @@ public class BebidasCRUD {
             for (int i = 0; i < listaBebidas.size(); i++) {
                 if (listaBebidas.get(i).getNombre().equals(nombre)) {
                     listaBebidas.remove(i);
-                    break; // Si se ha encontrado y eliminado la bebida, se sale del bucle
+                    break; // Si se ha encontrado y eliminado la bebida, se sale del for
                 }
             }
         } catch (Exception e) {

@@ -1,15 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package proyectolenguajesrestaurante.Factura;
 
 import java.util.Date;
 
-/**
- *
- * @author camiu
- */
+// Esta clase se utiliza para poder crear las facturas que vienen desde la base de datos
 public class FacturaDate {
     private Date fecha;
     private double montoTotal;

@@ -39,7 +39,7 @@ public class MenuSaludable {
         
         List<Comida> listaDeComidas = new ArrayList<>();
         // Ruta al archivo Prolog
-        String rutaPrologIan = "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
+        String rutaPrologIan = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian.pl";
 
         // Consulta para cargar el archivo Prolog
         Query query = new Query("consult('" + rutaPrologIan + "')");

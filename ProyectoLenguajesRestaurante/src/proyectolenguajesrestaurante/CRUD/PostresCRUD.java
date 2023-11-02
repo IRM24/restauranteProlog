@@ -5,21 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
 
+// Clase PostresCRUD, esta clase permite las funciones CRUD y crea una lista de Postres
 public class PostresCRUD {
     private List<Postre> listaPostres = new ArrayList<>();
 
     public void imprimirListaPostres() {
-    for (Postre postre : listaPostres) {
-        System.out.println(postre.getNombre() + ", " + postre.getCalorias());
-    }
+        for (Postre postre : listaPostres) {
+            System.out.println(postre.getNombre() + ", " + postre.getCalorias());
+        }
     }
     
+    // Esta funcion se utiliza desde la interfaz
     public void imprimirListaPostres(JTextArea jTextArea) {
-    for (Postre postre : listaPostres) {
-        jTextArea.append(postre.getNombre() + ", " + postre.getCalorias() + "\n");
-    }
+        for (Postre postre : listaPostres) {
+            jTextArea.append(postre.getNombre() + ", " + postre.getCalorias() + "\n");
+        }
     }
 
+    // Esta funcion permite crear un postre en la base de datos y en la lista de postres
     public void crearPostre(String nombre, String lacteo, String frutas, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement crearPostre = con.prepareCall("{CALL crear_postre(?, ?, ?, ?, ?, ?, ?, ?)}");
@@ -40,7 +43,8 @@ public class PostresCRUD {
             e.printStackTrace();
         }
     }
-
+    
+    // Esta funcion permite obtener todos los postres en la base de datos
     public void leerPostres() {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement leerPostre = con.prepareCall("{CALL leer_postre()}");
@@ -76,7 +80,7 @@ public class PostresCRUD {
         }
     }
 
-
+    // Esta funcion permite actualizar el precio de un postre
     public void actualizarPostre(String nombre, int nuevoPrecio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement actualizarPostre = con.prepareCall("{CALL actualizar_postre_nombre(?, ?)}");
@@ -87,7 +91,7 @@ public class PostresCRUD {
             for (Postre postre : listaPostres) {
                 if (postre.getNombre().equals(nombre)) {
                     postre.setPrecio(nuevoPrecio);
-                    break; // Si se ha encontrado y actualizado el postre, se sale del bucle
+                    break; // Si se ha encontrado y actualizado el postre, se sale del for
                 }
             }
         } catch (Exception e) {
@@ -95,7 +99,7 @@ public class PostresCRUD {
         }
     }
 
-
+    // Esta funcion permite eliminar un postre
     public void eliminarPostre(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement eliminarPostre = con.prepareCall("{CALL eliminar_postre_nombre(?)}");
@@ -106,7 +110,7 @@ public class PostresCRUD {
             for (int i = 0; i < listaPostres.size(); i++) {
                 if (listaPostres.get(i).getNombre().equals(nombre)) {
                     listaPostres.remove(i);
-                    break; // Si se ha encontrado y eliminado el postre, se sale del bucle
+                    break; // Si se ha encontrado y eliminado el postre, se sale del for
                 }
             }
         } catch (Exception e) {

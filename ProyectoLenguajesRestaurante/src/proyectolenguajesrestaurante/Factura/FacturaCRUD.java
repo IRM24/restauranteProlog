@@ -6,14 +6,16 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import proyectolenguajesrestaurante.CRUD.ConexionMySQL;
+
+// Esta clase permite dar mantenimiento de algunas acciones a factura y crear 
+//una lista de facturas
 
 public class FacturaCRUD{
     private List<FacturaDate> listaFacturas = new ArrayList<>();
 
-
+    // Crea una factura en la base de datos
     public void crearFactura(LocalDate fecha, double montoTotal) {
         String sql = "{CALL crear_factura(?, ?)}";
 
@@ -28,6 +30,9 @@ public class FacturaCRUD{
             ex.printStackTrace();
         }
     }
+    
+    // Permite obtener todas las facturas de la base de datos (esto se utiliza
+    // para las estadisticas)
     
     public void leerFacturas() {
         try (Connection con = ConexionMySQL.getConexion()) {
@@ -46,7 +51,9 @@ public class FacturaCRUD{
                         break;
                     }
             }
-
+                // Se utiliza la clase FacturaDate que permite devolver cualquier fecha esto se debe
+                // a que si utilizamos Factura como tiene un local date para crear facturas no permite
+                // que se devuelva la fecha correcta sino todas las devuelve con local date
                 if (!existeFactura) {
                     FacturaDate nuevaFactura = new FacturaDate(fecha, montoTotal);
                     listaFacturas.add(nuevaFactura);
@@ -64,6 +71,8 @@ public class FacturaCRUD{
         }
     }
     
+    // Calcula la suma total de facturas teniendo una fecha de inicio y una fecha 
+    // de fin, esto se utiliza para las estadisticas
     public double calcularSumaTotalEnRango(Date fechaInicio, Date fechaFin) {
         double sumaTotal = 0;
 
@@ -74,7 +83,6 @@ public class FacturaCRUD{
                 sumaTotal += factura.getMontoTotal();
             }
         }
-
         return sumaTotal;
     }
 

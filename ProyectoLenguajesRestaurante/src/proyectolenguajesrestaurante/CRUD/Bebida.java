@@ -1,7 +1,6 @@
 package proyectolenguajesrestaurante.CRUD;
 
-import java.util.List;
-
+// Clase Bebida, se usa para crear nuevas bebidas
 public class Bebida {
     private String nombre;
     private String carbonatadas;
@@ -98,11 +97,5 @@ public class Bebida {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
-
-
-
-   
-
-    // Agrega getters y setters según sea necesario
 }
 

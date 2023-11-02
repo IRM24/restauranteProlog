@@ -1,5 +1,6 @@
 package proyectolenguajesrestaurante.Mesa;
 
+// La clase Mesa, permite crear una mesa 
 public class Mesa {
     private int numeroMesa;
     private int cantidadPersonas;

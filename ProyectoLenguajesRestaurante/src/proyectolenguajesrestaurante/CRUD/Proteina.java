@@ -1,5 +1,6 @@
 package proyectolenguajesrestaurante.CRUD;
 
+// Clase Proteina, se usa para crear nuevas proteinas
 public class Proteina {
     private String nombre;
     private String tipo;

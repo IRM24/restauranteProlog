@@ -90,6 +90,7 @@ CREATE TABLE orden (
     fecha DATE,
     detalle VARCHAR(250)
 );
+
 -- Inserts de Totas las Tablas ----------------------------
 
 -- Inserts Bebidas -------------------------------------------------------------------------------------
@@ -103,7 +104,13 @@ INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almu
 VALUES ('Chocolate', 'No', 'No', 'Caliente', 'Si', 'No', 'No', 180, 1600);
 
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
-VALUES ('Coca-cola', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 150,180);
+VALUES ('Batido de Chocolate', 'No', 'No', 'Fria', 'Si', 'No', 'No', 170, 2000);
+
+INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Batido de Vainilla', 'No', 'No', 'Fria', 'Si', 'No', 'No', 130, 2000);
+
+INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Coca-cola', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 150,1800);
 
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Sprite', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 130, 1800);
@@ -120,6 +127,12 @@ VALUES ('Dr.Pepper', 'Si', 'No', 'Fria', 'No', 'Si', 'Si', 170, 1800);
 INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Agua', 'No', 'Si', 'Fria', 'Si', 'Si', 'Si', 0, 0);
 
+INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Agua con gas', 'Si', 'Si', 'Fria', 'Si', 'Si', 'Si', 0, 1400);
+
+INSERT INTO bebida (nombre, carbonatadas, naturales, temperatura, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Jugo de Arandanos', 'No', 'Si', 'Fria', 'Si', 'Si', 'No', 110, 1800);
+
 -- Inserts Proteinas ---------------------------------------------------------------------------------
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Salchichas', 'Carnes Rojas', 'Si', 'No', 'No', 210, 1750);
@@ -128,7 +141,16 @@ INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Tocineta', 'Carnes Rojas', 'Si', 'No', 'No', 180, 2100);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
-VALUES ('Jamon', 'Carnes Rojas', 'Si', 'No', 'No', 165, 1600);
+VALUES ('Pepperoni', 'Carnes Rojas', 'Si', 'No', 'No', 195, 2300);
+
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Jamon de Pavo', 'Carnes Rojas', 'Si', 'No', 'No', 175, 1200);
+
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Jamon de Pollo', 'Carnes Rojas', 'Si', 'No', 'No', 135, 1200);
+
+INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
+VALUES ('Atun', 'Mariscos', 'Si', 'Si', 'No', 210, 2600);
 
 INSERT INTO proteina (nombre, tipo, desayuno, almuerzo, cena, calorias, precio)
 VALUES ('Filete de res', 'Carnes Rojas', 'No', 'Si', 'Si', 250, 2800);
@@ -168,25 +190,31 @@ INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desa
 VALUES
     ('Pan tostado', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 85, 750),
     ('Huevos', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 95, 800),
+    ('Omelet', 'Caliente', 'Si', 'Si', 'Si', 'No', 'No', 105, 1300),
     ('Waffles', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 100, 1800),
     ('Avena', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 90, 900),
     ('Frutas Frescas', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 50, 1250),
+    ('Porcion Frutos Rojos','Frio', 'Si', 'No', 'Si', 'Si', 'No', 70, 1500),
     ('Queso', 'Frio', 'No', 'No', 'Si', 'No', 'No', 80, 950),
     ('Croissants', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 180, 1000),
     ('Pancakes', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 100, 1800);
 
 INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
 VALUES
-    ('Arroz blanco','Caliente', 'Si', 'No', 'No', 'Si', 'Si', 190, 1200),
-    ('Arroz integral','Caliente', 'Si', 'No', 'No', 'Si', 'Si', 160, 1200),
+    ('Arroz blanco','Caliente', 'Si', 'No', 'Si', 'Si', 'Si', 190, 1200),
+    ('Frijoles','Caliente', 'Si', 'No', 'Si', 'Si', 'No', 160, 1200),
+    ('Foccacia','Caliente', 'Si', 'No', 'Si', 'Si', 'Si', 180, 1400),
+    ('Arroz integral','Caliente', 'Si', 'No', 'Si', 'Si', 'Si', 160, 1200),
     ('Papas Fritas','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 230, 1400),
     ('Hongos Salteados','Caliente', 'NO', 'Si', 'No', 'Si', 'Si', 110, 1500),
     ('Pasta Pesto','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 220, 2000),
     ('Pasta Pomodoro','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 230, 1800),
+    ('Pasta en Salsa Blanca', 'Caliente', 'Si', 'No', 'No', 'Si', 'Si', 210, 2000),
 	('Pure de papa','Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 160, 1500),
     ('Tofu Salteado','Caliente', 'No', 'No', 'No', 'Si', 'Si', 140, 2500),
     ('Berenjenas a la parrilla','Caliente', 'No', 'Si', 'No', 'Si', 'Si', 130, 1750),
     ('Hummus','Frio', 'Si', 'No', 'No', 'Si', 'Si', 175, 2500),
+    ('Crema de Ayote', 'Caliente', 'Si', 'Si', 'No', 'Si', 'Si', 120, 1200),
     ('Ensalada Verde','Frio', 'No', 'Si', 'No', 'Si', 'Si', 80, 2100),
     ('Ensalada de Pasta','Frio', 'Si', 'No', 'No', 'Si', 'Si', 150, 2300),
     ('Ensalada Cesar','Frio', 'No', 'Si', 'No', 'Si', 'Si', 130, 2600),
@@ -197,27 +225,31 @@ INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, 
 VALUES
    ('Yogurt con frutas', 'Si', 'Si','Si', 'No', 'No', 150, 1500),
    ('Tostadas Francesas', 'No', 'Si','Si', 'Si', 'No', 190, 2100),
-   ('Muffins', 'Si', 'Si','Si', 'Si', 'No', 200, 1500),
+   ('Muffins con Arandanos', 'Si', 'Si','Si', 'Si', 'No', 200, 1500),
+   ('Muffins de Vainilla', 'Si', 'No','Si', 'Si', 'No', 170, 1200),
    ('Tartaleta de Frambuesa', 'Si', 'Si','Si', 'Si', 'Si', 210, 1700),
-   ('Galletas', 'Si', 'No','Si', 'No', 'No', 170, 800),
+   ('Galletas de Avena', 'No', 'No','Si', 'No', 'No', 100, 800),
+   ('Galletas con Chocolate', 'No', 'No','Si', 'No', 'No', 150, 950),
    ('Crepa con fresas', 'No', 'Si','Si', 'Si', 'Si', 250, 2500);
 
 INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio)
 VALUES
     ('Flan de caramelo', 'Si', 'No', 'No', 'Si', 'Si', 250, 2100),
     ('Tarta de manzana', 'No', 'Si', 'No', 'Si', 'Si', 300, 2500),
-    ('Gelatina de frutas', 'No', 'Si', 'Si', 'Si', 'No', 120, 1500);
+    ('Gelatina de frutas', 'No', 'Si', 'Si', 'Si', 'No', 120, 1500),
+    ('Torta Chilena', 'Si', 'No', 'No', 'Si', 'No', 210, 1700);
 
 INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio)
 VALUES
     ('Helado de vainilla', 'Si', 'No', 'No', 'Si', 'Si', 220, 1100),
     ('Pastel de chocolate', 'Si', 'No','No',  'Si', 'Si', 350, 2500),
     ('Pie de Limon', 'Si', 'Si','No',  'Si', 'Si', 270, 2200),
-    ('Tiramisú', 'Si', 'No','No',  'Si', 'Si', 250, 2300),
+    ('Tiramisu', 'Si', 'No','No',  'Si', 'Si', 250, 2300),
     ('Mousse de chocolate', 'Si', 'No','No',  'Si', 'Si', 320, 2200),
     ('Gelato', 'No', 'No','No',  'Si', 'Si', 110, 2200),
     ('Cheesecake', 'Si', 'No','No', 'Si', 'Si', 310, 2500);
     
+   
 -- Insert platos ------------------------------
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
 VALUES ('Plato Fuerte 1','Salmón Ahumado', 'Ensalada Verde', 'Arroz blanco', 'Pasta Pesto',510, 7500);
@@ -231,6 +263,9 @@ VALUES ('Plato Fuerte 3','Tocineta', 'Pan tostado', 'Frutas Frescas','Pancakes',
 INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
 VALUES ('Plato Fuerte 4','Pollo Frito', 'Pure de papa', 'Arroz blanco','Ensalada Verde', 620, 5800);
 
+INSERT INTO plato (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, calorias, precio)
+VALUES ('Plato Fuerte 5','Pechuga de Pollo', 'Crema de Ayote', 'Arroz integral','Ensalada de Garbanzos', 7500, 7800);
+
 -- Insert combos -------------------
 
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
@@ -240,7 +275,13 @@ INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompan
 VALUES ('Combo 2','Salchichas', 'Pancakes','Frutas Frescas', 'Pan tostado','Jugo de Naranja','Tostadas Francesas', 570, 7500);
 
 INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
-VALUES ('Combo 3','Albondigas', 'Pure de papa','Ensalada Verde', 'Arroz blanco','Limonada con Hierbabuena','Cheesecake', 860, 7000);
+VALUES ('Combo 3','Pierna de Cordero', 'Berenjenas a la parrilla','Ensalada de Garbanzos', 'Arroz Integral','Limonada con Hierbabuena','Cheesecake', 860, 7000);
+
+INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
+VALUES ('Combo 4','Jamon de Pavo', 'Waffles','Omelet', 'Queso','Jugo de Arandanos','Galletas de Avena', 520, 6800);
+
+INSERT INTO combo (nombre, proteina, acompannamiento1, acompannamiento2, acompannamiento3, bebida, postre, calorias, precio)
+VALUES ('Combo 5','Atun', 'Hummus','Arroz Blanco', 'Pasta Pesto','Agua','Tiramisu', 880, 7250);
 
 
 -- Insert Factura -----------------------------
@@ -258,6 +299,9 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2022-3-29', 25000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-4-2', 20000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-4-17', 9000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-7', 5500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-7-3', 45000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-7-20', 9000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-9-10', 5500.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-16', 18000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-22', 40000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-5-28', 10000.0);
@@ -284,6 +328,8 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2022-11-28', 19000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-12-1', 20000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-12-7', 7000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2022-12-25', 6000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-10-3', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2022-11-19', 25000.0);
 
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-1', 12000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-1-15', 35000.0);
@@ -309,6 +355,7 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-1', 12000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-14', 15000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-17', 23000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-7-28', 34000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-1', 23000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-5', 8000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-14', 10000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-8-23', 25000.0);
@@ -319,31 +366,105 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-28', 18000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-1', 20000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-7', 7000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-21', 6000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-28', 18000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-24', 5600.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-26', 21000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-30', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-30', 7000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-11-1', 34000.0);
 
 -- Insert orden --------------------------
 INSERT INTO orden (fecha, detalle) VALUES ('2022-1-1', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-2-21', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-3-2', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Proteina: Pollo");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Acompannamiento: Arroz blanco");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Bebida: Agua");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Postre: Pie de Limon");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-7-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-8-6', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Proteina: Pollo");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Acompannamiento: Arroz blanco");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Bebida: Agua");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-10', "Postre: Pie de Limon");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-4-9', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-5-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2022-6-10', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-8', "Proteina: Pollo Asado");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-8', "Acompannamiento: Arroz Integral");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-8', "Bebida: Dr.Pepper");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-8', "Postre: Pie de Limon");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-9', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-12-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-12-10', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-12-8', "Proteina: Pollo Asado");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-12-8', "Acompannamiento: Arroz Blanco");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-12-8', "Bebida: Dr.Pepper");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-12-8', "Postre: Pie de Limon");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-22', "Proteina: Atun");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-22', "Acompannamiento: Ensalada Verde");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-22', "Bebida: Agua");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-22', "Postre: Galletas de Avena");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-28', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 
+INSERT INTO orden (fecha, detalle) VALUES ('2023-1-1', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-1-1', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-2-1', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-2-21', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
-INSERT INTO orden (fecha, detalle) VALUES ('2023-3-5', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-2-6', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-5', "Proteina: Tocineta");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-5', "Acompannamiento: Pancakes");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-5', "Bebida: Agua");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-5', "Postre: Tostadas Francesas");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-6', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-5-8', "Nombre:'Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-7-20', "Proteina: Pollo Asado");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-7-20', "Acompannamiento: Pure de papa");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-7-20', "Bebida: Te Negro");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-7-20', "Postre: Cheesecake");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-8-25', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-9-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-5', "Proteina: Pollo Frito");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-5', "Acompannamiento: Hongos Salteados");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-5', "Bebida: Limonada con Hierbabuena");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-5', "Postre: Gelato");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-6-22', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-8-3', "Nombre:'Plato Fuerte 3', Tocineta', Pan tostado', Frutas Frescas', Pancakes' Calorias:, 480 Precio:, 4500");
 INSERT INTO orden (fecha, detalle) VALUES ('2023-9-30', "Nombre:'Combo 3', Albondigas', Pure de papa', Ensalada Verde', Arroz blanco', Limonada con Hierbabuena', Cheesecake', Calorias:860, Precio:7000");
-INSERT INTO orden (fecha, detalle) VALUES ('2022-10-1', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
-INSERT INTO orden (fecha, detalle) VALUES ('2022-3-20', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
-INSERT INTO orden (fecha, detalle) VALUES ('2022-7-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
-INSERT INTO orden (fecha, detalle) VALUES ('2022-9-23', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-1', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-3-20', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-7-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-23', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-5-22', "Proteina: Salchichas");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-5-22', "Acompannamiento: Ensalada Verde");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-5-22', "Bebida: Limonada con Hierbabuena");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-6-1', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-6', "Postre: Cheesecake");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-6', "Proteina: Pollo Frito");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-6', "Acompannamiento: Hongos Salteados");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-6', "Bebida: Limonada con Hierbabuena");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-9-6', "Postre: Gelato");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-20', "Proteina: Atun");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-20', "Acompannamiento: Pasta Pesto");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-20', "Bebida: Sprite");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-20', "Postre: Galletas de Avena");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-25', "Proteina: Salchichas");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-25', "Acompannamiento: Ensalada Verde");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-25', "Bebida: Limonada con Hierbabuena");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-25', "Postre: Cheesecake");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-11-1', "Proteina: Jamon de Pavo");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-11-1', "Acompannamiento: Frijoles");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-11-1', "Bebida: Jugo de Naranja");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-11-1', "Postre: Galletas de Chocolate");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-15', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2023-10-23', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-30', "Nombre:'Plato Fuerte 2', Filete de res', Pure de papa', Ensalada Cesar', Tofu Salteado' Calorias:, 600 Precio:, 6000");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-11-1', "Nombre:'Nombre:'Combo 2', Salchichas', Pancakes', Frutas Frescas', Pan tostado', Jugo de Naranja', Tostadas Francesas', Calorias:570, Precio:7500");
+INSERT INTO orden (fecha, detalle) VALUES ('2022-10-31', "Nombre:'Plato Fuerte 1', Salmón Ahumado', Ensalada Verde', Arroz blanco', Pasta Pesto' Calorias:, 510 Precio:, 7500");
 
-
+-- Funcion para obtener el nombre de un producto y calorias
 DELIMITER //
 
 CREATE PROCEDURE BuscarProductoPorNombre(IN nombreProducto VARCHAR(100))
@@ -677,7 +798,6 @@ BEGIN
     INSERT INTO orden (fecha, detalle) VALUES (p_fecha, p_detalle);
 END //
 DELIMITER ;
-
 
 -- Selects de las tablas
 select * from factura;

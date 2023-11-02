@@ -2,39 +2,37 @@ package UI;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.event.ItemEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import proyectolenguajesrestaurante.Factura.Factura;
 import proyectolenguajesrestaurante.Factura.FacturaCRUD;
 import proyectolenguajesrestaurante.Factura.OrdenCRUD;
 import proyectolenguajesrestaurante.Menus.Comida;
-import proyectolenguajesrestaurante.Menus.FuncionalidadesCombo;
-import proyectolenguajesrestaurante.Menus.FuncionalidadesPlato;
 import proyectolenguajesrestaurante.Menus.MenusFacade;
-import proyectolenguajesrestaurante.Mesa.Mesa;
 
+
+// Esta clase crea el Frame con el cual se toman los pedidos y se factura
 public class FrmPedidos extends javax.swing.JFrame {
 
     private boolean unaSolaCuenta = false; //false significa individual
     private int cantPersonas = 0; //cantidad de personas que van a ordenar
     private int contPersonas= 0;//lleva el conteo de cuantas personas han pedido
     private ArrayList<Comida> miListaPedidos = new ArrayList<Comida>(); //lista que almacena los pedidos
+    
     ButtonGroup grupoBotones = new ButtonGroup();
     ButtonGroup grupoBotones2 = new ButtonGroup();
     ButtonGroup grupoBotones3 = new ButtonGroup();
+    
     private MenusFacade menusFacade = new MenusFacade();
 
-   // FuncionalidadesCombo funcionalidadesCombo = new FuncionalidadesCombo();
-//    FuncionalidadesPlato funcionalidadesPlato = new FuncionalidadesPlato();
     List<Comida> combos = menusFacade.leerCombos();
     List<Comida> platos = menusFacade.leerPlatos();
 
@@ -44,7 +42,6 @@ public class FrmPedidos extends javax.swing.JFrame {
         
 
         //grupo botones de tipo comida
-        // tiene que agregar el this.jRadioButtonMenuSaludable
         this.grupoBotones.add(this.jRadioButton1);
         this.grupoBotones.add(this.jRadioButton2);
         this.grupoBotones.add(this.jRadioButton3);
@@ -207,38 +204,39 @@ public class FrmPedidos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRdbPrecioC)
-                            .addComponent(jRdbCBC)
-                            .addComponent(jRdbCcEC))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRdbPrecioP)
-                            .addComponent(jRdbCBP)
-                            .addComponent(jRdbPcP)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton3))))
-                    .addComponent(jLabel1))
-                .addContainerGap(405, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 869, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jBtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButton1)
+                                            .addComponent(jRdbPrecioC)
+                                            .addComponent(jRdbCBC)
+                                            .addComponent(jRdbCcEC))
+                                        .addGap(42, 42, 42)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRdbPrecioP)
+                                            .addComponent(jRdbCBP)
+                                            .addComponent(jRdbPcP)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jRadioButton3))))
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBtnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnFacturar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))))
+                        .addComponent(jBtnFacturar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -255,28 +253,28 @@ public class FrmPedidos extends javax.swing.JFrame {
                     .addComponent(jRadioButton3))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
+                        .addGap(1, 1, 1)
                         .addComponent(jRdbPrecioP)
                         .addGap(3, 3, 3)
                         .addComponent(jRdbCBP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRdbPcP))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
                         .addComponent(jRdbPrecioC)
                         .addGap(3, 3, 3)
                         .addComponent(jRdbCBC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRdbCcEC)))
-                .addGap(87, 87, 87)
+                .addGap(29, 29, 29)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jBtnAceptar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnFacturar)
-                .addContainerGap())
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -295,7 +293,6 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbCBP.setVisible(false);
         this.jRdbPrecioP.setVisible(false);
         
-        
         this.jRdbCBC.setVisible(true);
         this.jRdbCcEC.setVisible(true);
         this.jRdbPrecioC.setVisible(true);
@@ -313,17 +310,9 @@ public class FrmPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-              
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jBtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAceptarActionPerformed
-//        if (seleccionCombo != null) {
-//            System.out.println("Selección guardada: " + seleccionCombo);
-//            // Agrega aquí la lógica para guardar la selección en tu base de datos o en donde sea necesario
-//        } else {
-//            System.out.println("No se ha seleccionado ningún elemento.");
-//        }
-
    if(this.unaSolaCuenta){
         if(this.contPersonas < this.cantPersonas){//valida que no se haya pasado la cantidad de personas de la mesa
              Comida selectedComida = (Comida) jComboBox1.getSelectedItem();
@@ -332,6 +321,8 @@ public class FrmPedidos extends javax.swing.JFrame {
                 this.contPersonas++;
                 JOptionPane.showMessageDialog(null,"Comida seleccionada: " + selectedComida.getNombre());
                 JOptionPane.showMessageDialog(null, "Número de orden "+this.contPersonas);
+                this.limpiarFormulario(this);
+
              } 
              if(this.contPersonas==this.cantPersonas){
              JOptionPane.showMessageDialog(null, "Ya todas las personas de la mesa han hecho su pedido. Selecciona la opcion de Facturar");
@@ -356,26 +347,62 @@ public class FrmPedidos extends javax.swing.JFrame {
              } 
              
         }
-    }//else grupal-indiv
+    }
 
     }//GEN-LAST:event_jBtnAceptarActionPerformed
 
     private void jBtnFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnFacturarActionPerformed
-        // TODO add your handling code here:
         double montoTotal = 0;
         String facturaString="";
-        //Metodo de pago
+        
+        //Pregunta por el metodo de pago
         int metodoPago = Integer.parseInt(JOptionPane.showInputDialog(null, "Por favor, digite: 1. Pago Efectivo - 2. Otro metodo de pago", "Tipo de Pago", JOptionPane.PLAIN_MESSAGE));
                    
-        if(this.unaSolaCuenta){ //si es T es grupal
-            //construir factura grupal
-            Factura miFactura = new Factura();
+        if(this.unaSolaCuenta){ 
+
+            // Construye una orden
             OrdenCRUD orden = new OrdenCRUD();
             LocalDate fecha = LocalDate.now();
             
             for (Comida miComida : this.miListaPedidos) {
                 montoTotal += miComida.getPrecio();
-                orden.crearOrden(fecha, miComida.toString());
+                
+                // Si la seleccion contiene Menu, divide cada uno de los elementos en
+                // la eleccion para poder utilizarlos para las estadisticas de elementos
+                if (miComida.toString().contains("Menu")) { 
+                    
+                    List<String> elementosMenu = Arrays.asList(miComida.toString().split(", "));  
+                        
+                    String proteina = "Proteina: " + elementosMenu.get(1);
+                    orden.crearOrden(fecha, proteina);
+                    
+                    String acompanamiento1 = "Acompannamiento: " + elementosMenu.get(2);
+                    orden.crearOrden(fecha, acompanamiento1);
+
+                    if (!elementosMenu.get(3).equals("null'")) {
+                        String acompannamiento2 = "Acompannamiento: " + elementosMenu.get(3);
+                        orden.crearOrden(fecha, acompannamiento2);
+                    }
+                    if (!elementosMenu.get(4).equals("null'")) {
+                        String acompannamiento3 = "Acompannamiento: " + elementosMenu.get(4);
+                        orden.crearOrden(fecha, acompannamiento3);
+
+                    }    
+
+                    String bebida = "Bebida: " + elementosMenu.get(5);
+                    orden.crearOrden(fecha, bebida);
+
+                    if (!elementosMenu.get(6).equals("null'")) {
+                                String postre = "Postre: " + elementosMenu.get(6);
+                                orden.crearOrden(fecha, postre);
+                    }
+                    
+                    
+                } else {
+                    orden.crearOrden(fecha, miComida.toString());
+                   
+                }
+                
 
                 
             }//for
@@ -383,50 +410,84 @@ public class FrmPedidos extends javax.swing.JFrame {
             FacturaCRUD facturaCRUD = new FacturaCRUD();
             Factura factura = new Factura(fecha, montoTotal);
             
-            facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());//guarda factura en sql
-            orden.crearOrden(fecha, facturaString);
-            //muestra la factura
-            facturaString = factura.toString();
+            facturaCRUD.crearFactura(fecha, factura.getMontoTotal());
+            
+            double montoOriginal = montoTotal;
+            facturaString = factura.toString() + "Monto Total con IVA: " + ((montoTotal*0.13)+montoOriginal) + "\n";
             for (Comida miComida : this.miListaPedidos) {
                 facturaString += miComida.toString() + "\n";
                 
-            }//for
+            }
+            
             JOptionPane.showMessageDialog(null, facturaString, "Factura de Pedido Grupal", HEIGHT);
             
+            // En caso de que ya se le haya tomado la orden a todas las personas
             if((this.cantPersonas) == this.contPersonas){ 
                 JOptionPane.showMessageDialog(null, "El proceso de Facturación ha terminado.", "Fin Proceso Facturacion", HEIGHT);
                 this.dispose();
             }
         } 
         else{
-          //si es individual
+            // Si la orden es Individual
                 Comida selectedComidaIndiv = (Comida) jComboBox1.getSelectedItem();
 
                 montoTotal = 0;//reinicia monto
                 LocalDate fecha = LocalDate.now();
+                
                 FacturaCRUD facturaCRUD = new FacturaCRUD();
-                Factura miFactura = new Factura();
                 
                 OrdenCRUD orden = new OrdenCRUD();
-                orden.crearOrden(fecha, selectedComidaIndiv.toString());
+                
+                // Si la seleccion contiene Menu, divide cada uno de los elementos en
+                // la eleccion para poder utilizarlos para las estadisticas de elementos
+                if (selectedComidaIndiv.toString().contains("Menu")) {
+                    
+                    List<String> elementosMenu = Arrays.asList(selectedComidaIndiv.toString().split(", "));  
+                        
+                    String proteina = "Proteina: " + elementosMenu.get(1);
+                    orden.crearOrden(fecha, proteina);
+                    
+                    String acompanamiento1 = "Acompannamiento: " + elementosMenu.get(2);
+                    orden.crearOrden(fecha, acompanamiento1);
+
+                    if (!elementosMenu.get(3).equals("null'")) {
+                        String acompannamiento2 = "Acompannamiento: " + elementosMenu.get(3);
+                        orden.crearOrden(fecha, acompannamiento2);
+                    }
+                    if (!elementosMenu.get(4).equals("null'")) {
+                        String acompannamiento3 = "Acompannamiento: " + elementosMenu.get(4);
+                        orden.crearOrden(fecha, acompannamiento3);
+
+                    }    
+
+                    String bebida = "Bebida: " + elementosMenu.get(5);
+                    orden.crearOrden(fecha, bebida);
+
+                    if (!elementosMenu.get(6).equals("null'")) {
+                                String postre = "Postre: " + elementosMenu.get(6);
+                                orden.crearOrden(fecha, postre);
+                    }
+                    
+                    
+                } else {
+                    orden.crearOrden(fecha, selectedComidaIndiv.toString());
+                   
+                }
 
                 montoTotal = selectedComidaIndiv.getPrecio();
                 Factura factura = new Factura(fecha, montoTotal);
-               // se aumenta el contador de personas
                 
                 facturaCRUD.crearFactura(factura.getFecha(), factura.getMontoTotal());//crea factura en el SQL
                 
-                 //muestra la factura
-                facturaString = factura.toString();
+                double montoOriginal = montoTotal;
+                facturaString = factura.toString() + "Monto Total con IVA: " + ((montoTotal*0.13)+montoOriginal) + "\n";
                 facturaString += selectedComidaIndiv.toString();
                 
-            
+           
                 JOptionPane.showMessageDialog(null, facturaString, "Factura de Pedido Individual" + this.contPersonas, HEIGHT);
+                                      
             
-                int pedidosPendFact = this.cantPersonas-this.contPersonas;
-                          
-            
-            
+           
             if((this.cantPersonas) > this.contPersonas){
                 this.jBtnAceptar.setEnabled(true);
                 this.jBtnFacturar.setEnabled(false);
@@ -445,60 +506,66 @@ public class FrmPedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnFacturarActionPerformed
 
     private void jRdbCBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbCBCActionPerformed
-        List<Comida> combosBajasCalorias = this.menusFacade.filtrarCombosBajasCalorias();//viene de la BD // constructor prolog
+        // Filtra Combos por bajas calorias
+        List<Comida> combosBajasCalorias = this.menusFacade.filtrarCombosBajasCalorias();
             DefaultComboBoxModel<Comida> model = new DefaultComboBoxModel<>();
             for (Comida combo : combosBajasCalorias) {
-                model.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model.addElement(combo); 
             }
             jComboBox1.setModel(model);
     }//GEN-LAST:event_jRdbCBCActionPerformed
 
     private void jRdbPrecioCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbPrecioCActionPerformed
-        // TODO add your handling code here:
-         List<Comida> combosPrecioBajo = this.menusFacade.filtrarCombosPrecioBajo();
+        // Filtra combos con precio bajo
+        List<Comida> combosPrecioBajo = this.menusFacade.filtrarCombosPrecioBajo();
             DefaultComboBoxModel<Comida> model2 = new DefaultComboBoxModel<>();
             for (Comida combo : combosPrecioBajo) {
-                model2.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model2.addElement(combo); 
             }    
             jComboBox1.setModel(model2);
     }//GEN-LAST:event_jRdbPrecioCActionPerformed
 
     private void jRdbCcECActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbCcECActionPerformed
+        // Filtra Combos con Ensalada
         List<Comida> combosEnsalada = this.menusFacade.filtrarCombosConEnsalada();
             DefaultComboBoxModel<Comida> model3 = new DefaultComboBoxModel<>();
             for (Comida combo : combosEnsalada) {
-                model3.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model3.addElement(combo); 
             }    
             jComboBox1.setModel(model3);
     }//GEN-LAST:event_jRdbCcECActionPerformed
 
     private void jRdbPrecioPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbPrecioPActionPerformed
+        // Filtra Platos con precio bajo
         List<Comida> platosPrecioBajo = this.menusFacade.filtrarPlatosPrecioBajo();
             DefaultComboBoxModel<Comida> model5 = new DefaultComboBoxModel<>();
             for (Comida plato : platosPrecioBajo) {
-                model5.addElement(plato); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model5.addElement(plato); 
             }
             jComboBox1.setModel(model5);
     }//GEN-LAST:event_jRdbPrecioPActionPerformed
 
     private void jRdbCBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbCBPActionPerformed
+        // Filtrar platos de bajas calorias
         List<Comida> platosBajasCalorias = this.menusFacade.filtrarPlatosBajasCalorias();
             DefaultComboBoxModel<Comida> model6 = new DefaultComboBoxModel<>();
             for (Comida plato : platosBajasCalorias) {
-                model6.addElement(plato); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model6.addElement(plato); 
             }
             jComboBox1.setModel(model6);
     }//GEN-LAST:event_jRdbCBPActionPerformed
 
     private void jRdbPcPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRdbPcPActionPerformed
+        // Filtrar platos con pollo
         List<Comida> platosPollo = this.menusFacade.filtrarPlatosConPollo();
             DefaultComboBoxModel<Comida> model4 = new DefaultComboBoxModel<>();
             for (Comida plato : platosPollo) {
-                model4.addElement(plato); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model4.addElement(plato); 
             }
             jComboBox1.setModel(model4);
     }//GEN-LAST:event_jRdbPcPActionPerformed
 
+    // Limpia el formulario entre pedidos
     public void limpiarFormulario(Container container) {
     for (Component component : container.getComponents()) {
         if (component instanceof JTextField) {
@@ -514,6 +581,7 @@ public class FrmPedidos extends javax.swing.JFrame {
             limpiarFormulario((Container) component);
         }
     }
+    
     grupoBotones.clearSelection();
     grupoBotones2.clearSelection();
     grupoBotones3.clearSelection();
@@ -533,9 +601,7 @@ public class FrmPedidos extends javax.swing.JFrame {
         this.jRdbPrecioC.setVisible(false);}
     
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        
-        
-        
+        // Permite usar la opcion de Menu Saludable
         this.jRdbPcP.setVisible(false);
         this.jRdbCBP.setVisible(false);
         this.jRdbPrecioP.setVisible(false);
@@ -547,41 +613,15 @@ public class FrmPedidos extends javax.swing.JFrame {
         DefaultComboBoxModel<Comida> model = new DefaultComboBoxModel<>();
         
         for (Comida combo : MenuSaludables) {
-                model.addElement(combo); // Ajusta esto según cómo deseas que se muestren los combos en el jComboBox1
+                model.addElement(combo); 
             }
         jComboBox1.setModel(model);
         
-        
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmPedidos().setVisible(true);
