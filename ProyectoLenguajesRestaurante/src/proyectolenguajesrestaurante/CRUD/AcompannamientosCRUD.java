@@ -5,21 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
 
+// Clase AcompannamientosCRUD, esta clase permite las funciones CRUD y crea una lista de Acopannamientos
+
 public class AcompannamientosCRUD {
     private List<Acompannamiento> listaAcompannamiento = new ArrayList<>();
 
     public void imprimirListaAcompannamientos() {
-    for (Acompannamiento acompannamiento : listaAcompannamiento) {
-        System.out.println(acompannamiento.getNombre() + ", " + acompannamiento.getCalorias());
-    }
+        for (Acompannamiento acompannamiento : listaAcompannamiento) {
+            System.out.println(acompannamiento.getNombre() + ", " + acompannamiento.getCalorias());
+        }
     }
     
+    // Esta funcion se utiliza desde la interfaz
     public void imprimirListaAcompannamientos(JTextArea jTextArea) {
-    for (Acompannamiento acompannamiento : listaAcompannamiento) {
-        jTextArea.append(acompannamiento.getNombre() + ", " + acompannamiento.getCalorias() + "\n");
-    }
+        for (Acompannamiento acompannamiento : listaAcompannamiento) {
+            jTextArea.append(acompannamiento.getNombre() + ", " + acompannamiento.getCalorias() + "\n");
+        }
     }
 
+    // Permite crear un acompannamiento tanto en la base de datos y se agrega a la lista
     public void crearAcompannamiento(String nombre, String temperatura, String carbohidratos, String vegetales, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement crearAcompannamiento = con.prepareCall("{CALL crear_acompannamiento(?, ?, ?, ?, ?, ?, ?, ?, ?)}");
@@ -41,6 +45,8 @@ public class AcompannamientosCRUD {
             e.printStackTrace();
         }
     }
+    
+    // Permite obtener todos los acompannamientos de la base de datos
     public void leerAcompannamientos() {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement leerAcompannamiento = con.prepareCall("{CALL leer_acompannamiento()}");
@@ -77,7 +83,7 @@ public class AcompannamientosCRUD {
         }
     }
 
-
+    // Permite actualizar el precio de un acompannamiento 
     public void actualizarAcompannamiento(String nombre, int nuevoPrecio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement actualizarPrecioAcompannamiento = con.prepareCall("{CALL actualizar_acompannamiento_nombree(?, ?)}");
@@ -89,7 +95,7 @@ public class AcompannamientosCRUD {
             for (Acompannamiento acompannamiento : listaAcompannamiento) {
                 if (acompannamiento.getNombre().equals(nombre)) {
                     acompannamiento.setPrecio(nuevoPrecio);
-                    break; // Si se ha encontrado y actualizado el acompañamiento, se sale del bucle
+                    break; // Si se ha encontrado y actualizado el acompañamiento, se sale del for
                 }
             }
         } catch (Exception e) {
@@ -97,7 +103,7 @@ public class AcompannamientosCRUD {
         }
     }
 
-
+    // Permite eliminar un acompannamiento
     public void eliminarAcompannamiento(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement eliminarAcompannamiento = con.prepareCall("{CALL eliminar_acompannamiento_nombree(?)}");
@@ -108,7 +114,7 @@ public class AcompannamientosCRUD {
             for (int i = 0; i < listaAcompannamiento.size(); i++) {
                 if (listaAcompannamiento.get(i).getNombre().equals(nombre)) {
                     listaAcompannamiento.remove(i);
-                    break; // Si se ha encontrado y eliminado el acompañamiento, se sale del bucle
+                    break; // Si se ha encontrado y eliminado el acompañamiento, se sale del for
                 }
             }
         } catch (Exception e) {

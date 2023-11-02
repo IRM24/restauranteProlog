@@ -1,5 +1,7 @@
 package proyectolenguajesrestaurante.CRUD;
 
+// Clase Acompannamiento, se utiliza para crear nuevos acompannamientos
+
 public class Acompannamiento {
     private String nombre;
     private String temperatura;
@@ -96,5 +98,4 @@ public class Acompannamiento {
         this.precio = precio;
     }
 
-    // Agrega getters y setters según sea necesario
 }

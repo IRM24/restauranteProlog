@@ -1,5 +1,8 @@
 package proyectolenguajesrestaurante.Factura;
 
+// Esta clase permite crear ordenes que se van a utilizar para obtener estadisticas
+// de los platos, combos y elementos mas consumidos en un periodo de tiempo
+
 import java.util.Date;
 
 public class Orden {

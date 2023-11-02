@@ -1,9 +1,8 @@
 package proyectolenguajesrestaurante.Factura;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import proyectolenguajesrestaurante.Menus.Comida;
+
+// Esta clase permite crear nuevas facturas
 
 public class Factura {
     
@@ -41,7 +40,7 @@ public class Factura {
 
     @Override
     public String toString() {
- StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Factura:\n");
         stringBuilder.append("Fecha: ").append(fecha).append("\n");
      

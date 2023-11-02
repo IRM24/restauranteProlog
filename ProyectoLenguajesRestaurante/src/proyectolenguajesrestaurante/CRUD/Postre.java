@@ -1,5 +1,7 @@
 package proyectolenguajesrestaurante.CRUD;
 
+// Clase postre, se usa para crear nuevos postres
+
 public class Postre {
     private String nombre;
     private String lacteo;

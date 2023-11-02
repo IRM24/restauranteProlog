@@ -10,7 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import proyectolenguajesrestaurante.CRUD.ConexionMySQL;
+
+
+// Esta clase permite el mantenimiento de algunos CRUD y funciones para obtener 
+// las estadisticas 
 
 public class OrdenCRUD {
     private List<Orden> listaOrdenes = new ArrayList<>();
@@ -30,12 +35,12 @@ public class OrdenCRUD {
         }
     }
 
+    // Obtiene todas las ordenes desde la base de datos 
     public void leerOrdenes() {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement leerOrden = con.prepareCall("{CALL leer_ordenes()}");
             ResultSet rs = leerOrden.executeQuery();
             while (rs.next()) {
-                // Recupera más columnas según sea necesario
                 int id = rs.getInt("id");
                 Date fecha = rs.getDate("fecha");
                 String detalle = rs.getString("detalle");
@@ -67,16 +72,13 @@ public class OrdenCRUD {
 
     // Método para calcular el plato o combo más solicitado entre las fechas de inicio y fin
     public String calcularItemMasSolicitado(Date fechaInicio, Date fechaFin, String tipoDeItem) {
-        Map<String, Long> contador = new HashMap<>();
-
-        for (Orden orden : listaOrdenes) {
-            if (orden.getFecha().after(fechaInicio) && orden.getFecha().before(fechaFin)) {
-                if (orden.getDetalle().toLowerCase().contains(tipoDeItem.toLowerCase())) {
-                    contador.put(orden.getDetalle(), contador.getOrDefault(orden.getDetalle(), 0L) + 1);
-                }
-            }
-        }
-
+        Map<String, Long> contador = listaOrdenes.stream()
+                
+                // se utilizo la funcion de filter
+                .filter(orden -> orden.getFecha().after(fechaInicio) && orden.getFecha().before(fechaFin) && orden.getDetalle().toLowerCase().contains(tipoDeItem.toLowerCase()))
+                .collect(Collectors.groupingBy(Orden::getDetalle, Collectors.counting()));
+        
+        // Cuenta cual de todos es el que tiene m[as repeticiones
         String itemMasSolicitado = "";
         long max = 0;
         for (Map.Entry<String, Long> entry : contador.entrySet()) {

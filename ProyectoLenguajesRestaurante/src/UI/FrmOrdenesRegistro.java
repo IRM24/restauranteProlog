@@ -1,29 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import proyectolenguajesrestaurante.Factura.FacturaCRUD;
+import javax.swing.ButtonGroup;
 import proyectolenguajesrestaurante.Factura.OrdenCRUD;
 
-/**
- *
- * @author camiu
- */
+// Esta clase crea un Frame que se utiliza para obtener las estadisticas de una fecha
+// a otra fecha para conocer cuales son los platos/combos/elementos mas solicitados
 public class FrmOrdenesRegistro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Factura
-     */
+    ButtonGroup grupoBotones = new ButtonGroup();
+    
     public FrmOrdenesRegistro() {
         initComponents();
+        
+        this.grupoBotones.add(jButton5);
+        this.grupoBotones.add(jButton6);
+        this.grupoBotones.add(jButton7);
+        this.grupoBotones.add(jButton8);
+        
+        this.jButton5.setVisible(false);
+        this.jButton6.setVisible(false);
+        this.jButton7.setVisible(false);
+        this.jButton8.setVisible(false);
     }
     
     OrdenCRUD orden = new OrdenCRUD();
-    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,6 +51,10 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,15 +152,91 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Proteina");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Acompannamiento");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Bebida");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Postre");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton5)
+                                                .addGap(8, 8, 8)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(jButton6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton8)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(291, 291, 291))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -163,53 +246,19 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
                                         .addGap(267, 267, 267)
                                         .addComponent(jLabel6)))
                                 .addGap(45, 45, 45)
-                                .addComponent(jLabel7))
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(152, 152, 152)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addComponent(jLabel8)))))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
@@ -233,7 +282,12 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -247,10 +301,10 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Carga las Ordenes desde la Base de Datos
         orden.leerOrdenes();
         
         String selectedValue1 = (String) jComboBox1.getSelectedItem();
@@ -283,30 +337,25 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
 
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox5ActionPerformed
 
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Carga las Ordenes desde la Base de Datos
         orden.leerOrdenes();
         
         String selectedValue1 = (String) jComboBox1.getSelectedItem();
@@ -333,61 +382,158 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
         LocalDate localDateFin= LocalDate.of(annoFin,mesFin, diaFin); // Ejemplo: 1 de enero de 2023
         Date fechaFin = Date.valueOf(localDateFin);
         
+        // Calcula el plato mas solicitado
         String comida = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "plato");
         this.jTextField1.setText(comida);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Si se selecciona Menu Saludable, salen las opciones para ver los elementos
+        // de manera individual mas solicitados 
+        this.jButton5.setVisible(true);
+        this.jButton6.setVisible(true);
+        this.jButton7.setVisible(true);
+        this.jButton8.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmOrdenesRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmOrdenesRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmOrdenesRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmOrdenesRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // Carga las Ordenes desde la Base de Datos        
+        orden.leerOrdenes();
 
-        /* Create and display the form */
+        String selectedValue1 = (String) jComboBox1.getSelectedItem();
+        int annoInicio = Integer.parseInt(selectedValue1);
+        
+        String selectedValue2 = (String) jComboBox2.getSelectedItem();
+        int mesInicio = Integer.parseInt(selectedValue2);
+        
+        String selectedValue3 = (String) jComboBox3.getSelectedItem();
+        int diaInicio = Integer.parseInt(selectedValue3);
+        
+        String selectedValue4 = (String) jComboBox4.getSelectedItem();
+        int annoFin = Integer.parseInt(selectedValue4);
+        
+        String selectedValue5 = (String) jComboBox5.getSelectedItem();
+        int mesFin = Integer.parseInt(selectedValue5);
+        
+        String selectedValue6 = (String) jComboBox6.getSelectedItem();
+        int diaFin = Integer.parseInt(selectedValue6);
+
+        LocalDate localDateInicio = LocalDate.of(annoInicio, mesInicio, diaInicio); // Ejemplo: 1 de enero de 2023
+        Date fechaInicio = Date.valueOf(localDateInicio);
+        
+        LocalDate localDateFin= LocalDate.of(annoFin,mesFin, diaFin); // Ejemplo: 1 de enero de 2023
+        Date fechaFin = Date.valueOf(localDateFin);
+        
+        //Calcula la Proteina mas solicitada
+        String proteina = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "Proteina");
+        this.jTextField1.setText(proteina);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // Carga las Ordenes desde la Base de Datos
+        orden.leerOrdenes();
+
+        String selectedValue1 = (String) jComboBox1.getSelectedItem();
+        int annoInicio = Integer.parseInt(selectedValue1);
+        
+        String selectedValue2 = (String) jComboBox2.getSelectedItem();
+        int mesInicio = Integer.parseInt(selectedValue2);
+        
+        String selectedValue3 = (String) jComboBox3.getSelectedItem();
+        int diaInicio = Integer.parseInt(selectedValue3);
+        
+        String selectedValue4 = (String) jComboBox4.getSelectedItem();
+        int annoFin = Integer.parseInt(selectedValue4);
+        
+        String selectedValue5 = (String) jComboBox5.getSelectedItem();
+        int mesFin = Integer.parseInt(selectedValue5);
+        
+        String selectedValue6 = (String) jComboBox6.getSelectedItem();
+        int diaFin = Integer.parseInt(selectedValue6);
+
+        LocalDate localDateInicio = LocalDate.of(annoInicio, mesInicio, diaInicio); // Ejemplo: 1 de enero de 2023
+        Date fechaInicio = Date.valueOf(localDateInicio);
+        
+        LocalDate localDateFin= LocalDate.of(annoFin,mesFin, diaFin); // Ejemplo: 1 de enero de 2023
+        Date fechaFin = Date.valueOf(localDateFin);
+        
+        // Calcula el acompannamiento mas solicitado
+        String acompannamiento = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "Acompannamiento");
+        this.jTextField1.setText(acompannamiento);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+         // Carga las Ordenes desde la Base de Datos
+        orden.leerOrdenes();
+
+        String selectedValue1 = (String) jComboBox1.getSelectedItem();
+        int annoInicio = Integer.parseInt(selectedValue1);
+        
+        String selectedValue2 = (String) jComboBox2.getSelectedItem();
+        int mesInicio = Integer.parseInt(selectedValue2);
+        
+        String selectedValue3 = (String) jComboBox3.getSelectedItem();
+        int diaInicio = Integer.parseInt(selectedValue3);
+        
+        String selectedValue4 = (String) jComboBox4.getSelectedItem();
+        int annoFin = Integer.parseInt(selectedValue4);
+        
+        String selectedValue5 = (String) jComboBox5.getSelectedItem();
+        int mesFin = Integer.parseInt(selectedValue5);
+        
+        String selectedValue6 = (String) jComboBox6.getSelectedItem();
+        int diaFin = Integer.parseInt(selectedValue6);
+
+        LocalDate localDateInicio = LocalDate.of(annoInicio, mesInicio, diaInicio); // Ejemplo: 1 de enero de 2023
+        Date fechaInicio = Date.valueOf(localDateInicio);
+        
+        LocalDate localDateFin= LocalDate.of(annoFin,mesFin, diaFin); // Ejemplo: 1 de enero de 2023
+        Date fechaFin = Date.valueOf(localDateFin);
+        
+        // Calcula la Bebida mas solicitada
+        String bebida = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "Bebida");
+        this.jTextField1.setText(bebida);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // Carga las Ordenes desde la Base de Datos
+        orden.leerOrdenes();
+
+        String selectedValue1 = (String) jComboBox1.getSelectedItem();
+        int annoInicio = Integer.parseInt(selectedValue1);
+        
+        String selectedValue2 = (String) jComboBox2.getSelectedItem();
+        int mesInicio = Integer.parseInt(selectedValue2);
+        
+        String selectedValue3 = (String) jComboBox3.getSelectedItem();
+        int diaInicio = Integer.parseInt(selectedValue3);
+        
+        String selectedValue4 = (String) jComboBox4.getSelectedItem();
+        int annoFin = Integer.parseInt(selectedValue4);
+        
+        String selectedValue5 = (String) jComboBox5.getSelectedItem();
+        int mesFin = Integer.parseInt(selectedValue5);
+        
+        String selectedValue6 = (String) jComboBox6.getSelectedItem();
+        int diaFin = Integer.parseInt(selectedValue6);
+
+        LocalDate localDateInicio = LocalDate.of(annoInicio, mesInicio, diaInicio); // Ejemplo: 1 de enero de 2023
+        Date fechaInicio = Date.valueOf(localDateInicio);
+        
+        LocalDate localDateFin= LocalDate.of(annoFin,mesFin, diaFin); // Ejemplo: 1 de enero de 2023
+        Date fechaFin = Date.valueOf(localDateFin);
+        
+        // Calcula el postre mas solicitado
+        String postre = orden.calcularItemMasSolicitado(fechaInicio, fechaFin, "Postre");
+        this.jTextField1.setText(postre);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmOrdenesRegistro().setVisible(true);
@@ -401,6 +547,10 @@ public class FrmOrdenesRegistro extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;

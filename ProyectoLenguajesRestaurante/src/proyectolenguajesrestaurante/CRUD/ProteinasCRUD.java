@@ -5,22 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextArea;
 
+// Clase ProteinasCRUD, esta clase permite las funciones CRUD y crea una lista de Proteinas
 public class ProteinasCRUD {
     
     private List<Proteina> listaProteina = new ArrayList<>();
 
     public void imprimirListaProteinas() {
-    for (Proteina proteina : listaProteina) {
-        System.out.println(proteina.getNombre() + ", " + proteina.getCalorias());
-    }
+        for (Proteina proteina : listaProteina) {
+            System.out.println(proteina.getNombre() + ", " + proteina.getCalorias());
+        }
     }
     
+    // Esta funcion se utiliza desde la interfaz
     public void imprimirListaProteinas(JTextArea jTextArea) {
-    for (Proteina proteina : listaProteina) {
-        jTextArea.append(proteina.getNombre() + ", " + proteina.getCalorias() + "\n");
-    }
+        for (Proteina proteina : listaProteina) {
+            jTextArea.append(proteina.getNombre() + ", " + proteina.getCalorias() + "\n");
+        }
     }
 
+    // Esta funcion permite crear una proteina en la base de datos y agregarla a la lista
     public void crearProteina(String nombre, String tipo, String desayuno, String almuerzo, String cena, int calorias, int precio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement crearProteina = con.prepareCall("{CALL crear_proteina(?, ?, ?, ?, ?, ?, ?)}");
@@ -41,6 +44,7 @@ public class ProteinasCRUD {
         }
     }
 
+    // Permite obtener todas las proteinas en la base de datos
     public void leerProteinas() {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement leerProteina = con.prepareCall("{CALL leer_proteina()}");
@@ -75,6 +79,7 @@ public class ProteinasCRUD {
         }
     }
     
+    // Permite actualizar el precio de una proteina
     public void actualizarProteina(String nombre, int nuevoPrecio) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement actualizarPrecioProteina = con.prepareCall("{CALL actualizar_proteina_nombre(?, ?)}");
@@ -86,7 +91,7 @@ public class ProteinasCRUD {
             for (Proteina proteina : listaProteina) {
                 if (proteina.getNombre().equals(nombre)) {
                     proteina.setPrecio(nuevoPrecio);
-                    break; // Si se ha encontrado y actualizado la proteína, se sale del bucle
+                    break; // Si se ha encontrado y actualizado la proteina, se sale del for
                 }
             }
         } catch (Exception e) {
@@ -94,7 +99,7 @@ public class ProteinasCRUD {
         }
     }
 
-
+    // Permite eliminar una proteina
     public void eliminarProteina(String nombre) {
         try (Connection con = ConexionMySQL.getConexion()) {
             CallableStatement eliminarProteina = con.prepareCall("{CALL eliminar_proteina_nombre(?)}");
@@ -105,7 +110,7 @@ public class ProteinasCRUD {
             for (int i = 0; i < listaProteina.size(); i++) {
                 if (listaProteina.get(i).getNombre().equals(nombre)) {
                     listaProteina.remove(i);
-                    break; // Si se ha encontrado y eliminado la proteína, se sale del bucle
+                    break; // Si se ha encontrado y eliminado la proteina, se sale del for
                 }
             }
         } catch (Exception e) {
