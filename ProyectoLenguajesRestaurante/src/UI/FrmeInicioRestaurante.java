@@ -131,7 +131,7 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
          }
             }
 
-<<<<<<< HEAD
+
         //
         do {
             //System.out.print("Por favor, seleccione el número de mesa (1-6): ");
@@ -142,9 +142,9 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
             }
         } while (numeroMesa < 1 || numeroMesa > 6 || mesas.get(numeroMesa - 1).estaOcupada());
 
-=======
+
         // Se ocupa la mesa
->>>>>>> ba88e3a478f0e866bf83ce8c9d4e412b70650019
+
         mesas.get(numeroMesa - 1).ocuparMesa();
         
         int numeroPersonas = (int)this.jSpinner2.getValue();
