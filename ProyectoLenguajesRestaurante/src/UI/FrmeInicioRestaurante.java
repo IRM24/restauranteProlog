@@ -159,7 +159,7 @@ public class FrmeInicioRestaurante extends javax.swing.JFrame {
 
         //
         do {
-            System.out.print("Por favor, seleccione el número de mesa (1-6): ");
+            //System.out.print("Por favor, seleccione el número de mesa (1-6): ");
             if (numeroMesa < 1 || numeroMesa > 6) {
                 System.out.println("El número de mesa seleccionado no es válido. Inténtelo de nuevo.");
             } else if (mesas.get(numeroMesa - 1).estaOcupada()) {

@@ -2,6 +2,8 @@ package proyectolenguajesrestaurante.Menus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.jpl7.Query;
 import org.jpl7.Term;
 
@@ -11,7 +13,31 @@ public class MenuSaludable {
 // y esa lista es la que tiene que llamar desde FrmPedidos (ver comentarios que le puse)
 
     public List<Comida> generarMenuSaludable() {
-         List<Comida> listaDeComidas = new ArrayList<>();
+        JOptionPane.showMessageDialog(null,"Abrir terminal para ejecutar programa de menu saludable");
+        System.out.println("╔══════════════════════════════════════════════╗");
+        System.out.println("║  Reglas para la Correcta Ejecución     ║");
+        System.out.println("╚══════════════════════════════════════════════╝");
+        System.out.println("  IMPORTANTE: finalizar cada instruccion con .");
+        System.out.println("  1. Ingrese el límite de calorías (> 600).");
+        System.out.println("  2. ¿Desea postre? ('si.' o 'no.').");
+        System.out.println("  3. Temperatura de la bebida ('fria.' o 'caliente.').");
+        System.out.println("  4. Tipo de bebida ('naturales.' o 'carbonatadas.').");
+        System.out.println("  5. Tipo de proteína ('pollo.', 'carnes_rojas.' o 'mariscos.').");
+        System.out.println("  6. Cantidad de acompañamientos (1 a 3).");
+        System.out.println("  7. Temperatura de acompañamientos ('fria.' o 'caliente.').");
+        System.out.println("  8. ¿Desea vegetales en sus acompañamientos? ('si.' o 'no.').");
+        System.out.println("  9. ¿Desea carbohidratos en sus acompañamientos? ('si.' o 'no.').");
+        System.out.println(" 10. Si eligió postre, ¿desea postre con lácteos? ('si.' o 'no.').");
+        System.out.println(" 11. Si eligió postre, ¿desea postres con frutas? ('si.' o 'no.').");
+        System.out.println("╚══════════════════════════════════════════════╝");
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Por favor, ingrese el tiempo de comida (por ejemplo, 'cena'): ");
+        String tiempoComida = scanner.nextLine();
+        tiempoComida = "'" + tiempoComida + "'";
+        System.out.println("tiempo comida "+tiempoComida);
+        
+        List<Comida> listaDeComidas = new ArrayList<>();
         // Ruta al archivo Prolog
         String rutaPrologIan = "C:/Users/Ian Calvo/Desktop/restauranteProlog/prolog/prototipoForm_Ian.pl";
 
@@ -30,7 +56,7 @@ public class MenuSaludable {
                 System.out.println("Conexión exitosa a la base de datos.");
 
                 // Llamar a la función generar_menus_con_limite('cena')
-                Query consultaGenerarMenus = new Query("generar_menus_con_limite('cena', MenuSeleccionado)");
+                Query consultaGenerarMenus = new Query("generar_menus_con_limite(" + tiempoComida + ", MenuSeleccionado)");
 
                 
                 
