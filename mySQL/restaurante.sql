@@ -370,6 +370,9 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-28', 18000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-24', 5600.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-26', 21000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-30', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-22', 32000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-8', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-22', 30000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-30', 7000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-11-1', 34000.0);
 

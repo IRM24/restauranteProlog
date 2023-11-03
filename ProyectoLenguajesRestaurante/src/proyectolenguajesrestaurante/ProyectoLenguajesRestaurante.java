@@ -1,5 +1,5 @@
 // Proyecto 2 Lenguajes de Programacion 
-// Ian Calvo Madrigal y Camila Ulate Chaves
+// Ian Calvo Madrigal y Camila Ulate 
 
 package proyectolenguajesrestaurante;
 

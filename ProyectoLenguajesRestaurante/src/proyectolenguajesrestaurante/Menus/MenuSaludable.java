@@ -13,10 +13,10 @@ public class MenuSaludable {
     public List<Comida> generarMenuSaludable() {
          List<Comida> listaDeComidas = new ArrayList<>();
         // Ruta al archivo Prolog
-        String rutaPrologIan = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian.pl";
+        String rutaProlog = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian.pl";
 
         // Consulta para cargar el archivo Prolog
-        Query query = new Query("consult('" + rutaPrologIan + "')");
+        Query query = new Query("consult('" + rutaProlog + "')");
 
         // Verificar si se ha cargado el archivo Prolog
         if (query.hasSolution()) {
