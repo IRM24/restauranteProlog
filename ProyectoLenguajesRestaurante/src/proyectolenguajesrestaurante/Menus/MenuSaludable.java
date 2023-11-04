@@ -8,11 +8,9 @@ import org.jpl7.Query;
 import org.jpl7.Term;
 
 public class MenuSaludable {
-
-// lista comida por cada elemento que prolog devuelva/crea lo agrega a esa lista
-// y esa lista es la que tiene que llamar desde FrmPedidos (ver comentarios que le puse)
-
+    //Funcion que retorna una lista de 3 opciones de menu saludable
     public List<Comida> generarMenuSaludable() {
+        //Instrucciones
         JOptionPane.showMessageDialog(null,"Abrir terminal para ejecutar programa de menu saludable");
         System.out.println("╔══════════════════════════════════════════════╗");
         System.out.println("║  Reglas para la Correcta Ejecución     ║");
@@ -31,18 +29,19 @@ public class MenuSaludable {
         System.out.println(" 11. Si eligió postre, ¿desea postres con frutas? ('si.' o 'no.').");
         System.out.println("╚══════════════════════════════════════════════╝");
         
+        //Ingresa tiempo de comida
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Por favor, ingrese el tiempo de comida (por ejemplo, 'cena'): ");
+        System.out.print("Por favor, ingrese el tiempo de comida sin . al final (por ejemplo: cena, almuerzo o desayuno): ");
         String tiempoComida = scanner.nextLine();
         tiempoComida = "'" + tiempoComida + "'";
-        System.out.println("tiempo comida "+tiempoComida);
         
+        //Se crea la lista que contendra los menus
         List<Comida> listaDeComidas = new ArrayList<>();
         // Ruta al archivo Prolog
-        String rutaPrologIan = "C:/Users/camiu/restauranteProlog/prolog/prototipoForm_Ian.pl";
-
-        // Consulta para cargar el archivo Prolog
-        Query query = new Query("consult('" + rutaPrologIan + "')");
+        String rutaRelativa = "../prolog/prototipoForm_Ian.pl";
+        
+        //Consulta el programa prolog
+        Query query = new Query("consult('" + rutaRelativa + "')");
 
         // Verificar si se ha cargado el archivo Prolog
         if (query.hasSolution()) {
@@ -55,19 +54,20 @@ public class MenuSaludable {
             if (conexionProlog.hasSolution()) {
                 System.out.println("Conexión exitosa a la base de datos.");
 
-                // Llamar a la función generar_menus_con_limite('cena')
+                // Llamar a la función generar_menus_con_limite('tiempo de comida')
                 Query consultaGenerarMenus = new Query("generar_menus_con_limite(" + tiempoComida + ", MenuSeleccionado)");
-
                 
-                
+                //La verificacion de si el query ConsultaGenerarMenus se decidio comentar ya que ejecuta el codigo una vez no necesaria (si se siguen instrucciones no deben haber errores)
                 // Verificar si se encontraron soluciones
-                if (consultaGenerarMenus.hasSolution()) {
+                //if (consultaGenerarMenus.hasSolution()) {
+                    
+                    //Se obtiene la solucion de menus saludables
                     Term menuProlog = consultaGenerarMenus.oneSolution().get("MenuSeleccionado");
                     if (menuProlog != null) {
                         if (menuProlog.isList()) {
                             for(int i = 0; i<3; i++){
+                                //se procesan los menus para hacerlos objetos tipo comida -> combo, con el fin de poder manipularlos dentro de java
                                 procesarMenu(menuProlog.toTermArray()[i],listaDeComidas);
-                                //System.out.println("menu: "+menuProlog.toTermArray()[i]);
                             }              
                         } else {
                             System.out.println("El término no es una lista.");
@@ -75,9 +75,9 @@ public class MenuSaludable {
                     } else {
                         System.out.println("El término MenuSeleccionado no se encontró en la solución.");
                     }
-                } else {
+                /*} else {
                     System.out.println("No se encontraron soluciones para la consulta.");
-                }
+                }*/
             } else {
                 System.out.println("No se pudo establecer la conexión a la base de datos.");
             }
@@ -85,13 +85,15 @@ public class MenuSaludable {
             System.out.println("No se pudo cargar el archivo Prolog.");
         }
         System.out.println("lista: " + listaDeComidas);
+        //Se retorna la lista de 3 menus 
         return listaDeComidas;
     }
     
     
-    
+    //funcion que recibe una lista tipo comida y un termino de prolog
     public void procesarMenu(Term lista, List<Comida> listaMenus){
     
+    //atributos del menu
     int Id;
     String Nombre;
     String Bebida;
@@ -103,6 +105,7 @@ public class MenuSaludable {
     int Precio;
     int Caloria;
  
+    //Para manipulacion de acompannamientos, se crea una lista con 3 valores nulos, luego esta se llena dependiendo de la cantidad de acompannamientos que se deseen
     Term acompanamiento = lista.toTermArray()[4];
     Term[] elementosSublista = acompanamiento.toTermArray();
         List<Term> listaA = new ArrayList<>(); // Inicializa la lista vacía
@@ -113,6 +116,7 @@ public class MenuSaludable {
             listaA.set(i,  elementosSublista[i]);
         }
     
+    //Proceso en caso de que se desee postre
     if (lista.toTermArray().length > 7) {
         
         Id = lista.toTermArray()[0].intValue();
@@ -128,6 +132,7 @@ public class MenuSaludable {
         Precio = lista.toTermArray()[7].intValue();
         Caloria = lista.toTermArray()[6].intValue();
         
+    //En caso de que no se desee postre
     } else {
     
         Id = lista.toTermArray()[0].intValue();
@@ -143,9 +148,10 @@ public class MenuSaludable {
         Precio = lista.toTermArray()[6].intValue();
         Caloria = lista.toTermArray()[5].intValue();
     }
-
+    
+    //se crean los combos 
     Combo combo = (Combo) FactoryComida.crearComida("combo", Id, Nombre, Proteina, Acompannamiento1, Acompannamiento2, Acompannamiento3, Caloria, Precio, Bebida, Postre);
-    //System.out.println("Combo: "+combo);
+    //se annade el combo a la lista
     listaMenus.add(combo);
     }
 }

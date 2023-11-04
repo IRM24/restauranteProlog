@@ -218,8 +218,50 @@ VALUES
     ('Ensalada Verde','Frio', 'No', 'Si', 'No', 'Si', 'Si', 80, 2100),
     ('Ensalada de Pasta','Frio', 'Si', 'No', 'No', 'Si', 'Si', 150, 2300),
     ('Ensalada Cesar','Frio', 'No', 'Si', 'No', 'Si', 'Si', 130, 2600),
-    ('Ensalada de Garbanzos','Frio', 'Si', 'Si', 'No', 'Si', 'Si', 110, 2500);
+    ('Ensalada de Garbanzos','Frio', 'Si', 'Si', 'No', 'Si', 'Si', 110, 2500),
+    ('Sopa Azteca','Caliente', 'No', 'Si', 'No', 'Si', 'Si', 150, 1500),
+    ('Ensalada Rusa','Frio', 'No', 'Si', 'No', 'Si', 'Si', 150, 2800),
+    ('Palmito con queso','Frio', 'Si', 'Si', 'No', 'Si', 'Si', 120, 1200),
+    ('Esparragos con mayonesa','Frio', 'Si', 'Si', 'No', 'Si', 'Si', 150, 1500),
+    ('Frituras','Frio', 'Si', 'No', 'No', 'Si', 'Si', 200, 1100);
+    
+INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
+VALUES
+    ('Smoothie de Espinacas', 'Frio', 'Si', 'Si', 'Si', 'No', 'No', 150, 1000),
+    ('Tostadas de Trigo', 'Frio', 'Si', 'Si', 'Si', 'No', 'No', 110, 900),
+    ('Yogur con Granola', 'Frio', 'Si', 'Si', 'Si', 'No', 'No', 180, 1200);
 
+INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
+VALUES
+    ('Cereal de Maíz', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 130, 850),
+    ('Muffin de Blueberry', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 160, 1100),
+    ('Croissant de Chocolate', 'Frio', 'Si', 'No', 'Si', 'No', 'No', 190, 1400);
+
+INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
+VALUES
+    ('Huevos Revueltos con Espinacas', 'Caliente', 'No', 'Si', 'Si', 'No', 'No', 160, 1200),
+    ('Tortilla de Queso', 'Caliente', 'No', 'Si', 'Si', 'No', 'No', 180, 1400),
+    ('Tomate Asado', 'Caliente', 'No', 'Si', 'Si', 'No', 'No', 80, 650);
+
+INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
+VALUES
+    ('Papas con Espinacas', 'Caliente', 'Si', 'Si', 'Si', 'No', 'No', 210, 1500),
+    ('Panqueques con Salsa de Arándanos', 'Caliente', 'Si', 'Si', 'Si', 'No', 'No', 240, 1800),
+    ('Tostadas con Aguacate', 'Caliente', 'Si', 'Si', 'Si', 'No', 'No', 200, 1600);
+
+INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
+VALUES
+    ('Galletas con Mantequilla', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 170, 1200),
+    ('Tostadas de Jamón y Queso', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 200, 1400),
+    ('Waffles con Jarabe', 'Caliente', 'Si', 'No', 'Si', 'No', 'No', 220, 1600);
+
+INSERT INTO acompannamiento (nombre, temperatura, carbohidratos, vegetales, desayuno, almuerzo, cena, calorias, precio)
+VALUES
+    ('Avena con Frutas', 'Frio', 'No', 'Si', 'Si', 'No', 'No', 120, 800),
+    ('Yogur Natural', 'Frio', 'No', 'Si', 'Si', 'No', 'No', 90, 700),
+    ('Ensalada de Frutas', 'Frio', 'No', 'Si', 'Si', 'No', 'No', 80, 650);
+
+-- :)
 -- Inserts de postres -------------------------------------------------
 INSERT INTO postre (nombre, lacteo, frutas, desayuno, almuerzo, cena, calorias, precio)
 VALUES
@@ -370,6 +412,9 @@ INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-28', 18000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-24', 5600.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-26', 21000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-30', 8000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-22', 32000.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-8', 7500.0);
+INSERT INTO factura (fecha, monto_total) VALUES ('2023-9-22', 30000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-10-30', 7000.0);
 INSERT INTO factura (fecha, monto_total) VALUES ('2023-11-1', 34000.0);
 
@@ -810,4 +855,3 @@ select * from bebida;
 select * from combo;
 
 -- drop database restaurante;
-
