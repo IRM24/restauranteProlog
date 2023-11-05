@@ -38,7 +38,7 @@ public class MenuSaludable {
         //Se crea la lista que contendra los menus
         List<Comida> listaDeComidas = new ArrayList<>();
         // Ruta al archivo Prolog
-        String rutaRelativa = "../prolog/prototipoForm_Ian.pl";
+        String rutaRelativa = "../prolog/FormMenuSaludable.pl";
         
         //Consulta el programa prolog
         Query query = new Query("consult('" + rutaRelativa + "')");
